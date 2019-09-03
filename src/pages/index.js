@@ -2,24 +2,20 @@
 import { css, jsx } from "@emotion/core"
 import { React, useState } from "react"
 import Header from "../components/Header.js"
-import useMedia from "../hooks/useMedia.js"
 // import useHover from "../hooks/userHover"
 import Button from "../components/Button.js"
 import Footer from "../components/Footer.js"
 import textpattern from "../../static/textptrn.jpeg"
 
 export default () => {
-  const mediaFactor = useMedia(
-    ["(min-width: 1024px)", "(min-width: 600px)", "(min-width: 0px)"],
-    [3, 2, 1],
-    1
-  )
+  const breakpoints = [576, 768, 992, 1200]
+  const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
 
   //   const [hoverable, hovered] = useHover(Footer)
 
   return (
     <div style={{ fontFamily: "Open Sans", fontSize: "0.9rem" }}>
-      <Header mediaFactor={mediaFactor} />
+      <Header />
       <div
         css={css`
           text-align: center;
@@ -27,7 +23,19 @@ export default () => {
       >
         <div
           css={css`
-            font-size: ${5.6 * mediaFactor + "rem"};
+            font-size: 5.6rem;
+            ${[mq[0]]} {
+              font-size: 8.6rem;
+            }
+            ${[mq[1]]} {
+              font-size: 9.6rem;
+            }
+            ${[mq[2]]} {
+              font-size: 12.6rem;
+            }
+            ${[mq[3]]} {
+              font-size: 15.6rem;
+            }
             font-family: Fugaz One, cursive;
             color: red;
             -webkit-text-fill-color: transparent;
@@ -44,7 +52,24 @@ export default () => {
           sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua.
         </div>
-        <Button css={css`margin-top: ${1.5 * mediaFactor + 'rem'}`} href={'#'}>
+        <Button
+          css={css`
+            margin-top: 1.5rem;
+            ${[mq[0]]} {
+              margin-top: 3rem;
+            }
+            ${[mq[1]]} {
+              margin-top: 4rem;
+            }
+            ${[mq[2]]} {
+              margin-top: 5rem;
+            }
+            ${[mq[3]]} {
+              margin-top: 6rem;
+            }
+          `}
+          href={"#"}
+        >
           My Thoughts & Ideas on Medium ↠
         </Button>
       </div>
