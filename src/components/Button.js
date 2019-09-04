@@ -4,7 +4,7 @@ import React from "react"
 
 export default (props) => {
   return (
-    <a
+    <button
       css={css`
         padding: 0.8rem 1.5rem;
         border: 1px solid #000000;
@@ -21,6 +21,6 @@ export default (props) => {
       {...props}
     >
       {props.children}
-    </a>
+    </button>
   )
 }

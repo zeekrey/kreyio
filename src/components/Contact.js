@@ -1,17 +1,20 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
-import React from "react"
-import { Formik, Form, Field, ErrorMessage } from "formik"
+import { React, useState } from "react"
+import { Formik, Form, Field } from "formik"
 import Button from "../components/Button.js"
 
-const Basic = () => {
+const Contact = () => {
+
+    const [buttonText, setButtonText] = useState('Send message ↠')
+
   const label = css`
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: .6rem;
+    font-size: 0.6rem;
     text-align: left;
-    margin-bottom: .2rem;
+    margin-bottom: 0.2rem;
   `
 
   const input = css`
@@ -19,55 +22,79 @@ const Basic = () => {
     border: 1px solid #cdcdcd;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: .6rem .2rem;
+    padding: 0.6rem 0.2rem;
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: .8rem;
-    margin-bottom: .5rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
   `
+
   return (
     <div>
       <Formik
         initialValues={{ name: "", contact: "", message: "" }}
-        validate={values => {
-          let errors = {}
-          if (!values.name) {
-            errors.name = "Required"
+        onSubmit={(values, actions) => {
+          if (!values.name || !values.contact || !values.message) {
+            setButtonText('Some data is missing 😮')
+            actions.setSubmitting(false)
+            actions.setErrors({ error: true })
+            // actions.setStatus({ msg: 'Set some arbitrary status or data' });
+            setTimeout(() => {
+                setButtonText('Send message ↠')
+              }, 3000)
+          } else {
+            setButtonText('Submitting...🧞')
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2))
+              actions.setSubmitting(false)
+              setButtonText('Send message ↠')
+            }, 3000)
           }
-          // else if (
-          //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          // ) {
-          //   errors.email = 'Invalid email address';
-          // }
-          return errors
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
         }}
       >
-        {({ isSubmitting }) => (
+        {({ errors, isSubmitting }) => (
           <Form
             css={css`
               display: flex;
               flex-direction: column;
             `}
           >
-            <label css={[label]} htmlFor="name">Your name</label>
+            <label css={[label]} htmlFor="name">
+              Your name
+            </label>
             <Field css={[input]} type="text" name="name" placeholder="Name." />
-            <ErrorMessage name="name" component="div" />
-            <label css={[label]} htmlFor="contact">Your contact</label>
-            <Field css={[input]} type="text" name="contact" placeholder="Phone or eMail." />
-            <ErrorMessage name="contact" component="div" />
-            <label css={[label]} htmlFor="message">Your message</label>
-            <Field css={[input]} component="textarea" rows="4" name="message" placeholder="Your message." />
-            <ErrorMessage name="message" component="div" />
-            <Button type="submit" css={css`margin-top: .5rem;`}>
-          Send message ↠
-        </Button>
+            <label css={[label]} htmlFor="contact">
+              Your contact
+            </label>
+            <Field
+              css={[input]}
+              type="text"
+              name="contact"
+              placeholder="Phone or eMail."
+            />
+            <label css={[label]} htmlFor="message">
+              Your message
+            </label>
+            <Field
+              css={[input]}
+              component="textarea"
+              rows="4"
+              name="message"
+              placeholder="Your message."
+            />
+            <Button
+              type="submit"
+              css={css`
+                margin-top: 0.5rem;
+                line-height: 1rem;
+                ${errors.error && `border: 1px solid red;`};
+                ${isSubmitting && `background: green; content: 'Submitting...'`};
+              `}
+              disabled={isSubmitting || errors.error}
+            >
+              {buttonText}
+            </Button>
           </Form>
         )}
       </Formik>
@@ -75,4 +102,4 @@ const Basic = () => {
   )
 }
 
-export default Basic
+export default Contact

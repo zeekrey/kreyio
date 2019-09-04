@@ -11,14 +11,11 @@ import linkedinLogo from "../../static/linkedin.png"
 import mediumLogo from "../../static/medium.png"
 
 export default () => {
-  const mediaFactor = useMedia(
-    ["(min-width: 1024px)", "(min-width: 600px)", "(min-width: 0px)"],
-    [3, 2, 1],
-    1
-  )
+  const breakpoints = [576, 768, 992, 1200]
+  const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
   return (
     <div style={{ fontFamily: "Open Sans", fontSize: "0.9rem" }}>
-      <Header mediaFactor={mediaFactor} />
+      <Header />
       <div
         css={css`
           text-align: center;
@@ -26,7 +23,19 @@ export default () => {
       >
         <div
           css={css`
-            font-size: ${2.4 * mediaFactor + "rem"};
+            font-size: 2.4rem;
+            ${[mq[0]]} {
+              font-size: 2.6rem;
+            }
+            ${[mq[1]]} {
+              font-size: 4.6rem;
+            }
+            ${[mq[2]]} {
+              font-size: 5.6rem;
+            }
+            ${[mq[3]]} {
+              font-size: 7.6rem;
+            }
             font-family: Fugaz One, cursive;
           `}
         >
@@ -35,8 +44,23 @@ export default () => {
         <div
           css={css`
             display: flex;
-            flex-direction: ${mediaFactor === 3 ? 'row' : 'column'};
-            margin: 2rem ${4 * mediaFactor + "rem"};
+            flex-direction: column;
+            ${[mq[1]]} {
+              flex-direction: row;
+            }
+            margin: 2rem 4rem;
+            ${[mq[0]]} {
+              margin: 2rem 5rem;
+            }
+            ${[mq[1]]} {
+              margin: 2rem 6rem;
+            }
+            ${[mq[2]]} {
+              margin: 2rem 7rem;
+            }
+            ${[mq[3]]} {
+              margin: 2rem 8rem;
+            }
             justify-content: center;
             align-items: center;
           `}
@@ -80,18 +104,20 @@ export default () => {
                 />
               </a>
             </div>
-            <div>
-              Or leave me a message. ↠
-            </div>
+            <div>Or leave me a message. ↠</div>
           </div>
-          {mediaFactor === 3 && <div
+          <div
             css={css`
               margin: 0rem 3rem;
               width: 1px;
               background: black;
               height: 20rem;
+              display: none;
+              ${[mq[3]]} {
+                display: inherit;
+              }
             `}
-          ></div>}
+          ></div>
           <div
             css={css`
               flex: 1;
