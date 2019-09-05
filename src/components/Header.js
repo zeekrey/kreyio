@@ -40,7 +40,7 @@ export default () => {
           }
         `}
       >
-        <Link
+        {/* <Link
           to="/contact/"
           css={css`
             color: black;
@@ -48,7 +48,7 @@ export default () => {
           `}
         >
           CONTENT
-        </Link>
+        </Link> */}
         <Link
           to="/contact/"
           css={css`

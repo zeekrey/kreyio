@@ -4,7 +4,7 @@ import { React, useState } from "react"
 import { Link } from "gatsby"
 import Header from "../components/Header.js"
 import Contact from "../components/Contact.js"
-import useMedia from "../hooks/useMedia.js"
+import Footer from "../components/Footer.js"
 
 import githubLogo from "../../static/github.png"
 import linkedinLogo from "../../static/linkedin.png"
@@ -68,7 +68,7 @@ export default () => {
           <div
             css={css`
               flex: 1;
-              margin: 5rem 1rem;
+              margin: 5rem 0;
             `}
           >
             <div>
@@ -80,10 +80,10 @@ export default () => {
                 margin: 2.5rem 0rem;
               `}
             >
-              <a href="http://">
+              <a href="https://github.com/zeekrey/">
                 <img src={githubLogo} alt="GitHub" width="40" />
               </a>
-              <a href="http://">
+              <a href="https://medium.com/@christian_7682">
                 <img
                   src={mediumLogo}
                   alt="Medium.com"
@@ -93,7 +93,7 @@ export default () => {
                   `}
                 />
               </a>
-              <a href="http://">
+              <a href="https://www.linkedin.com/in/christiankrey/">
                 <img
                   src={linkedinLogo}
                   alt="LinkedIn"
@@ -129,6 +129,17 @@ export default () => {
           </div>
         </div>
       </div>
+      <Footer>
+      <Link
+          to="/"
+          css={css`
+            color: black;
+            text-decoration: none;
+          `}
+        >
+          IMPRESSUM // DATENSCHUTZ
+        </Link>
+      </Footer>
     </div>
   )
 }

@@ -2,9 +2,7 @@
 import { css, jsx } from "@emotion/core"
 import { React, useState } from "react"
 import Header from "../components/Header.js"
-// import useHover from "../hooks/userHover"
 import Button from "../components/Button.js"
-import Footer from "../components/Footer.js"
 import textpattern from "../../static/textptrn.jpeg"
 
 export default () => {
@@ -68,29 +66,11 @@ export default () => {
               margin-top: 6rem;
             }
           `}
-          href={"#"}
+          href={"https://medium.com/@christian_7682"}
         >
           My Thoughts & Ideas on Medium ↠
         </Button>
       </div>
-      {/* {hovered && (
-        <Footer>
-            
-          This awesome pattern is by the terrific
-          <a
-            href="https://unsplash.com/@pawel_czerwinski?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Download free do whatever you want high-resolution photos from Paweł Czerwiński"
-            css={css`
-              color: black;
-              margin-left: 0.15rem;
-            `}
-          >
-            Paweł Czerwiński ↠
-          </a>
-        </Footer>
-      )} */}
     </div>
   )
 }
