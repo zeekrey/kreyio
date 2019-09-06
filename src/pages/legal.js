@@ -3,12 +3,6 @@ import { css, jsx } from "@emotion/core"
 import { React, useState } from "react"
 import { Link } from "gatsby"
 import Header from "../components/Header.js"
-// import Contact from "../components/Contact.js"
-// import Footer from "../components/Footer.js"
-
-// import githubLogo from "../../static/github.png"
-// import linkedinLogo from "../../static/linkedin.png"
-// import mediumLogo from "../../static/medium.png"
 
 export default () => {
   const breakpoints = [576, 768, 992, 1200]
@@ -82,19 +76,20 @@ export default () => {
           </p>
           <ul></ul>
           <p>
-            Stand: 5. September 2019<h2>Inhaltsübersicht</h2>{" "}
+            Stand: 5. September 2019
+            <h2>Inhaltsübersicht</h2>
             <ul>
               <li>
-                <a href="#m14"> Einleitung</a>
+                <a href="#m14">Einleitung</a>
               </li>
               <li>
-                <a href="#m3"> Verantwortlicher</a>
+                <a href="#m3">Verantwortlicher</a>
               </li>
               <li>
-                <a href="#mOverview"> Übersicht der Verarbeitungen</a>
+                <a href="#mOverview">Übersicht der Verarbeitungen</a>
               </li>
               <li>
-                <a href="#m13"> Maßgebliche Rechtsgrundlagen</a>
+                <a href="#m13">Maßgebliche Rechtsgrundlagen</a>
               </li>
               <li>
                 <a href="#m27"> Sicherheitsmaßnahmen</a>
@@ -107,7 +102,6 @@ export default () => {
               </li>
               <li>
                 <a href="#m225">
-                  {" "}
                   Bereitstellung des Onlineangebotes und Webhosting
                 </a>
               </li>
@@ -116,7 +110,6 @@ export default () => {
               </li>
               <li>
                 <a href="#m15">
-                  {" "}
                   Änderung und Aktualisierung der Datenschutzerklärung
                 </a>
               </li>
@@ -132,9 +125,7 @@ export default () => {
               <br />
               D-04159 Leipzig
             </p>
-            <p>
-              E-Mail-Adresse: hi@krey.io
-            </p>
+            <p>E-Mail-Adresse: hi@krey.io</p>
             <ul></ul>
             <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
             <p>
@@ -220,15 +211,15 @@ export default () => {
               Datenschutzgrundverordnung (DSGVO), auf deren Basis ich die
               personenbezogenen Daten verarbeite, mit. Bitte beachten Sie, dass
               zusätzlich zu den Regelungen der DSGVO die nationalen
-              Datenschutzvorgaben in Ihrem bzw. meinem Wohn- und Sitzland
-              gelten können.
+              Datenschutzvorgaben in Ihrem bzw. meinem Wohn- und Sitzland gelten
+              können.
             </p>
             <ul>
               <li>
                 <p>
                   <strong>
                     Einwilligung (Art. 6 Abs. 1 S. 1 lit. a DSGVO)
-                  </strong>{" "}
+                  </strong>
                   - Die betroffene Person hat ihre Einwilligung in die
                   Verarbeitung der sie betreffenden personenbezogenen Daten für
                   einen spezifischen Zweck oder mehrere bestimmte Zwecke
@@ -240,7 +231,7 @@ export default () => {
                   <strong>
                     Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs.
                     1 S. 1 lit. b. DSGVO)
-                  </strong>{" "}
+                  </strong>
                   - Die Verarbeitung ist für die Erfüllung eines Vertrags,
                   dessen Vertragspartei die betroffene Person ist, oder zur
                   Durchführung vorvertraglicher Maßnahmen erforderlich, die auf
@@ -251,7 +242,7 @@ export default () => {
                 <p>
                   <strong>
                     Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f. DSGVO)
-                  </strong>{" "}
+                  </strong>
                   - Die Verarbeitung ist zur Wahrung der berechtigten Interessen
                   des Verantwortlichen oder eines Dritten erforderlich, sofern
                   nicht die Interessen oder Grundrechte und Grundfreiheiten der
@@ -282,7 +273,7 @@ export default () => {
             <ul class="m-elements"></ul>
             <h2 id="m27">Sicherheitsmaßnahmen</h2>
             <p>
-              Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter
+              Ich treffe nach Maßgabe der gesetzlichen Vorgaben unter
               Berücksichtigung des Stands der Technik, der
               Implementierungskosten und der Art, des Umfangs, der Umstände und
               der Zwecke der Verarbeitung sowie der unterschiedlichen
@@ -297,18 +288,17 @@ export default () => {
               Kontrolle des physischen und elektronischen Zugangs zu den Daten
               als auch des sie betreffenden Zugriffs, der Eingabe, der
               Weitergabe, der Sicherung der Verfügbarkeit und ihrer Trennung.
-              Des Weiteren haben wir Verfahren eingerichtet, die eine
-              Wahrnehmung von Betroffenenrechten, die Löschung von Daten und
-              Reaktionen auf die Gefährdung der Daten gewährleisten. Ferner
-              berücksichtigen wir den Schutz personenbezogener Daten bereits bei
-              der Entwicklung bzw. Auswahl von Hardware, Software sowie
-              Verfahren entsprechend dem Prinzip des Datenschutzes, durch
-              Technikgestaltung und durch datenschutzfreundliche
-              Voreinstellungen.
+              Des Weiteren habe ich Verfahren eingerichtet, die eine Wahrnehmung
+              von Betroffenenrechten, die Löschung von Daten und Reaktionen auf
+              die Gefährdung der Daten gewährleisten. Ferner berücksichtige ich
+              den Schutz personenbezogener Daten bereits bei der Entwicklung
+              bzw. Auswahl von Hardware, Software sowie Verfahren entsprechend
+              dem Prinzip des Datenschutzes, durch Technikgestaltung und durch
+              datenschutzfreundliche Voreinstellungen.
             </p>
             <p>
-              <strong>SSL-Verschlüsselung (https)</strong>: Um Ihre via unser
-              Online-Angebot übermittelten Daten zu schützen, nutzen wir eine
+              <strong>SSL-Verschlüsselung (https)</strong>: Um Ihre via mein
+              Online-Angebot übermittelten Daten zu schützen, nutze ich eine
               SSL-Verschlüsselung. Sie erkennen derart verschlüsselte
               Verbindungen an dem Präfix https:// in der Adresszeile Ihres
               Browsers.
@@ -320,7 +310,7 @@ export default () => {
               unterschiedliche Angaben gespeichert werden. Zu den Angaben können
               z.B. die Spracheinstellungen auf einer Webseite, der Loginstatus,
               ein Warenkorb oder die Stelle, an der ein Video geschaut wurde,
-              gehören.{" "}
+              gehören.
             </p>
             <p>
               Cookies werden im Regelfall auch dann eingesetzt, wenn die
@@ -330,28 +320,28 @@ export default () => {
               dienen dazu, den Nutzern z.B. Inhalte anzuzeigen, die ihren
               potentiellen Interessen entsprechen. Dieses Verfahren wird auch
               als "Tracking", d.h., Nachverfolgung der potentiellen Interessen
-              der Nutzer bezeichnet. Zu dem Begriff der Cookies zählen wir
-              ferner andere Technologien, die die gleichen Funktionen wie
-              Cookies erfüllen (z.B., wenn Angaben der Nutzer anhand pseudonymer
+              der Nutzer bezeichnet. Zu dem Begriff der Cookies zähle ich ferner
+              andere Technologien, die die gleichen Funktionen wie Cookies
+              erfüllen (z.B., wenn Angaben der Nutzer anhand pseudonymer
               Onlinekennzeichnungen gespeichert werden, auch als "Nutzer-IDs"
               bezeichnet).
             </p>
             <p>
-              Soweit wir Cookies oder "Tracking"-Technologien einsetzen,
-              informieren wir Sie gesondert in unserer Datenschutzerklärung.{" "}
+              Soweit ich Cookies oder "Tracking"-Technologien einsetze,
+              informiere ich Sie gesondert in meiner Datenschutzerklärung.
             </p>
             <p>
               <strong>Hinweise zu Rechtsgrundlagen: </strong> Auf welcher
-              Rechtsgrundlage wir Ihre personenbezogenen Daten mit Hilfe von
-              Cookies verarbeiten, hängt davon ab, ob wir Sie um eine
-              Einwilligung bitten. Falls dies zutrifft und Sie in die Nutzung
-              von Cookies einwilligen, ist die Rechtsgrundlage der Verarbeitung
+              Rechtsgrundlage ich Ihre personenbezogenen Daten mit Hilfe von
+              Cookies verarbeite, hängt davon ab, ob ich Sie um eine
+              Einwilligung bitte. Falls dies zutrifft und Sie in die Nutzung von
+              Cookies einwilligen, ist die Rechtsgrundlage der Verarbeitung
               Ihrer Daten die erklärte Einwilligung. Andernfalls werden die
-              mithilfe von Cookies verarbeiteten Daten auf Grundlage unserer
+              mithilfe von Cookies verarbeiteten Daten auf Grundlage meiner
               berechtigten Interessen (z.B. an einem betriebswirtschaftlichen
-              Betrieb unseres Onlineangebotes und dessen Verbesserung)
+              Betrieb meines Onlineangebotes und dessen Verbesserung)
               verarbeitet oder, wenn der Einsatz von Cookies erforderlich ist,
-              um unsere vertraglichen Verpflichtungen zu erfüllen.
+              um meine vertraglichen Verpflichtungen zu erfüllen.
             </p>
             <p>
               <strong>Widerruf und Widerspruch (Opt-Out): </strong> Unabhängig
@@ -364,37 +354,37 @@ export default () => {
             <p>
               Sie können Ihren Widerspruch zunächst mittels der Einstellungen
               Ihres Browsers erklären, z.B., indem Sie die Nutzung von Cookies
-              deaktivieren (wobei hierdurch auch die Funktionsfähigkeit unseres
+              deaktivieren (wobei hierdurch auch die Funktionsfähigkeit meines
               Onlineangebotes eingeschränkt werden kann).
             </p>
             <p>
               Ein Widerspruch gegen den Einsatz von Cookies zu Zwecken des
               Onlinemarketings kann mittels einer Vielzahl von Diensten, vor
-              allem im Fall des Trackings, über die US-amerikanische Seite{" "}
+              allem im Fall des Trackings, über die US-amerikanische Seite
               <a href="http://www.aboutads.info/choices/" target="_blank">
                 http://www.aboutads.info/choices/
-              </a>{" "}
-              oder die EU-Seite{" "}
+              </a>
+              oder die EU-Seite
               <a href="http://www.youronlinechoices.com/" target="_blank">
                 http://www.youronlinechoices.com/
-              </a>{" "}
-              oder generell auf{" "}
+              </a>
+              oder generell auf
               <a href="http://optout.aboutads.info" target="_blank">
                 http://optout.aboutads.info
-              </a>{" "}
+              </a>
               erklärt werden.
             </p>
             <p>
               <strong>
                 Verarbeitung von Cookie-Daten auf Grundlage einer Einwilligung
               </strong>
-              : Bevor wir Daten im Rahmen der Nutzung von Cookies verarbeiten
-              oder verarbeiten lassen, bitten wir die Nutzer um eine jederzeit
+              : Bevor ich Daten im Rahmen der Nutzung von Cookies verarbeite
+              oder verarbeiten lassen, bitten ich die Nutzer um eine jederzeit
               widerrufbare Einwilligung. Bevor die Einwilligung nicht
               ausgesprochen wurde, werden allenfalls Cookies eingesetzt, die für
-              den Betrieb unseres Onlineangebotes erforderlich sind. Deren
-              Einsatz erfolgt auf der Grundlage unseres Interesses und des
-              Interesses der Nutzer an der erwarteten Funktionsfähigkeit unseres
+              den Betrieb meines Onlineangebotes erforderlich sind. Deren
+              Einsatz erfolgt auf der Grundlage meines Interesses und des
+              Interesses der Nutzer an der erwarteten Funktionsfähigkeit meines
               Onlineangebotes.
             </p>
             <ul class="m-elements">
@@ -422,14 +412,14 @@ export default () => {
             </ul>
             <h2 id="m104">Blogs und Publikationsmedien</h2>
             <p>
-              Wir nutzen Blogs oder vergleichbare Mittel der Onlinekommunikation
+              Ich nutze Blogs oder vergleichbare Mittel der Onlinekommunikation
               und Publikation (nachfolgend "Publikationsmedium"). Die Daten der
               Leser werden für die Zwecke des Publikationsmediums nur insoweit
               verarbeitet, als es für dessen Darstellung und die Kommunikation
               zwischen Autoren und Lesern oder aus Gründen der Sicherheit
-              erforderlich ist. Im Übrigen verweisen wir auf die Informationen
-              zur Verarbeitung der Besucher unseres Publikationsmediums im
-              Rahmen dieser Datenschutzhinweise.
+              erforderlich ist. Im Übrigen verweise ich auf die Informationen
+              zur Verarbeitung der Besucher meines Publikationsmediums im Rahmen
+              dieser Datenschutzhinweise.
             </p>
             <ul class="m-elements">
               <li>
@@ -465,45 +455,45 @@ export default () => {
             </ul>
             <h2 id="m225">Bereitstellung des Onlineangebotes und Webhosting</h2>
             <p>
-              Um unser Onlineangebot sicher und effizient bereitstellen zu
-              können, nehmen wir die Leistungen von einem oder mehreren
+              Um mein Onlineangebot sicher und effizient bereitstellen zu
+              können, nehme ich die Leistungen von einem oder mehreren
               Webhosting-Anbietern in Anspruch, von deren Servern (bzw. von
               ihnen verwalteten Servern) das Onlineangebot abgerufen werden
-              kann. Zu diesen Zwecken können wir Infrastruktur- und
+              kann. Zu diesen Zwecken kann ich Infrastruktur- und
               Plattformdienstleistungen, Rechenkapazität, Speicherplatz und
               Datenbankdienste sowie Sicherheitsleistungen und technische
               Wartungsleistungen in Anspruch nehmen.
             </p>
             <p>
               Zu den im Rahmen der Bereitstellung des Hostingangebotes
-              verarbeiteten Daten können alle die Nutzer unseres Onlineangebotes
+              verarbeiteten Daten können alle die Nutzer meines Onlineangebotes
               betreffenden Angaben gehören, die im Rahmen der Nutzung und der
               Kommunikation anfallen. Hierzu gehören regelmäßig die IP-Adresse,
               die notwendig ist, um die Inhalte von Onlineangeboten an Browser
-              ausliefern zu können, und alle innerhalb unseres Onlineangebotes
+              ausliefern zu können, und alle innerhalb meines Onlineangebotes
               oder von Webseiten getätigten Eingaben.
             </p>
             <p>
-              <strong>E-Mail-Versand und -Hosting</strong>: Die von uns in
+              <strong>E-Mail-Versand und -Hosting</strong>: Die von mir in
               Anspruch genommenen Webhosting-Leistungen umfassen ebenfalls den
               Versand, den Empfang sowie die Speicherung von E-Mails. Zu diesen
               Zwecken werden die Adressen der Empfänger sowie Absender als auch
               weitere Informationen betreffend den E-Mailversand (z.B. die
               beteiligten Provider) sowie die Inhalte der jeweiligen E-Mails
               verarbeitet. Die vorgenannten Daten können ferner zu Zwecken der
-              Erkennung von SPAM verarbeitet werden. Wir bitten darum, zu
+              Erkennung von SPAM verarbeitet werden. Ich bitte darum, zu
               beachten, dass E-Mails im Internet grundsätzlich nicht
               verschlüsselt versendet werden. Im Regelfall werden E-Mails zwar
               auf dem Transportweg verschlüsselt, aber (sofern kein sogenanntes
               Ende-zu-Ende-Verschlüsselungsverfahren eingesetzt wird) nicht auf
-              den Servern, von denen sie abgesendet und empfangen werden. Wir
-              können daher für den Übertragungsweg der E-Mails zwischen dem
-              Absender und dem Empfang auf unserem Server keine Verantwortung
+              den Servern, von denen sie abgesendet und empfangen werden. Ich
+              kann daher für den Übertragungsweg der E-Mails zwischen dem
+              Absender und dem Empfang auf meinen Server keine Verantwortung
               übernehmen.
             </p>
             <p>
-              <strong>Erhebung von Zugriffsdaten und Logfiles</strong>: Wir
-              selbst (bzw. unser Webhostinganbieter) erheben Daten zu jedem
+              <strong>Erhebung von Zugriffsdaten und Logfiles</strong>: Ich
+              selbst (bzw. mein Webhostinganbieter) erheben Daten zu jedem
               Zugriff auf den Server (sogenannte Serverlogfiles). Zu den
               Serverlogfiles können die Adresse und Name der abgerufenen
               Webseiten und Dateien, Datum und Uhrzeit des Abrufs, übertragene
@@ -520,7 +510,7 @@ export default () => {
               Server und ihre Stabilität sicherzustellen.
             </p>
             <p>
-              <strong>Content-Delivery-Network</strong>: Wir setzen ein
+              <strong>Content-Delivery-Network</strong>: Ich setze ein
               "Content-Delivery-Network" (CDN) ein. Ein CDN ist ein Dienst, mit
               dessen Hilfe Inhalte eines Onlineangebotes, insbesondere große
               Mediendateien, wie Grafiken oder Programm-Skripte, mit Hilfe
@@ -558,11 +548,11 @@ export default () => {
             </ul>
             <h2 id="m264">Onlinemarketing</h2>
             <p>
-              Wir verarbeiten personenbezogene Daten zu Zwecken des
+              Ich verarbeite personenbezogene Daten zu Zwecken des
               Onlinemarketings, worunter insbesondere die Darstellung von
               werbenden und sonstigen Inhalten (zusammenfassend als "Inhalte"
               bezeichnet) anhand potentieller Interessen der Nutzer sowie die
-              Messung ihrer Effektivität fallen.{" "}
+              Messung ihrer Effektivität fallen.
             </p>
             <p>
               Zu diesen Zwecken werden sogenannte Nutzerprofile angelegt und in
@@ -579,11 +569,11 @@ export default () => {
             </p>
             <p>
               Es werden ebenfalls die IP-Adressen der Nutzer gespeichert. Jedoch
-              nutzen wir IP-Masking-Verfahren (d.h., Pseudonymisierung durch
+              nutze ich IP-Masking-Verfahren (d.h., Pseudonymisierung durch
               Kürzung der IP-Adresse) zum Schutz der Nutzer. Generell werden im
               Rahmen des Onlinemarketingverfahren keine Klardaten der Nutzer
               (wie z.B. E-Mail-Adressen oder Namen) gespeichert, sondern
-              Pseudonyme. D.h., wir als auch die Anbieter der
+              Pseudonyme. D.h., ich als auch die Anbieter der
               Onlinemarketingverfahren kennen nicht die tatsächlich Identität
               der Nutzer, sondern nur die in deren Profilen gespeicherten
               Angaben.
@@ -600,29 +590,29 @@ export default () => {
             <p>
               Ausnahmsweise können Klardaten den Profilen zugeordnet werden. Das
               ist der Fall, wenn die Nutzer z.B. Mitglieder eines sozialen
-              Netzwerks sind, dessen Onlinemarketingverfahren wir einsetzen und
+              Netzwerks sind, dessen Onlinemarketingverfahren ich einsetze und
               das Netzwerk die Profile der Nutzer im den vorgenannten Angaben
-              verbindet. Wir bitten darum, zu beachten, dass Nutzer mit den
+              verbindet. Ich bitten darum, zu beachten, dass Nutzer mit den
               Anbietern zusätzliche Abreden, z.B. durch Einwilligung im Rahmen
               der Registrierung, treffen können.
             </p>
             <p>
-              Wir erhalten grundsätzlich nur Zugang zu zusammengefassten
-              Informationen über den Erfolg unserer Werbeanzeigen. Jedoch können
-              wir im Rahmen sogenannter Konversionsmessungen prüfen, welche
-              unserer Onlinemarketingverfahren zu einer sogenannten Konversion
-              geführt haben, d.h. z.B., zu einem Vertragsschluss mit uns. Die
-              Konversionsmessung wird alleine zur Analyse des Erfolgs unserer
+              Ich erhalte grundsätzlich nur Zugang zu zusammengefassten
+              Informationen über den Erfolg meiner Werbeanzeigen. Jedoch kann
+              ich im Rahmen sogenannter Konversionsmessungen prüfen, welche
+              meiner Onlinemarketingverfahren zu einer sogenannten Konversion
+              geführt haben, d.h. z.B., zu einem Vertragsschluss mit mir. Die
+              Konversionsmessung wird alleine zur Analyse des Erfolgs meiner
               Marketingmaßnahmen verwendet.
             </p>
             <p>
-              <strong>Hinweise zu Rechtsgrundlagen:</strong> Sofern wir die
+              <strong>Hinweise zu Rechtsgrundlagen:</strong> Sofern ich die
               Nutzer um deren Einwilligung in den Einsatz der Drittanbieter
-              bitten, ist die Rechtsgrundlage der Verarbeitung von Daten die
+              bitte, ist die Rechtsgrundlage der Verarbeitung von Daten die
               Einwilligung. Ansonsten werden die Daten der Nutzer auf Grundlage
-              unserer berechtigten Interessen (d.h. Interesse an effizienten,
+              meiner berechtigten Interessen (d.h. Interesse an effizienten,
               wirtschaftlichen und empfängerfreundlichen Leistungen)
-              verarbeitet. In diesem Zusammenhang möchten wir Sie auch auf die
+              verarbeitet. In diesem Zusammenhang möchte ich Sie auch auf die
               Informationen zur Verwendung von Cookies in dieser
               Datenschutzerklärung hinweisen.
             </p>
@@ -668,14 +658,14 @@ export default () => {
               </li>
               <li>
                 <p>
-                  <strong>Widerspruchsmöglichkeit (Opt-Out):</strong> Wir
-                  verweisen auf die Datenschutzhinweise der jeweiligen Anbieter
+                  <strong>Widerspruchsmöglichkeit (Opt-Out):</strong> Ich
+                  verweise auf die Datenschutzhinweise der jeweiligen Anbieter
                   und die zu den Anbietern angegebenen Widerspruchsmöglichkeiten
                   (sog. \"Opt-Out\"). Sofern keine explizite Opt-Out-Möglichkeit
                   angegeben wurde, besteht zum einen die Möglichkeit, dass Sie
                   Cookies in den Einstellungen Ihres Browsers abschalten.
-                  Hierdurch können jedoch Funktionen unseres Onlineangebotes
-                  eingeschränkt werden. Wir empfehlen daher zusätzlich die
+                  Hierdurch können jedoch Funktionen meines Onlineangebotes
+                  eingeschränkt werden. Ich empfehle daher zusätzlich die
                   folgenden Opt-Out-Möglichkeiten, die zusammenfassend auf
                   jeweilige Gebiete gerichtet angeboten werden: a) Europa:{" "}
                   <a href="https://www.youronlinechoices.eu" target="_blank">
@@ -751,10 +741,10 @@ export default () => {
               Änderung und Aktualisierung der Datenschutzerklärung
             </h2>
             <p>
-              Wir bitten Sie, sich regelmäßig über den Inhalt unserer
-              Datenschutzerklärung zu informieren. Wir passen die
-              Datenschutzerklärung an, sobald die Änderungen der von uns
-              durchgeführten Datenverarbeitungen dies erforderlich machen. Wir
+              Ich bitte Sie, sich regelmäßig über den Inhalt meiner
+              Datenschutzerklärung zu informieren. Ich passe die
+              Datenschutzerklärung an, sobald die Änderungen der von mir
+              durchgeführten Datenverarbeitungen dies erforderlich machen. Ich
               informieren Sie, sobald durch die Änderungen eine
               Mitwirkungshandlung Ihrerseits (z.B. Einwilligung) oder eine
               sonstige individuelle Benachrichtigung erforderlich wird.
@@ -810,7 +800,7 @@ export default () => {
               </li>
               <li>
                 <strong>Recht auf Datenübertragbarkeit:</strong> Sie haben das
-                Recht, Sie betreffende Daten, die Sie uns bereitgestellt haben,
+                Recht, Sie betreffende Daten, die Sie mir bereitgestellt haben,
                 nach Maßgabe der gesetzlichen Vorgaben in einem strukturierten,
                 gängigen und maschinenlesbaren Format zu erhalten oder deren
                 Übermittlung an einen anderen Verantwortlichen zu fordern.

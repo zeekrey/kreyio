@@ -131,7 +131,7 @@ export default () => {
       </div>
       <Footer>
       <Link
-          to="/"
+          to="/legal"
           css={css`
             color: black;
             text-decoration: none;
