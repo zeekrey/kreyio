@@ -2,6 +2,7 @@
 import { css, jsx } from "@emotion/core"
 import React from "react"
 import Header from "../components/Header.js"
+import SEO from "../components/SEO.js"
 
 export default () => {
   const breakpoints = [576, 768, 992, 1200]
@@ -13,6 +14,8 @@ export default () => {
         font-size: 0.9rem;
       `}
     >
+           <SEO title="Christian Krey" description="Boring legal stuff."></SEO>
+
       <Header />
       <div>
         <div

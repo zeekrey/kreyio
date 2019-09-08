@@ -2,6 +2,7 @@
 import { css, jsx } from "@emotion/core"
 import { React, useState } from "react"
 import { Link } from "gatsby"
+import SEO from "../components/SEO.js"
 import Header from "../components/Header.js"
 import Contact from "../components/Contact.js"
 import Footer from "../components/Footer.js"
@@ -20,6 +21,8 @@ export default () => {
         font-size: 0.9rem;
       `}
     >
+      <SEO title="Christian Krey" description="My contact information."></SEO>
+
       <Header />
       <div
         css={css`

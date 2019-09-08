@@ -2,6 +2,7 @@
 import { css, jsx } from "@emotion/core"
 import React from "react"
 import { Link } from "gatsby"
+import SEO from "../components/SEO.js"
 import Header from "../components/Header.js"
 import Button from "../components/Button.js"
 
@@ -15,6 +16,7 @@ export default () => {
         font-size: 0.9rem;
       `}
     >
+     <SEO title="Christian Krey" description="Just some pages about me."></SEO>
       <Header />
       <div>
         <div

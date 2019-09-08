@@ -14,7 +14,7 @@ export default () => {
   }
 
   return (
-    <div
+    <header
       css={css`
         margin: 2.5rem;
         display: flex;
@@ -77,6 +77,6 @@ export default () => {
         <div style={burgerStyle}></div>
         <div style={burgerStyle}></div>
       </div>
-    </div>
+    </header>
   )
 }

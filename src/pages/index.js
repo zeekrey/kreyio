@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import { React, useState } from "react"
+// import { Helmet } from "react-helmet"
+import SEO from "../components/SEO.js"
 import Header from "../components/Header.js"
 import Button from "../components/Button.js"
 import textpattern from "../../static/textptrn.jpeg"
@@ -16,8 +18,9 @@ export default () => {
         font-size: 0.9rem;
       `}
     >
+      <SEO title="Christian Krey" description="Just some pages about me."></SEO>
       <Header />
-      <div
+      <main
         css={css`
           text-align: center;
         `}
@@ -99,7 +102,7 @@ export default () => {
             My Thoughts & Ideas on Medium ↠
           </a>
         </Button>
-      </div>
+      </main>
     </div>
   )
 }

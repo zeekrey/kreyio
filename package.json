@@ -18,9 +18,11 @@
     "formik": "^1.5.8",
     "gatsby": "^2.13.73",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
+    "gatsby-plugin-react-helmet": "^3.1.6",
     "gatsby-plugin-transition-link": "^1.12.4",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
