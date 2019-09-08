@@ -14,7 +14,12 @@ export default () => {
   const breakpoints = [576, 768, 992, 1200]
   const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
   return (
-    <div style={{ fontFamily: "Open Sans", fontSize: "0.9rem" }}>
+    <div
+      css={css`
+        font-family: Open Sans;
+        font-size: 0.9rem;
+      `}
+    >
       <Header />
       <div
         css={css`
@@ -130,7 +135,7 @@ export default () => {
         </div>
       </div>
       <Footer>
-      <Link
+        <Link
           to="/legal"
           css={css`
             color: black;

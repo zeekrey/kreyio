@@ -9,10 +9,13 @@ export default () => {
   const breakpoints = [576, 768, 992, 1200]
   const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
 
-  //   const [hoverable, hovered] = useHover(Footer)
-
   return (
-    <div style={{ fontFamily: "Open Sans", fontSize: "0.9rem" }}>
+    <div
+      css={css`
+        font-family: Open Sans;
+        font-size: 0.9rem;
+      `}
+    >
       <Header />
       <div
         css={css`
@@ -45,10 +48,27 @@ export default () => {
         >
           KREY
         </div>
-        <div>
-          Alllooooo, I’m Christian! Lorem ipsum dolor sit amet, consetetur
-          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua.
+        <div
+          css={css`
+            margin: 0 4rem;
+            ${[mq[0]]} {
+              margin: 0 4rem;
+            }
+            ${[mq[1]]} {
+              margin: 0 6rem;
+            }
+            ${[mq[2]]} {
+              margin: 0 8rem;
+            }
+            ${[mq[3]]} {
+              margin: 0 10rem;
+            }
+          `}
+        >
+          Alllooooo, I’m Christian! A problem solver at heart, I'm passionate
+          about anything and everything that enables me to make the world a
+          better place. I studied computer science and economics, and I am
+          skilled at scaling IT system architectures.
         </div>
         <Button
           css={css`
@@ -66,9 +86,18 @@ export default () => {
               margin-top: 6rem;
             }
           `}
-          href={"https://medium.com/@christian_7682"}
         >
-          My Thoughts & Ideas on Medium ↠
+          <a
+            css={css`
+              text-decoration: none;
+              &:visited {
+                color: black;
+              }
+            `}
+            href={"https://medium.com/@christian_7682"}
+          >
+            My Thoughts & Ideas on Medium ↠
+          </a>
         </Button>
       </div>
     </div>

@@ -1,14 +1,18 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
-import { React, useState } from "react"
-import { Link } from "gatsby"
+import React from "react"
 import Header from "../components/Header.js"
 
 export default () => {
   const breakpoints = [576, 768, 992, 1200]
   const mq = breakpoints.map(bp => `@media (min-width: ${bp}px)`)
   return (
-    <div style={{ fontFamily: "Open Sans", fontSize: "0.9rem" }}>
+    <div
+      css={css`
+        font-family: Open Sans;
+        font-size: 0.9rem;
+      `}
+    >
       <Header />
       <div>
         <div
@@ -204,8 +208,7 @@ export default () => {
                 <p>Vertragliche Leistungen und Service.</p>
               </li>
             </ul>
-            <h2></h2>
-            <h3 id="m13">Maßgebliche Rechtsgrundlagen</h3>
+            <h2 id="m13">Maßgebliche Rechtsgrundlagen</h2>
             <p>
               Im Folgenden teile ich die Rechtsgrundlagen der
               Datenschutzgrundverordnung (DSGVO), auf deren Basis ich die
@@ -361,15 +364,27 @@ export default () => {
               Ein Widerspruch gegen den Einsatz von Cookies zu Zwecken des
               Onlinemarketings kann mittels einer Vielzahl von Diensten, vor
               allem im Fall des Trackings, über die US-amerikanische Seite
-              <a href="http://www.aboutads.info/choices/" target="_blank">
+              <a
+                href="http://www.aboutads.info/choices/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 http://www.aboutads.info/choices/
               </a>
               oder die EU-Seite
-              <a href="http://www.youronlinechoices.com/" target="_blank">
+              <a
+                href="http://www.youronlinechoices.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 http://www.youronlinechoices.com/
               </a>
               oder generell auf
-              <a href="http://optout.aboutads.info" target="_blank">
+              <a
+                href="http://optout.aboutads.info"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 http://optout.aboutads.info
               </a>
               erklärt werden.
@@ -667,23 +682,36 @@ export default () => {
                   Hierdurch können jedoch Funktionen meines Onlineangebotes
                   eingeschränkt werden. Ich empfehle daher zusätzlich die
                   folgenden Opt-Out-Möglichkeiten, die zusammenfassend auf
-                  jeweilige Gebiete gerichtet angeboten werden: a) Europa:{" "}
-                  <a href="https://www.youronlinechoices.eu" target="_blank">
+                  jeweilige Gebiete gerichtet angeboten werden: a) Europa:
+                  <a
+                    href="https://www.youronlinechoices.eu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     https://www.youronlinechoices.eu
                   </a>
-                  . b) Kanada:{" "}
+                  . b) Kanada:
                   <a
                     href="https://www.youradchoices.ca/choices"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     https://www.youradchoices.ca/choices
                   </a>
-                  . c) USA:{" "}
-                  <a href="https://www.aboutads.info/choices" target="_blank">
+                  . c) USA:
+                  <a
+                    href="https://www.aboutads.info/choices"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     https://www.aboutads.info/choices
                   </a>
-                  . d) Gebietsübergreifend:{" "}
-                  <a href="http://optout.aboutads.info" target="_blank">
+                  . d) Gebietsübergreifend:
+                  <a
+                    href="http://optout.aboutads.info"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     http://optout.aboutads.info
                   </a>
                   .
@@ -700,36 +728,44 @@ export default () => {
                   Webanalyse; Dienstanbieter: Google Ireland Limited, Gordon
                   House, Barrow Street, Dublin 4, Irland, Mutterunternehmen:
                   Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA
-                  94043, USA; Website:{" "}
+                  94043, USA; Website:
                   <a
                     href="https://marketingplatform.google.com/intl/de/about/analytics/"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     https://marketingplatform.google.com/intl/de/about/analytics/
                   </a>
-                  ; Datenschutzerklärung:{" "}
-                  <a href="https://policies.google.com/privacy" target="_blank">
+                  ; Datenschutzerklärung:
+                  <a
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     https://policies.google.com/privacy
                   </a>
                   ; Privacy Shield (Gewährleistung Datenschutzniveau bei
-                  Verarbeitung von Daten in den USA):{" "}
+                  Verarbeitung von Daten in den USA):
                   <a
                     href="https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active
                   </a>
-                  ; Widerspruchsmöglichkeit (Opt-Out): Opt-Out-Plugin:{" "}
+                  ; Widerspruchsmöglichkeit (Opt-Out): Opt-Out-Plugin:
                   <a
                     href="http://tools.google.com/dlpage/gaoptout?hl=de"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     http://tools.google.com/dlpage/gaoptout?hl=de
                   </a>
-                  , Einstellungen für die Darstellung von Werbeeinblendungen:{" "}
+                  , Einstellungen für die Darstellung von Werbeeinblendungen:
                   <a
                     href="https://adssettings.google.com/authenticated"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     https://adssettings.google.com/authenticated
                   </a>
@@ -792,7 +828,7 @@ export default () => {
               <li>
                 <strong>
                   Recht auf Löschung und Einschränkung der Verarbeitung:
-                </strong>{" "}
+                </strong>
                 Sie haben nach Maßgabe der gesetzlichen Vorgaben das Recht, zu
                 verlangen, dass Sie betreffende Daten unverzüglich gelöscht
                 werden, bzw. alternativ nach Maßgabe der gesetzlichen Vorgaben
@@ -821,6 +857,7 @@ export default () => {
               href="https://datenschutz-generator.de/?l=de"
               title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken."
               target="_blank"
+              rel="noopener noreferrer"
             >
               Erstellt mit Datenschutz-Generator.de von Dr. jur. Thomas Schwenke
             </a>

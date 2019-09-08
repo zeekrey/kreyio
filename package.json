@@ -18,6 +18,7 @@
     "formik": "^1.5.8",
     "gatsby": "^2.13.73",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
+    "gatsby-plugin-transition-link": "^1.12.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

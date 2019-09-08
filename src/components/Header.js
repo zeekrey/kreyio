@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react"
+import { React, useState } from "react"
 import { Link } from "gatsby"
 import { css, jsx } from "@emotion/core"
 
@@ -15,12 +15,18 @@ export default () => {
 
   return (
     <div
-      style={{
-        margin: "2.5rem",
-        display: "flex",
-      }}
+      css={css`
+        margin: 2.5rem;
+        display: flex;
+      `}
     >
-      <div style={{ justifySelf: "left", flex: "1", alignSelf: "center" }}>
+      <div
+        css={css`
+          justify-self: left;
+          flex: 1;
+          align-self: center;
+        `}
+      >
         <Link
           to="/"
           css={css`
@@ -40,31 +46,33 @@ export default () => {
           }
         `}
       >
-        {/* <Link
-          to="/contact/"
-          css={css`
-            color: black;
-            text-decoration: none;
-          `}
-        >
-          CONTENT
-        </Link> */}
         <Link
-          to="/contact/"
+          to="/about/"
           css={css`
             color: black;
             text-decoration: none;
-            margin-left: 4rem;
           `}
         >
-          CONTACT
+          ABOUT
         </Link>
+        <Link
+            to="/contact/"
+            css={css`
+              color: black;
+              text-decoration: none;
+              margin-left: 4rem;
+            `}
+          >
+            CONTACT
+          </Link>
       </div>
-      <div css={css`
+      <div
+        css={css`
           ${[mq[1]]} {
             display: none;
           }
-        `}>
+        `}
+      >
         <div style={burgerStyle}></div>
         <div style={burgerStyle}></div>
         <div style={burgerStyle}></div>
