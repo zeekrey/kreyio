@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.16",
-    "firebase": "^6.5.0",
+    "axios": "^0.19.0",
     "formik": "^1.5.8",
     "gatsby": "^2.13.73",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",

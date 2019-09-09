@@ -2,11 +2,36 @@
 import { css, jsx } from "@emotion/core"
 import { React, useState } from "react"
 import { Formik, Form, Field } from "formik"
+import axios from "axios"
 import Button from "../components/Button.js"
 
 const Contact = () => {
+  const [buttonText, setButtonText] = useState("Send message ↠")
 
-    const [buttonText, setButtonText] = useState('Send message ↠')
+  const submitFunction = (values, actions) => {
+    console.log("Submitting message ...")
+    // Optionally the request above could also be done as
+    axios
+      .get("https://us-central1-krey-io.cloudfunctions.net/addMessage", {
+        params: {
+          text: 'the mussage.',
+        },
+      })
+      .then(function(response) {
+        console.log(response)
+        actions.setSubmitting(false)
+      })
+      .catch(function(error) {
+        console.log(error)
+        actions.setErrors({ error: true })
+      })
+      .then(function() {
+        // always executed
+        console.log('cool')
+      })
+
+    //   setButtonText("Send message ↠")
+  }
 
   const label = css`
     font-family: Open Sans;
@@ -36,20 +61,21 @@ const Contact = () => {
         initialValues={{ name: "", contact: "", message: "" }}
         onSubmit={(values, actions) => {
           if (!values.name || !values.contact || !values.message) {
-            setButtonText('Some data is missing 😮')
+            setButtonText("Some data is missing 😮")
             actions.setSubmitting(false)
             actions.setErrors({ error: true })
             // actions.setStatus({ msg: 'Set some arbitrary status or data' });
             setTimeout(() => {
-                setButtonText('Send message ↠')
-              }, 3000)
-          } else {
-            setButtonText('Submitting...🧞')
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2))
-              actions.setSubmitting(false)
-              setButtonText('Send message ↠')
+              setButtonText("Send message ↠")
             }, 3000)
+          } else {
+            setButtonText("Submitting...🧞")
+            // setTimeout(() => {
+            //   alert(JSON.stringify(values, null, 2))
+            //   actions.setSubmitting(false)
+            //   setButtonText("Send message ↠")
+            // }, 3000)
+            submitFunction(values, actions)
           }
         }}
       >
@@ -89,7 +115,8 @@ const Contact = () => {
                 margin-top: 0.5rem;
                 line-height: 1rem;
                 ${errors.error && `border: 1px solid red;`};
-                ${isSubmitting && `background: green; content: 'Submitting...'`};
+                ${isSubmitting &&
+                  `background: green; content: 'Submitting...'`};
               `}
               disabled={isSubmitting || errors.error}
             >
