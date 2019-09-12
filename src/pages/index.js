@@ -28,17 +28,22 @@ export default () => {
         <div
           css={css`
             font-size: 5.6rem;
+            margin-top: 9rem;
             ${[mq[0]]} {
               font-size: 8.6rem;
+              margin-top: 8rem;
             }
             ${[mq[1]]} {
               font-size: 9.6rem;
+              margin-top: 6rem;
             }
             ${[mq[2]]} {
               font-size: 12.6rem;
+              margin-top: 3rem;
             }
             ${[mq[3]]} {
               font-size: 15.6rem;
+              margin-top: 3rem;
             }
             font-family: Fugaz One, cursive;
             color: red;
@@ -53,12 +58,12 @@ export default () => {
         </div>
         <div
           css={css`
-            margin: 0 4rem;
+            margin: 1rem 5rem;
             ${[mq[0]]} {
-              margin: 0 4rem;
+              margin: 1rem 5rem;
             }
             ${[mq[1]]} {
-              margin: 0 6rem;
+              margin: 1rem 6rem;
             }
             ${[mq[2]]} {
               margin: 0 8rem;
@@ -75,7 +80,7 @@ export default () => {
         </div>
         <Button
           css={css`
-            margin-top: 1.5rem;
+            margin-top: 3rem;
             ${[mq[0]]} {
               margin-top: 3rem;
             }
@@ -86,7 +91,7 @@ export default () => {
               margin-top: 5rem;
             }
             ${[mq[3]]} {
-              margin-top: 6rem;
+              margin-top: 5rem;
             }
           `}
         >
