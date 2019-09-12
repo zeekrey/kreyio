@@ -92,6 +92,7 @@ export default () => {
         >
           <a
             css={css`
+              color: black;
               text-decoration: none;
               &:visited {
                 color: black;

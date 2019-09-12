@@ -14,22 +14,26 @@ const Contact = () => {
     axios
       .get("https://us-central1-krey-io.cloudfunctions.net/addMessage", {
         params: {
-          text: 'the mussage.',
+          name: values.name,
+          contact: values.contact,
+          message: values.message
         },
       })
       .then(function(response) {
-        console.log(response)
+        // console.log(response)
         actions.setSubmitting(false)
+        actions.setErrors({ error: true })
+        setButtonText("I received your message.")
       })
       .catch(function(error) {
         console.log(error)
         actions.setErrors({ error: true })
+        setButtonText("Something went wrong.")
       })
-      .then(function() {
-        // always executed
-        console.log('cool')
-      })
-
+      // .then(function() {
+      //   // always executed
+      //   console.log('cool')
+      // })
     //   setButtonText("Send message ↠")
   }
 
@@ -116,7 +120,7 @@ const Contact = () => {
                 line-height: 1rem;
                 ${errors.error && `border: 1px solid red;`};
                 ${isSubmitting &&
-                  `background: green; content: 'Submitting...'`};
+                  `border: 1px solid green; content: 'Submitting...'`};
               `}
               disabled={isSubmitting || errors.error}
             >

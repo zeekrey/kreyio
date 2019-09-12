@@ -13,6 +13,7 @@ export default (props) => {
         cursor: pointer;
         display: inline-block;
         color: black;
+        background-color: white;
         text-decoration: none;
         font-size: 0.9rem;
         &:hover {
