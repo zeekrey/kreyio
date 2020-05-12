@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 
 export default function Template({
   data,
-  pageContext: { languages },
+  pageContext: { languages = [] },
   location: { pathname },
 }) {
   const { markdownRemark } = data // data.markdownRemark holds your post data
