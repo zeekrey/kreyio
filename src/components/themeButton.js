@@ -1,7 +1,17 @@
 import React, { useContext } from "react"
 import ThemeStateContext from "./themeStateContext"
+import styled from "styled-components"
 
-const ThemeButton = () => {
+const Button = styled.button`
+  padding: 4rem;
+  background-color: ${props => props.color};
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06),
+    0px 4px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  border: none;
+`
+
+const ThemeButton = ({ icon, color }) => {
   const { isDark, setIsDark } = useContext(ThemeStateContext)
 
   function toggleTheme() {
@@ -16,8 +26,10 @@ const ThemeButton = () => {
 
   return (
     <>
-      {JSON.stringify(isDark)}
-      <button onClick={() => toggleTheme()}>huhu</button>
+      {/* {JSON.stringify(isDark)} */}
+      <Button color={color} onClick={() => toggleTheme()}>
+        {icon}
+      </Button>
     </>
   )
 }
