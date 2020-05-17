@@ -2,15 +2,9 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import styled from "styled-components"
-import {
-  AlignJustify,
-  Sun,
-  Moon,
-  GitHub,
-  Twitter,
-  Linkedin,
-} from "react-feather"
+import { AlignJustify, Sun, Moon } from "react-feather"
 import ThemeButton from "./themeButton"
+import SocialIcons from "./socialIcons"
 
 const Header = styled.header`
   padding-top: ${({ theme }) => theme.paddingY};
@@ -54,17 +48,6 @@ const MeOn = styled.div`
   color: ${({ theme }) => theme.secondary};
 `
 
-const SocialMenu = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const SocialItem = styled.div`
-  margin: 1.4rem 1.8rem;
-  color: ${({ theme }) => theme.secondary};
-  cursor: pointer;
-`
-
 const Navigation = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
 
@@ -91,11 +74,7 @@ const Navigation = () => {
             />
           </ThemeMenu>
           <MeOn>Me On</MeOn>
-          <SocialMenu>
-            <SocialItem as={GitHub} />
-            <SocialItem as={Twitter} />
-            <SocialItem as={Linkedin} />
-          </SocialMenu>
+          <SocialIcons />
         </Menu>
       )}
     </>
