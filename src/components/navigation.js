@@ -2,7 +2,14 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import styled from "styled-components"
-import { AlignJustify, Sun, Moon } from "react-feather"
+import {
+  AlignJustify,
+  Sun,
+  Moon,
+  GitHub,
+  Twitter,
+  Linkedin,
+} from "react-feather"
 import ThemeButton from "./themeButton"
 
 const Header = styled.header`
@@ -18,18 +25,15 @@ const Header = styled.header`
 
 const Brand = styled.div`
   flex: 1;
+  color: ${({ theme }) => theme.secondary};
 `
 
 const Nav = styled.div`
   flex: 1;
   text-align: end;
-  cursor: pointer;
 `
 
 const Menu = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1.2rem;
   padding-top: ${({ theme }) => theme.paddingY};
   padding-bottom: ${({ theme }) => theme.paddingY};
   padding-left: ${({ theme }) => theme.paddingX};
@@ -38,27 +42,60 @@ const Menu = styled.div`
     0px 4px 8px rgba(0, 0, 0, 0.04);
 `
 
+const ThemeMenu = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.2rem;
+`
+
+const MeOn = styled.div`
+  text-align: center;
+  margin-top: 1.4rem;
+  color: ${({ theme }) => theme.secondary};
+`
+
+const SocialMenu = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const SocialItem = styled.div`
+  margin: 1.4rem 1.8rem;
+  color: ${({ theme }) => theme.secondary};
+  cursor: pointer;
+`
+
 const Navigation = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
 
   return (
     <>
       <Header>
-        <Brand>Christian Krey</Brand>
+        <Brand>
+          <Link to="/">Christian Krey</Link>
+        </Brand>
         <Nav onClick={() => setMenuIsVisible(!menuIsVisible)}>
-          <AlignJustify />
+          <AlignJustify style={{ cursor: "Pointer", color: "#BDBDBD" }} />
         </Nav>
       </Header>
       {menuIsVisible && (
         <Menu>
-          <ThemeButton
-            icon={<Sun color="#F65058" size={48} />}
-            color="#FFFFFF"
-          />
-          <ThemeButton
-            icon={<Moon color="#FBE053" size={48} />}
-            color="#2C3640"
-          />
+          <ThemeMenu>
+            <ThemeButton
+              icon={<Sun color="#F65058" size={48} />}
+              color="#FFFFFF"
+            />
+            <ThemeButton
+              icon={<Moon color="#FBE053" size={48} />}
+              color="#2C3640"
+            />
+          </ThemeMenu>
+          <MeOn>Me On</MeOn>
+          <SocialMenu>
+            <SocialItem as={GitHub} />
+            <SocialItem as={Twitter} />
+            <SocialItem as={Linkedin} />
+          </SocialMenu>
         </Menu>
       )}
     </>

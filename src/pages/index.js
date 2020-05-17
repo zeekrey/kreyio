@@ -13,7 +13,6 @@ const IndexPage = () => {
   return (
     <Body>
       <Navigation />
-      <ThemeButton />
     </Body>
   )
 }
