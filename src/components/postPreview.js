@@ -5,7 +5,8 @@ import { Link } from "gatsby"
 import { ArrowRightCircle } from "react-feather"
 
 const Wrapper = styled.div`
-  padding: 2rem 3rem;
+  padding: 0rem 3rem;
+  margin-bottom: 2rem;
 `
 
 const Headline = styled.div`
@@ -20,10 +21,10 @@ const SocialItem = styled.div`
   }
 `
 
-const PostPreview = ({ title, text, link }) => {
+const PostPreview = ({ post }) => {
   return (
     <Wrapper>
-      <Link to={link}>
+      <Link to={post.frontmatter.slug}>
         <div
           style={{
             display: "flex",
@@ -31,10 +32,10 @@ const PostPreview = ({ title, text, link }) => {
             marginBottom: ".4rem",
           }}
         >
-          <Headline>{title}</Headline>
+          <Headline>{post.frontmatter.title}</Headline>
           <SocialItem as={ArrowRightCircle} />
         </div>
-        <div>{text}</div>
+        <div>{post.excerpt}</div>
       </Link>
     </Wrapper>
   )

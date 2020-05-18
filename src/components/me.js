@@ -6,7 +6,7 @@ import { ArrowRightCircle } from "react-feather"
 import SocialIcons from "./socialIcons"
 
 const Wrapper = styled.div`
-  padding: 2rem 3rem;
+  padding: 3rem 3rem;
   text-align: center;
 `
 

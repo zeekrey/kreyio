@@ -6,7 +6,8 @@ import SocialIcons from "./socialIcons"
 
 const Wrapper = styled.div`
   background-color: #f4f4f4;
-  padding: 2rem 3rem;
+  margin-top: 4rem;
+  padding: 4rem 3rem;
   /* position: absolute;
   bottom: 0; */
   width: 100%;

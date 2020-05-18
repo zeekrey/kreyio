@@ -2,6 +2,11 @@
 slug: "/blog/my-second-post"
 date: "2020-05-07"
 title: "My second blog post"
+langKey: "en"
 ---
 
-Hello Universe!
+There, there, now, just relax. You've been asleep for almost nine hours now. Yeah, I think it's a major embarrassment having an uncle in prison. You do? Yeah, who are you? What's a rerun?
+
+Hey, McFly, I thought I told you never to come in here. Well it's gonna cost you. How much money you got on you? Uh, stories, science fiction stories, about visitors coming down to Earth from another planet. After I fell off my toilet, I drew this. Science Fiction Theater. I'll call you tonight.
+
+Oh, hi , Marty. I didn't hear you come in. Fascinating device, this video unit. The hell you doing to my car? Why is she gonna get angry with you? Don't tell me anything. Stand tall, boy, have some respect for yourself. Don't you know that if you let people walk all over you know, they'll be walking all over you for the rest of your life? Listen to me, do you think I'm gonna spend the rest of my life in this slop house?
