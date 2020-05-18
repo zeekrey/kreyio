@@ -4,6 +4,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { ArrowRightCircle } from "react-feather"
 import SocialIcons from "./socialIcons"
+import Typewriter from "typewriter-effect"
 
 const Wrapper = styled.div`
   padding: 3rem 3rem;
@@ -13,6 +14,9 @@ const Wrapper = styled.div`
 const Headline = styled.div`
   color: ${({ theme }) => theme.secondary};
   margin: 1rem 0rem;
+  font-family: Oswald;
+  font-weight: bold;
+  font-size: 1.3rem;
 `
 
 const SocialItem = styled.div`
@@ -20,9 +24,19 @@ const SocialItem = styled.div`
   color: ${({ color, theme }) => color || theme.secondary};
   margin-left: 1rem;
   &:hover {
+    transition: 0.2s;
     color: ${({ theme }) => theme.primary};
   }
 `
+
+const thingsILike = [
+  // I like to ...
+  "build companies.",
+  "build software.",
+  "build good things",
+  "talk and discuss.",
+  "wonder, why u still reading.",
+]
 
 const Me = () => {
   const data = useStaticQuery(graphql`
@@ -43,10 +57,24 @@ const Me = () => {
         fixed={data.placeholderImage.childImageSharp.fixed}
         style={{ borderRadius: ".5rem" }}
       />
-      <Headline>Ahoy! I'm Christian.</Headline>
-      <div style={{ display: "inline-flex" }}>
-        <div>Devloper, Entrepreneur,...</div>
-        <SocialItem as={ArrowRightCircle} />
+      <Headline>
+        Ahoy! I'm{" "}
+        <Link to="/" style={{ textDecoration: "underline" }}>
+          Christian
+        </Link>
+        .
+      </Headline>
+      <div style={{ display: "inline-flex", marginBottom: "1.5rem" }}>
+        <div style={{ display: "flex" }}>
+          <div style={{ marginRight: ".2rem" }}>I like to</div>
+          <Typewriter
+            options={{
+              strings: thingsILike,
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </div>
       </div>
       <SocialIcons />
     </Wrapper>

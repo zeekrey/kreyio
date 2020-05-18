@@ -1,7 +1,6 @@
-// global.js
-// Source: https://github.com/maximakymenko/react-day-night-toggle-app/blob/master/src/global.js#L23-L41
-
 import { createGlobalStyle } from "styled-components"
+import "typeface-open-sans"
+import "typeface-oswald"
 
 export const GlobalStyles = createGlobalStyle`
   *,
@@ -16,7 +15,8 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
     transition: all 0.25s linear;
   }
 

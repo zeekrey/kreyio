@@ -20,6 +20,8 @@ const Header = styled.header`
 const Brand = styled.div`
   flex: 1;
   color: ${({ theme }) => theme.secondary};
+  font-family: Oswald;
+  font-weight: bold;
 `
 
 const Nav = styled.div`
@@ -28,6 +30,12 @@ const Nav = styled.div`
 `
 
 const Menu = styled.div`
+  transition: 1s;
+  display: ${props => (props.menuIsVisible ? "inherit" : "none")};
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  background-color: ${({ theme }) => theme.body};
   padding-top: ${({ theme }) => theme.paddingY};
   padding-bottom: ${({ theme }) => theme.paddingY};
   padding-left: ${({ theme }) => theme.paddingX};
@@ -61,22 +69,20 @@ const Navigation = () => {
           <AlignJustify style={{ cursor: "Pointer", color: "#BDBDBD" }} />
         </Nav>
       </Header>
-      {menuIsVisible && (
-        <Menu>
-          <ThemeMenu>
-            <ThemeButton
-              icon={<Sun color="#F65058" size={48} />}
-              color="#FFFFFF"
-            />
-            <ThemeButton
-              icon={<Moon color="#FBE053" size={48} />}
-              color="#2C3640"
-            />
-          </ThemeMenu>
-          <MeOn>Me On</MeOn>
-          <SocialIcons />
-        </Menu>
-      )}
+      <Menu menuIsVisible={menuIsVisible}>
+        <ThemeMenu>
+          <ThemeButton
+            icon={<Sun color="#F65058" size={48} />}
+            color="#FFFFFF"
+          />
+          <ThemeButton
+            icon={<Moon color="#FBE053" size={48} />}
+            color="#2C3640"
+          />
+        </ThemeMenu>
+        <MeOn>Me On</MeOn>
+        <SocialIcons />
+      </Menu>
     </>
   )
 }

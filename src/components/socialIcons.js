@@ -14,6 +14,7 @@ const SocialItem = styled.div`
   cursor: pointer;
   color: ${({ color, theme }) => color || theme.secondary};
   &:hover {
+    transition: 0.2s;
     color: ${({ theme }) => theme.primary};
   }
 `

@@ -19,12 +19,16 @@ const ThumbsUpButton = styled.button`
   border: 1.5px solid ${props => props.color};
   box-sizing: border-box;
   border-radius: 8px;
-  color: #70ce6e;
   color: ${props => props.color};
   background-color: inherit;
   cursor: pointer;
   display: flex;
   align-items: center;
+  &:hover {
+    transition: 0.2s;
+    background-color: ${props => props.color};
+    color: white;
+  }
 `
 
 const LastRow = styled.div`

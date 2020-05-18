@@ -11,12 +11,16 @@ const Wrapper = styled.div`
 
 const Headline = styled.div`
   color: ${({ theme }) => theme.secondary};
+  font-family: Oswald;
+  font-weight: bold;
+  font-size: 1.3rem;
 `
 
 const SocialItem = styled.div`
   cursor: pointer;
   color: ${({ color, theme }) => color || theme.secondary};
   &:hover {
+    transition: 0.2s;
     color: ${({ theme }) => theme.primary};
   }
 `
