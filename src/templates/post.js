@@ -1,6 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
+import styled from "styled-components"
+import Body from "../components/body"
+import Navigation from "../components/navigation"
+import Footer from "../components/footer"
 
 export default function Template({
   data,
@@ -15,30 +18,36 @@ export default function Template({
     return pathname.indexOf(`/${language}/`) < 0 ? false : true
   })
 
+  const Wrapper = styled.div`
+    padding: 0rem 3rem;
+    margin-bottom: 2rem;
+  `
+
   return (
-    <div className="blog-post-container">
-      {/* This should only be displayed if there is no language key in path. */}
-      {!isNotDefaultLanguage && (
-        <div>
-          <div>This article is also availbe in the following languages:</div>
-          <ul>
-            {languages.map(language => (
-              <li>
-                <Link to={`/${language}${frontmatter.slug}`}>{language}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      <div className="blog-post">
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </div>
-    </div>
+    <>
+      <Body>
+        <Navigation />
+        {/* This should only be displayed if there is no language key in path. */}
+        {/* {!isNotDefaultLanguage && (
+          <div>
+            <div>This article is also availbe in the following languages:</div>
+            <ul>
+              {languages.map(language => (
+                <li>
+                  <Link to={`/${language}${frontmatter.slug}`}>{language}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )} */}
+        <Wrapper>
+          <h1>{frontmatter.title}</h1>
+          <h2>{frontmatter.date}</h2>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </Wrapper>
+      </Body>
+      <Footer />
+    </>
   )
 }
 

@@ -66,9 +66,10 @@ exports.createPages = async ({ actions, graphql }) => {
     }
 
     return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      const path = node.frontmatter.langKey
-        ? `/${node.frontmatter.langKey}${node.frontmatter.slug}`
-        : node.frontmatter.slug
+      const path =
+        node.frontmatter.langKey !== "en"
+          ? `/${node.frontmatter.langKey}${node.frontmatter.slug}`
+          : node.frontmatter.slug
 
       console.log(`Creating a page under: ${path}`)
 
