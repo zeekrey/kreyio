@@ -7,19 +7,22 @@ import { GitHub, Twitter, Linkedin } from "react-feather"
 const SocialMenu = styled.div`
   display: flex;
   justify-content: center;
-  color: ${({ color, theme }) => color || theme.secondary};
 `
 
 const SocialItem = styled.div`
   margin: 1.4rem 1.8rem;
   cursor: pointer;
+  color: ${({ color, theme }) => color || theme.secondary};
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+  }
 `
 
 const SocialIcons = ({ color }) => (
-  <SocialMenu color={color}>
-    <SocialItem as={GitHub} />
-    <SocialItem as={Twitter} />
-    <SocialItem as={Linkedin} />
+  <SocialMenu>
+    <SocialItem as={GitHub} color={color}/>
+    <SocialItem as={Twitter} color={color}/>
+    <SocialItem as={Linkedin} color={color}/>
   </SocialMenu>
 )
 
