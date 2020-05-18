@@ -19,8 +19,27 @@ export default function Template({
   })
 
   const Wrapper = styled.div`
-    padding: 0rem 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 5rem;
     margin-bottom: 2rem;
+  `
+
+  const Headline = styled.div`
+    color: ${({ theme }) => theme.secondary};
+    font-family: Oswald;
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+  `
+
+  const Version = styled.div`
+    font-size: 0.7rem;
+    color: #bdbdbd;
+  `
+
+  const Text = styled.div`
+    margin-top: 1rem;
   `
 
   return (
@@ -41,9 +60,9 @@ export default function Template({
           </div>
         )} */}
         <Wrapper>
-          <h1>{frontmatter.title}</h1>
-          <h2>{frontmatter.date}</h2>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <Headline>{frontmatter.title}</Headline>
+          <Version>{frontmatter.date}</Version>
+          <Text dangerouslySetInnerHTML={{ __html: html }} />
         </Wrapper>
       </Body>
       <Footer />

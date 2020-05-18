@@ -56,6 +56,15 @@ const MeOn = styled.div`
   color: ${({ theme }) => theme.secondary};
 `
 
+const Burger = styled.div`
+  cursor: pointer;
+  color: ${({ color, theme }) => color || theme.secondary};
+  &:hover {
+    transition: 0.2s;
+    color: ${({ theme }) => theme.primary};
+  }
+`
+
 const Navigation = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
 
@@ -66,7 +75,7 @@ const Navigation = () => {
           <Link to="/">Christian Krey</Link>
         </Brand>
         <Nav onClick={() => setMenuIsVisible(!menuIsVisible)}>
-          <AlignJustify style={{ cursor: "Pointer", color: "#BDBDBD" }} />
+          <Burger as={AlignJustify} />
         </Nav>
       </Header>
       <Menu menuIsVisible={menuIsVisible}>
