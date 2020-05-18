@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
+  color: #bdbdbd;
 `
 
 const ThumbsUpButton = styled.button`
@@ -29,7 +30,6 @@ const LastRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #bdbdbd;
   padding-right: 1.8rem;
 `
 
