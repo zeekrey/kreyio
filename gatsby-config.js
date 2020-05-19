@@ -1,8 +1,17 @@
+// const website = require('./config/website')
+// const pathPrefix = website.pathPrefix === '/' ? '' : website.pathPrefix
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Christian Krey`,
+    // headline: website.headline,
+    titleTemplate: `%s · Me and my blog`,
+    description: `My thoughts on software development, company development and other stuff.`,
+    url: `https://krey.io`, // No trailing slash allowed!
+    image: `/images/snape.jpg`, // Path to your image you placed in the 'static' folder
+    twitter: `@zeekrey_`,
+    siteLanguage: `en`,
+    author: `@zeekrey`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

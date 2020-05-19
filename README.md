@@ -12,11 +12,11 @@
 
 - [ ] Make a readme.
 - [x] Prettier and eslint.
-- [ ] Add Google Fonts.
+- [x] Add Google Fonts.
 - [ ] Navbar should slide from top.
 - [ ] Add seo.
-- [ ] Add GA.
 - [ ] Navbar needs to be fixed. There is a ugly effect when switching theme.
+- [ ] Update package.json.
 
 ## Setup
 

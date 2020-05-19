@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Body from "../components/body"
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
+import SEO from "../components/seo"
 
 export default function Template({
   data,
@@ -50,6 +51,7 @@ export default function Template({
 
   return (
     <>
+      <SEO title={frontmatter.title} desc={html} article={true} />
       <Body>
         <Navigation />
         {/* This should only be displayed if there is no language key in path. */}
