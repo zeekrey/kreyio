@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import ReactMarkdown from "react-markdown"
 import Body from "../components/body"
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
@@ -14,11 +15,24 @@ const Wrapper = styled.div`
   }
 `
 
+const legalMarkdown = `
+For the germans only 
+# Impressum
+## Verantwortlicher
+Christian Krey\n
+Benedekring 6\n
+04159 Leipzig\n
+## Kontaktmöglichkeiten
+christian@krey.io
+`
+
 const LegalPage = () => (
   <>
     <Body>
       <Navigation />
-      <Wrapper>Here goes the legal stuff.</Wrapper>
+      <Wrapper>
+      <ReactMarkdown source={legalMarkdown} />
+      </Wrapper>
     </Body>
     <Footer />
   </>
