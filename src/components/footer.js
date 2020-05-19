@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
         <LastRow>
           <SocialIcons color="#BDBDBD" />
-          <Link to="/">Legal</Link>
+          <Link to="/legal">Legal</Link>
         </LastRow>
       </div>
     </Wrapper>

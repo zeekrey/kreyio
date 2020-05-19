@@ -59,7 +59,7 @@ const Me = () => {
       />
       <Headline>
         Ahoy! I'm{" "}
-        <Link to="/" style={{ textDecoration: "underline" }}>
+        <Link to="/about" style={{ textDecoration: "underline" }}>
           Christian
         </Link>
         .
