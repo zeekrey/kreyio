@@ -5,6 +5,7 @@ import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import Me from "../components/me"
 import PostPreview from "../components/postPreview"
+import SEO from "../components/seo"
 
 const IndexPage = ({
   data: {
@@ -17,6 +18,7 @@ const IndexPage = ({
 
   return (
     <>
+      <SEO />
       <Body>
         <Navigation />
         <Me />

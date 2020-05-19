@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown"
 import Body from "../components/body"
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
+import SEO from "../components/seo"
 
 const Wrapper = styled.div`
   margin-bottom: 2rem;
@@ -28,6 +29,7 @@ I know how to create scaling IT system architectures, and entrepreneurship and w
 
 const AboutPage = () => (
   <>
+    <SEO />
     <Body>
       <Navigation />
       <Wrapper>

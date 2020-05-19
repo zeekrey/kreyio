@@ -26,6 +26,18 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `KREY.IO`,
+        short_name: `KREY.IO`,
+        start_url: `/`,
+        background_color: `#FAFAFA`,
+        theme_color: `#F65058`,
+        display: `standalone`,
+      },
+    },
+    `gatsby-plugin-offline`,
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         // CommonMark mode (default: true)

@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown"
 import Body from "../components/body"
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
+import SEO from "../components/seo"
 
 const Wrapper = styled.div`
   margin-bottom: 2rem;
@@ -28,10 +29,11 @@ christian@krey.io
 
 const LegalPage = () => (
   <>
+    <SEO />
     <Body>
       <Navigation />
       <Wrapper>
-      <ReactMarkdown source={legalMarkdown} />
+        <ReactMarkdown source={legalMarkdown} />
       </Wrapper>
     </Body>
     <Footer />
