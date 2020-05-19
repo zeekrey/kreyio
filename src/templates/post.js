@@ -51,7 +51,15 @@ export default function Template({
 
   return (
     <>
-      <SEO title={frontmatter.title} desc={html} article={true} />
+      <SEO
+        title={frontmatter.title}
+        desc={html}
+        article={true}
+        node={{
+          first_publication_date: frontmatter.date,
+          last_publication_date: frontmatter.date,
+        }}
+      />
       <Body>
         <Navigation />
         {/* This should only be displayed if there is no language key in path. */}
