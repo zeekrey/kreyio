@@ -6,6 +6,10 @@ import { AlignJustify, Sun, Moon } from "react-feather"
 import ThemeButton from "./themeButton"
 import SocialIcons from "./socialIcons"
 
+const Wrapper = styled.div`
+  position: relative;
+`
+
 const Header = styled.header`
   padding: 1rem 1rem;
   display: flex;
@@ -30,12 +34,17 @@ const Nav = styled.div`
 `
 
 const Menu = styled.div`
-  transition: 1s;
   display: ${props => (props.menuIsVisible ? "inherit" : "none")};
   position: absolute;
   z-index: 10;
   width: 100%;
   background-color: ${({ theme }) => theme.body};
+  @media (min-width: 400px) {
+    padding: 0rem ${({ theme }) => theme.paddingX};
+  }
+`
+
+const BoxShadow = styled.div`
   padding: 1rem 1rem;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06),
     0px 4px 8px rgba(0, 0, 0, 0.04);
@@ -72,7 +81,7 @@ const Navigation = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
 
   return (
-    <>
+    <Wrapper>
       <Header>
         <Brand>
           <Link to="/">Christian Krey</Link>
@@ -82,20 +91,22 @@ const Navigation = () => {
         </Nav>
       </Header>
       <Menu menuIsVisible={menuIsVisible}>
-        <ThemeMenu>
-          <ThemeButton
-            icon={<Sun color="#F65058" size={48} />}
-            color="#FFFFFF"
-          />
-          <ThemeButton
-            icon={<Moon color="#FBE053" size={48} />}
-            color="#2C3640"
-          />
-        </ThemeMenu>
-        <MeOn>Me On</MeOn>
-        <SocialIcons />
+        <BoxShadow>
+          <ThemeMenu>
+            <ThemeButton
+              icon={<Sun color="#F65058" size={48} />}
+              color="#FFFFFF"
+            />
+            <ThemeButton
+              icon={<Moon color="#FBE053" size={48} />}
+              color="#2C3640"
+            />
+          </ThemeMenu>
+          <MeOn>Me On</MeOn>
+          <SocialIcons />
+        </BoxShadow>
       </Menu>
-    </>
+    </Wrapper>
   )
 }
 

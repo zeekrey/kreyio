@@ -16,6 +16,7 @@
 - [ ] Navbar should slide from top.
 - [ ] Add seo.
 - [ ] Add GA.
+- [ ] Navbar needs to be fixed. There is a ugly effect when switching theme.
 
 ## Setup
 
