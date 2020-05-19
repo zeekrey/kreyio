@@ -8,7 +8,7 @@ module.exports = {
     titleTemplate: `%s · Me and my blog`,
     description: `My thoughts on software development, company development and other stuff.`,
     url: `https://krey.io`, // No trailing slash allowed!
-    image: `/images/snape.jpg`, // Path to your image you placed in the 'static' folder
+    image: `/images/me.jpg`, // Path to your image you placed in the 'static' folder
     twitter: `@zeekrey_`,
     siteLanguage: `en`,
     author: `@zeekrey`,
@@ -34,6 +34,7 @@ module.exports = {
         background_color: `#FAFAFA`,
         theme_color: `#F65058`,
         display: `standalone`,
+        icon: `images/me.png`,
       },
     },
     `gatsby-plugin-offline`,

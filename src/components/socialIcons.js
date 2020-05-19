@@ -26,13 +26,28 @@ const socialLinks = {
 
 const SocialIcons = ({ color }) => (
   <SocialMenu>
-    <a href={socialLinks.github}>
+    <a
+      href={socialLinks.github}
+      aria-label="Github"
+      target="_blank"
+      rel="noreferrer"
+    >
       <SocialItem as={GitHub} color={color} />
     </a>
-    <a href={socialLinks.twitter}>
+    <a
+      href={socialLinks.twitter}
+      aria-label="Twitter"
+      target="_blank"
+      rel="noreferrer"
+    >
       <SocialItem as={Twitter} color={color} />
     </a>
-    <a href={socialLinks.linkedin}>
+    <a
+      href={socialLinks.linkedin}
+      aria-label="LinkedIn"
+      target="_blank"
+      rel="noreferrer"
+    >
       <SocialItem as={Linkedin} color={color} />
     </a>
   </SocialMenu>
