@@ -19,10 +19,16 @@ export default function Template({
   })
 
   const Wrapper = styled.div`
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-top: 5rem;
-    margin-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 3rem;
+    margin-bottom: 1rem;
+    @media (min-width: 400px) {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      padding-top: 5rem;
+      margin-bottom: 2rem;
+    }
   `
 
   const Headline = styled.div`

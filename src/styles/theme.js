@@ -1,5 +1,5 @@
 const theme = {
-  paddingY: "1rem",
+  paddingY: "2rem",
   paddingX: "3rem",
 }
 

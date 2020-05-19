@@ -17,6 +17,19 @@
 - [ ] Add seo.
 - [ ] Add GA.
 
+## Setup
+
+DNS-Settings:
+
+now dns add krey.io '@' MX ASPMX.L.GOOGLE.COM 1
+now dns add krey.io '@' MX ALT1.ASPMX.L.GOOGLE.COM 5
+now dns add krey.io '@' MX ALT2.ASPMX.L.GOOGLE.COM 5
+now dns add krey.io '@' MX ALT3.ASPMX.L.GOOGLE.COM 10
+now dns add krey.io '@' MX ALT4.ASPMX.L.GOOGLE.COM 10
+now dns add krey.io '@' MX <CODE>.mx-verification.google.com 15
+
+See this: https://gist.github.com/jaydenseric/cf7e548d3ce035da05fae5782878b80f
+
 Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 
 _Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._

@@ -6,12 +6,16 @@ import SocialIcons from "./socialIcons"
 
 const Wrapper = styled.div`
   background-color: #f4f4f4;
-  margin-top: 4rem;
-  padding: 4rem 3rem;
-  /* position: absolute;
-  bottom: 0; */
+  margin-top: 2rem;
+  padding: 2.2rem 1rem;
+  position: absolute;
+  left: 0;
   width: 100%;
   color: #bdbdbd;
+  @media (min-width: 400px) {
+    margin-top: 4rem;
+    padding: 4rem 3rem;
+  }
 `
 
 const ThumbsUpButton = styled.button`
@@ -41,31 +45,35 @@ const LastRow = styled.div`
 const Footer = () => {
   return (
     <Wrapper>
-      <div>
-        Where is the newsletter signup? Well, I’m not sure yet if this is
-        something you people want. Do you?
-      </div>
       <div
-        style={{
-          margin: "2.2rem 0rem",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          columnGap: "1.2rem",
-        }}
+        style={{ maxWidth: "700px", marginLeft: "auto", marginRight: "auto" }}
       >
-        <ThumbsUpButton color="#70ce6e">
-          <ThumbsUp size={16} style={{ marginRight: "1rem" }} />
-          <span>Sure, I would!</span>
-        </ThumbsUpButton>
-        <ThumbsUpButton color="#f65058">
-          <ThumbsDown size={16} style={{ marginRight: "1rem" }} />
-          <span>Nah!</span>
-        </ThumbsUpButton>
+        <div>
+          Where is the newsletter signup? Well, I’m not sure yet if this is
+          something you people want. Do you?
+        </div>
+        <div
+          style={{
+            margin: "2.2rem 0rem",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            columnGap: "1.2rem",
+          }}
+        >
+          <ThumbsUpButton color="#70ce6e">
+            <ThumbsUp size={16} style={{ marginRight: "1rem" }} />
+            <span>Sure, I would!</span>
+          </ThumbsUpButton>
+          <ThumbsUpButton color="#f65058">
+            <ThumbsDown size={16} style={{ marginRight: "1rem" }} />
+            <span>Nah!</span>
+          </ThumbsUpButton>
+        </div>
+        <LastRow>
+          <SocialIcons color="#BDBDBD" />
+          <Link to="/">Legal</Link>
+        </LastRow>
       </div>
-      <LastRow>
-        <SocialIcons color="#BDBDBD" />
-        <Link to="/">Legal</Link>
-      </LastRow>
     </Wrapper>
   )
 }

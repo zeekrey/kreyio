@@ -5,8 +5,13 @@ import { Link } from "gatsby"
 import { ArrowRightCircle } from "react-feather"
 
 const Wrapper = styled.div`
-  padding: 0rem 3rem;
   margin-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 400px) {
+    padding-left: ${({ theme }) => theme.paddingX};
+    padding-right: ${({ theme }) => theme.paddingX};
+  }
 `
 
 const Headline = styled.div`

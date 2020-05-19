@@ -7,14 +7,14 @@ import ThemeButton from "./themeButton"
 import SocialIcons from "./socialIcons"
 
 const Header = styled.header`
-  padding-top: ${({ theme }) => theme.paddingY};
-  padding-bottom: ${({ theme }) => theme.paddingY};
-  padding-left: ${({ theme }) => theme.paddingX};
-  padding-right: ${({ theme }) => theme.paddingX};
+  padding: 1rem 1rem;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   position: relative;
+  @media (min-width: 400px) {
+    padding: ${({ theme }) => theme.paddingY} ${({ theme }) => theme.paddingX};
+  }
 `
 
 const Brand = styled.div`
@@ -36,18 +36,21 @@ const Menu = styled.div`
   z-index: 10;
   width: 100%;
   background-color: ${({ theme }) => theme.body};
-  padding-top: ${({ theme }) => theme.paddingY};
-  padding-bottom: ${({ theme }) => theme.paddingY};
-  padding-left: ${({ theme }) => theme.paddingX};
-  padding-right: ${({ theme }) => theme.paddingX};
+  padding: 1rem 1rem;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06),
     0px 4px 8px rgba(0, 0, 0, 0.04);
+  @media (min-width: 400px) {
+    padding: ${({ theme }) => theme.paddingY} ${({ theme }) => theme.paddingX};
+  }
 `
 
 const ThemeMenu = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 1.2rem;
+  column-gap: 0.4rem;
+  @media (min-width: 400px) {
+    column-gap: 1.2rem;
+  }
 `
 
 const MeOn = styled.div`
