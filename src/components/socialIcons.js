@@ -19,11 +19,23 @@ const SocialItem = styled.div`
   }
 `
 
+const socialLinks = {
+  github: "https://github.com/zeekrey",
+  twitter: "https://twitter.com/zeekrey_",
+  linkedin: "https://www.linkedin.com/in/christiankrey",
+}
+
 const SocialIcons = ({ color }) => (
   <SocialMenu>
-    <SocialItem as={GitHub} color={color}/>
-    <SocialItem as={Twitter} color={color}/>
-    <SocialItem as={Linkedin} color={color}/>
+    <a href={socialLinks.github}>
+      <SocialItem as={GitHub} color={color} />
+    </a>
+    <a href={socialLinks.twitter}>
+      <SocialItem as={Twitter} color={color} />
+    </a>
+    <a href={socialLinks.linkedin}>
+      <SocialItem as={Linkedin} color={color} />
+    </a>
   </SocialMenu>
 )
 
