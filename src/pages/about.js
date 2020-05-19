@@ -24,7 +24,6 @@ Since graduating, I have taken jobs at large companies for the most part. These 
 The most complex systems are the ones that call out to me most loudly. There is something about complexity that is endlessly attractive to me, and any time I can take an outdated, outmoded process and reshape it into something more modern and cutting-edge, I am eager to do so. An innovator at heart, I solve problems through creativity, thinking outside the box and pushing out of the realm of what is likely into the realm of what is possible. If all this sounds a little scary, that's because it is!
 
 I know how to create scaling IT system architectures, and entrepreneurship and web development are both passions of mine. I strive to grow and learn every day, and long-term, I want to apply my IT and entrepreneurship knowledge to make the world a better place. I am available for networking, public talk, presentation, start-up, and nonprofit opportunities that make good use of my skills.
-
 `
 
 const AboutPage = () => (
