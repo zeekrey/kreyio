@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { ThumbsDown, ThumbsUp } from "react-feather"
@@ -40,19 +40,37 @@ const LastRow = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-right: 1.8rem;
+  margin-top: 1rem;
 `
 
 const Footer = () => {
+  useEffect(() => {
+    // <script async data-uid="4645e143c6" src=""></script>
+    const script = document.createElement("script")
+
+    script.src = "https://exciting-author-8358.ck.page/4645e143c6/index.js"
+    script.async = true
+    script.setAttribute("data-uid", "4645e143c6")
+
+    // document.body.appendChild(script)
+    document.getElementById("signUpContainer").appendChild(script)
+
+    return () => {
+      document.getElementById("signUpContainer").removeChild(script)
+    }
+  }, [])
+
   return (
     <Wrapper>
       <div
         style={{ maxWidth: "700px", marginLeft: "auto", marginRight: "auto" }}
       >
-        <div>
-          Where is the newsletter signup? Well, I’m not sure yet if this is
-          something you people want. Do you?
+        <div style={{ textAlign: "center", margin: "2rem" }}>
+          You like my content? Woah! If you want, I can send you my latest blog
+          posts right into you inbox.
         </div>
-        <div
+        <div id="signUpContainer"></div>
+        {/* <div
           style={{
             margin: "2.2rem 0rem",
             display: "grid",
@@ -68,7 +86,7 @@ const Footer = () => {
             <ThumbsDown size={16} style={{ marginRight: "1rem" }} />
             <span>Nah!</span>
           </ThumbsUpButton>
-        </div>
+        </div> */}
         <LastRow>
           <SocialIcons color="#BDBDBD" />
           <Link to="/legal">Legal</Link>
