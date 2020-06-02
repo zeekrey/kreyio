@@ -57,8 +57,4 @@ SocialIcons.propTypes = {
   color: PropTypes.string,
 }
 
-SocialIcons.defaultProps = {
-  color: `red`,
-}
-
 export default SocialIcons

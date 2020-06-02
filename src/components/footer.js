@@ -45,18 +45,17 @@ const LastRow = styled.div`
 
 const Footer = () => {
   useEffect(() => {
-    // <script async data-uid="4645e143c6" src=""></script>
     const script = document.createElement("script")
 
     script.src = "https://exciting-author-8358.ck.page/4645e143c6/index.js"
     script.async = true
     script.setAttribute("data-uid", "4645e143c6")
 
-    // document.body.appendChild(script)
     document.getElementById("signUpContainer").appendChild(script)
 
     return () => {
-      document.getElementById("signUpContainer").removeChild(script)
+      document.getElementById("signUpContainer").children &&
+        document.getElementById("signUpContainer").removeChild(script)
     }
   }, [])
 
@@ -69,7 +68,7 @@ const Footer = () => {
           You like my content? Woah! If you want, I can send you my latest blog
           posts right into your inbox.
         </div>
-        <div id="signUpContainer"></div>
+        <div id="signUpContainer" />
         {/* <div
           style={{
             margin: "2.2rem 0rem",

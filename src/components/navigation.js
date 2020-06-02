@@ -15,7 +15,7 @@ const Header = styled.header`
   justify-content: space-between;
   flex-direction: row;
   position: relative;
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     padding: ${({ theme }) => theme.paddingY} ${({ theme }) => theme.paddingX};
   }
 `

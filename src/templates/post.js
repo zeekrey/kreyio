@@ -24,7 +24,7 @@ export default function Template({
     padding-right: 1rem;
     padding-top: 3rem;
     margin-bottom: 1rem;
-    @media (min-width: 400px) {
+    @media (min-width: 450px) {
       padding-left: 3rem;
       padding-right: 3rem;
       padding-top: 5rem;

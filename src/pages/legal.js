@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   margin-bottom: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  @media (min-width: 400px) {
+  @media (min-width: 450px) {
     padding-left: ${({ theme }) => theme.paddingX};
     padding-right: ${({ theme }) => theme.paddingX};
   }
