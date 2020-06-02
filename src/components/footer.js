@@ -44,6 +44,8 @@ const LastRow = styled.div`
 `
 
 const Footer = () => {
+  const signUpContainer = React.useRef(null)
+
   useEffect(() => {
     const script = document.createElement("script")
 
@@ -51,11 +53,10 @@ const Footer = () => {
     script.async = true
     script.setAttribute("data-uid", "4645e143c6")
 
-    document.getElementById("signUpContainer").appendChild(script)
+    signUpContainer.current.appendChild(script)
 
     return () => {
-      document.getElementById("signUpContainer").children &&
-        document.getElementById("signUpContainer").removeChild(script)
+      signUpContainer.current.remove()
     }
   }, [])
 
@@ -68,7 +69,7 @@ const Footer = () => {
           You like my content? Woah! If you want, I can send you my latest blog
           posts right into your inbox.
         </div>
-        <div id="signUpContainer" />
+        <div ref={signUpContainer} />
         {/* <div
           style={{
             margin: "2.2rem 0rem",

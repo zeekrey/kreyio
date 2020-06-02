@@ -5,6 +5,7 @@ import Body from "../components/body"
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import SEO from "../components/seo"
+import Banner from "../components/banner"
 
 export default function Template({
   data,
@@ -22,12 +23,12 @@ export default function Template({
   const Wrapper = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-top: 3rem;
+    padding-top: 1.8rem;
     margin-bottom: 1rem;
     @media (min-width: 450px) {
       padding-left: 3rem;
       padding-right: 3rem;
-      padding-top: 5rem;
+      padding-top: 3rem;
       margin-bottom: 2rem;
     }
   `
@@ -49,6 +50,14 @@ export default function Template({
     margin-top: 1rem;
   `
 
+  const StyledLink = styled(Link)`
+    margin-left: 0.3rem;
+    text-decoration: underline;
+    &:last-child {
+      margin-right: 0.3rem;
+    }
+  `
+
   return (
     <>
       <SEO
@@ -63,18 +72,36 @@ export default function Template({
       <Body>
         <Navigation />
         {/* This should only be displayed if there is no language key in path. */}
-        {/* {!isNotDefaultLanguage && (
-          <div>
-            <div>This article is also availbe in the following languages:</div>
-            <ul>
-              {languages.map(language => (
-                <li>
-                  <Link to={`/${language}${frontmatter.slug}`}>{language}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )} */}
+        {!isNotDefaultLanguage && (
+          <Banner>
+            <div>
+              <span>
+                This article is also availbe in the following languages:
+              </span>
+              <span>
+                {languages.map(language => (
+                  <StyledLink
+                    to={`/${language}${frontmatter.slug}`}
+                    key={language}
+                  >
+                    {language}
+                  </StyledLink>
+                ))}
+              </span>
+              <span>
+                This blog is Open Source and I would love if you would like to
+                contribute other translations. See here
+                <a
+                  href="https://github.com/zeekrey/kreyio"
+                  style={{ textDecoration: "underline", marginLeft: "0.4rem" }}
+                >
+                  how to contribute
+                </a>
+                .
+              </span>
+            </div>
+          </Banner>
+        )}
         <Wrapper>
           <Headline>{frontmatter.title}</Headline>
           <Version>{frontmatter.date}</Version>
