@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 const Version = styled.div`
   font-size: 0.7rem;
   color: #bdbdbd;
+  margin-top: 0.2rem;
 `
 
 const Text = styled.div`
