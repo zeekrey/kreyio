@@ -7,6 +7,44 @@ import Footer from "../components/footer"
 import SEO from "../components/seo"
 import Banner from "../components/banner"
 
+const Wrapper = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.8rem;
+  margin-bottom: 1rem;
+  @media (min-width: 450px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 3rem;
+    margin-bottom: 2rem;
+  }
+`
+
+const Version = styled.div`
+  font-size: 0.7rem;
+  color: #bdbdbd;
+`
+
+const Text = styled.div`
+  margin-top: 1rem;
+`
+
+const StyledLink = styled(Link)`
+  margin-left: 0.3rem;
+  text-decoration: underline;
+  &:last-child {
+    margin-right: 0.3rem;
+  }
+`
+
+const Headline = styled.div`
+  color: ${({ theme }) => theme.secondary};
+  font-family: Oswald;
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+`
+
 export default function Template({
   data,
   pageContext: { languages = [] },
@@ -19,44 +57,6 @@ export default function Template({
     // .find needs to return falsy value, otherwise it will exit
     return pathname.indexOf(`/${language}/`) < 0 ? false : true
   })
-
-  const Wrapper = styled.div`
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1.8rem;
-    margin-bottom: 1rem;
-    @media (min-width: 450px) {
-      padding-left: 3rem;
-      padding-right: 3rem;
-      padding-top: 3rem;
-      margin-bottom: 2rem;
-    }
-  `
-
-  const Headline = styled.div`
-    color: ${({ theme }) => theme.secondary};
-    font-family: Oswald;
-    font-weight: bold;
-    font-size: 2.4rem;
-    line-height: 2.4rem;
-  `
-
-  const Version = styled.div`
-    font-size: 0.7rem;
-    color: #bdbdbd;
-  `
-
-  const Text = styled.div`
-    margin-top: 1rem;
-  `
-
-  const StyledLink = styled(Link)`
-    margin-left: 0.3rem;
-    text-decoration: underline;
-    &:last-child {
-      margin-right: 0.3rem;
-    }
-  `
 
   return (
     <>
