@@ -67,7 +67,7 @@ const Footer = () => {
       >
         <div style={{ textAlign: "center", margin: "2rem" }}>
           You like my content? Woah! If you want, I can send you my latest blog
-          posts right into you inbox.
+          posts right into your inbox.
         </div>
         <div id="signUpContainer"></div>
         {/* <div

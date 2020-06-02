@@ -34,8 +34,4 @@ Body.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
-
 export default Body

@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { ArrowRightCircle } from "react-feather"
 import SocialIcons from "./socialIcons"
 import Typewriter from "typewriter-effect"
 
@@ -17,16 +16,6 @@ const Headline = styled.div`
   font-family: Oswald;
   font-weight: bold;
   font-size: 1.3rem;
-`
-
-const SocialItem = styled.div`
-  cursor: pointer;
-  color: ${({ color, theme }) => color || theme.secondary};
-  margin-left: 1rem;
-  &:hover {
-    transition: 0.2s;
-    color: ${({ theme }) => theme.primary};
-  }
 `
 
 const thingsILike = [

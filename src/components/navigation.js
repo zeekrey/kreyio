@@ -1,5 +1,4 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React, { useState } from "react"
 import styled from "styled-components"
 import { AlignJustify, Sun, Moon } from "react-feather"
@@ -109,13 +108,5 @@ const Navigation = () => {
     </Wrapper>
   )
 }
-
-// Header.propTypes = {
-//   siteTitle: PropTypes.string,
-// }
-
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
 
 export default Navigation

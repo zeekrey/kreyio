@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { ArrowRightCircle } from "react-feather"
+import { useEffect } from "react"
 
 const Wrapper = styled.div`
   margin-bottom: 2rem;
@@ -31,6 +32,7 @@ const SocialItem = styled.div`
 `
 
 const PostPreview = ({ post }) => {
+  useEffect(() => console.log(post), [])
   return (
     <Wrapper>
       <Link to={post.frontmatter.slug}>
@@ -51,15 +53,27 @@ const PostPreview = ({ post }) => {
 }
 
 PostPreview.propTypes = {
-  title: PropTypes.string,
-  text: PropTypes.string,
-  link: PropTypes.string,
+  post: PropTypes.shape({
+    id: PropTypes.string,
+    frontmatter: PropTypes.shape({
+      date: PropTypes.string,
+      slug: PropTypes.string,
+      title: PropTypes.string,
+    }),
+    excerpt: PropTypes.string,
+  }),
 }
 
 PostPreview.defaultProps = {
-  title: `This is the title`,
-  text: `This is the body text.`,
-  link: `/`,
+  post: {
+    id: `e665e1f8-3cdc-5ecf-aeac-87e33dba9eb6`,
+    frontmatter: {
+      date: `May 07, 2020`,
+      slug: `/blog/my-third-post`,
+      title: `My third blog post`,
+    },
+    excerpt: `You okay, is everything alright? Now, now, Biff, n…you? Good, you could start by sweeping the floor…`,
+  },
 }
 
 export default PostPreview

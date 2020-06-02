@@ -57,8 +57,8 @@ SocialIcons.propTypes = {
   color: PropTypes.string,
 }
 
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
+SocialIcons.defaultProps = {
+  color: `red`,
+}
 
 export default SocialIcons
