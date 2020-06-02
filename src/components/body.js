@@ -12,10 +12,8 @@ const Body = ({ children }) => {
     const themeFromLocalStorage = localStorage.getItem("isDark")
 
     if (typeof themeFromLocalStorage === "string") {
-      console.log("Found local storage settings!")
       setIsDark(JSON.parse(themeFromLocalStorage))
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      console.log("Couldnt find local storage settings!")
       setIsDark(true)
     }
   }, [])

@@ -21,7 +21,6 @@ const ThemeButton = ({ icon, color }) => {
   function toggleTheme() {
     try {
       localStorage.setItem("isDark", JSON.stringify(!isDark))
-      console.log(`Stored settings to local storage: isDark => ${!isDark}`)
     } catch (error) {
       console.error(`Couldn't store theme settings: ${error}`)
     }
