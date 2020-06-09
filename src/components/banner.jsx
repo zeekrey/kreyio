@@ -13,7 +13,6 @@ const Wrapper = styled.div`
   padding: 0.8rem 0rem;
   margin: 0rem 1rem;
   font-style: italic;
-  border-radius: 0.3rem;
   @media (min-width: 450px) {
     padding: 2rem;
     margin: 0rem 3rem;

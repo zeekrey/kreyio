@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { AlignJustify, Sun, Moon } from "react-feather"
 import ThemeButton from "./themeButton"
@@ -30,18 +30,6 @@ const Brand = styled.div`
 const Nav = styled.div`
   flex: 1;
   text-align: end;
-`
-
-const Menu = styled.div`
-  display: ${props => (props.menuIsVisible ? "inherit" : "none")};
-  position: absolute;
-  z-index: 10;
-  width: 100%;
-  background-color: ${({ theme }) => theme.body};
-  padding: 0rem 1rem;
-  @media (min-width: 450px) {
-    padding: 0rem ${({ theme }) => theme.paddingX};
-  }
 `
 
 const BoxShadow = styled.div`
@@ -77,6 +65,55 @@ const Burger = styled.div`
   }
 `
 
+const MenuWrapper = styled.div`
+  display: ${props => (props.menuIsVisible ? "inherit" : "none")};
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  background-color: ${({ theme }) => theme.body};
+  padding: 0rem 1rem;
+  @media (min-width: 450px) {
+    padding: 0rem ${({ theme }) => theme.paddingX};
+  }
+`
+
+const Menu = ({ menuIsVisible, setMenuIsVisible }) => {
+  const menuRef = useRef(null)
+
+  function handleMouseDown(event) {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setMenuIsVisible(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleMouseDown)
+
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown)
+    }
+  }, [menuRef])
+
+  return (
+    <>
+      <MenuWrapper menuIsVisible={menuIsVisible} ref={menuRef}>
+        <ThemeMenu>
+          <ThemeButton
+            icon={<Sun color="#F65058" size={48} />}
+            color="#FFFFFF"
+          />
+          <ThemeButton
+            icon={<Moon color="#FBE053" size={48} />}
+            color="#2C3640"
+          />
+        </ThemeMenu>
+        <MeOn>Me On</MeOn>
+        <SocialIcons />
+      </MenuWrapper>
+    </>
+  )
+}
+
 const Navigation = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false)
 
@@ -86,26 +123,14 @@ const Navigation = () => {
         <Brand>
           <Link to="/">Christian Krey</Link>
         </Brand>
-        <Nav onClick={() => setMenuIsVisible(!menuIsVisible)}>
-          <Burger as={AlignJustify} />
+        <Nav>
+          <Burger
+            as={AlignJustify}
+            onClick={() => setMenuIsVisible(!menuIsVisible)}
+          />
         </Nav>
       </Header>
-      <Menu menuIsVisible={menuIsVisible}>
-        {/* <BoxShadow> */}
-          <ThemeMenu>
-            <ThemeButton
-              icon={<Sun color="#F65058" size={48} />}
-              color="#FFFFFF"
-            />
-            <ThemeButton
-              icon={<Moon color="#FBE053" size={48} />}
-              color="#2C3640"
-            />
-          </ThemeMenu>
-          <MeOn>Me On</MeOn>
-          <SocialIcons />
-        {/* </BoxShadow> */}
-      </Menu>
+      <Menu menuIsVisible={menuIsVisible} setMenuIsVisible={setMenuIsVisible} />
     </Wrapper>
   )
 }
