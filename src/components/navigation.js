@@ -38,7 +38,8 @@ const Menu = styled.div`
   z-index: 10;
   width: 100%;
   background-color: ${({ theme }) => theme.body};
-  @media (min-width: 400px) {
+  padding: 0rem 1rem;
+  @media (min-width: 450px) {
     padding: 0rem ${({ theme }) => theme.paddingX};
   }
 `
@@ -90,7 +91,7 @@ const Navigation = () => {
         </Nav>
       </Header>
       <Menu menuIsVisible={menuIsVisible}>
-        <BoxShadow>
+        {/* <BoxShadow> */}
           <ThemeMenu>
             <ThemeButton
               icon={<Sun color="#F65058" size={48} />}
@@ -103,7 +104,7 @@ const Navigation = () => {
           </ThemeMenu>
           <MeOn>Me On</MeOn>
           <SocialIcons />
-        </BoxShadow>
+        {/* </BoxShadow> */}
       </Menu>
     </Wrapper>
   )
