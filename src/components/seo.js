@@ -5,6 +5,11 @@ import { useStaticQuery, graphql } from "gatsby"
 
 const Twitter = ({ type, username, title, desc, image }) => (
   <Helmet>
+    {/* This will fix the 'nodge' issue. */}
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    ></meta>
     {username && <meta name="twitter:creator" content={username} />}
     <meta name="twitter:card" content={type} />
     <meta name="twitter:title" content={title} />
