@@ -5,7 +5,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const blogMap = await graphql(`
     {
-      allMarkdownRemark {
+      allMdx {
         nodes {
           fileAbsolutePath
           frontmatter {
@@ -18,7 +18,7 @@ exports.createPages = async ({ actions, graphql }) => {
   `).then(
     ({
       data: {
-        allMarkdownRemark: { nodes },
+        allMdx: { nodes },
       },
     }) => {
       const map = new Map()
@@ -46,10 +46,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
         edges {
           node {
             frontmatter {
@@ -65,7 +62,7 @@ exports.createPages = async ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    return result.data.allMdx.edges.forEach(({ node }) => {
       const path =
         node.frontmatter.langKey !== "en"
           ? `/${node.frontmatter.langKey}${node.frontmatter.slug}`

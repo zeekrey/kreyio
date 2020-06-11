@@ -6,6 +6,7 @@ import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import SEO from "../components/seo"
 import Banner from "../components/banner"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const Wrapper = styled.div`
   padding-left: 1rem;
@@ -62,13 +63,14 @@ const Headline = styled.div`
   line-height: 2.4rem;
 `
 
+
 export default function Template({
   data,
   pageContext: { languages = [] },
   location: { pathname },
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const { mdx } = data // data.markdownRemark holds your post data
+  const { frontmatter, body } = mdx
 
   const isNotDefaultLanguage = languages.find(language => {
     // .find needs to return falsy value, otherwise it will exit
@@ -79,7 +81,7 @@ export default function Template({
     <>
       <SEO
         title={frontmatter.title}
-        desc={html}
+        // desc={html}
         article={true}
         node={{
           first_publication_date: frontmatter.date,
@@ -124,7 +126,13 @@ export default function Template({
         <Wrapper>
           <Headline>{frontmatter.title}</Headline>
           <Version>{frontmatter.date}</Version>
-          <Text dangerouslySetInnerHTML={{ __html: html }} />
+          {/* <Text dangerouslySetInnerHTML={{ __html: html }} /> */}
+         {/* Text Component should be a MDX default layout: https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/#default-layouts */}
+          <Text>
+            {/* <MDXProvider components={components}> */}
+              <MDXRenderer>{body}</MDXRenderer>
+            {/* </MDXProvider> */}
+          </Text>
         </Wrapper>
       </Body>
       <Footer />
@@ -134,8 +142,8 @@ export default function Template({
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
+    mdx(frontmatter: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         slug

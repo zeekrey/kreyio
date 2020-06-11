@@ -9,7 +9,7 @@ import SEO from "../components/seo"
 
 const IndexPage = ({
   data: {
-    allMarkdownRemark: { edges },
+    allMdx: { edges },
   },
 }) => {
   const Posts = edges
@@ -33,7 +33,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(
+    allMdx(
       filter: { frontmatter: { langKey: { eq: "en" } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {

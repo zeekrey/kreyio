@@ -38,20 +38,20 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-external-links",
-            options: {
-              // target: "_blank",
-              // rel: "nofollow",
-            },
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: "gatsby-remark-external-links",
+    //         options: {
+    //           // target: "_blank",
+    //           // rel: "nofollow",
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -59,6 +59,28 @@ module.exports = {
         path: `${__dirname}/src/blog`,
       },
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/templates/mdxLayout.js"),
+          // default: require.resolve("./src/components/default-page-layout.js"),
+        },
+      },
+    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `posts`,
+    //     path: `${__dirname}/src/posts/`,
+    //   },
+    // },
+    // {
+    //   resolve: "gatsby-plugin-page-creator",
+    //   options: {
+    //     path: `${__dirname}/src/blog`,
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
