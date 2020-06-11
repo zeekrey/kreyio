@@ -28,6 +28,22 @@ const Version = styled.div`
 
 const Text = styled.div`
   margin-top: 1rem;
+  line-height: 1.5rem;
+  a {
+    border-bottom: 1px solid ${({ theme }) => theme.secondary};
+    padding-bottom: 0.1rem;
+    &:hover {
+      color: ${({ theme }) => theme.secondary};
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${({ theme }) => theme.secondary};
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -80,14 +96,16 @@ export default function Template({
                 This article is also availbe in the following languages:
               </span>
               <span>
-                {languages.map(language => (
-                  <StyledLink
-                    to={`/${language}${frontmatter.slug}`}
-                    key={language}
-                  >
-                    {language}
-                  </StyledLink>
-                ))}
+                {languages
+                  .filter(language => language !== "en")
+                  .map(language => (
+                    <StyledLink
+                      to={`/${language}${frontmatter.slug}`}
+                      key={language}
+                    >
+                      {language}
+                    </StyledLink>
+                  ))}
               </span>
               <span>
                 This blog is Open Source and I would love if you would like to

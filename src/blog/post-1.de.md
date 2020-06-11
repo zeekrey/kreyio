@@ -2,7 +2,7 @@
 slug: "/blog/two-books-for-young-professionals-in-an-enterprise-world"
 date: "2019-05-04"
 title: "These two books helped me as a young professional in an enterprise world"
-langKey: "en"
+langKey: "de"
 ---
 
 Right after school, I had no idea what to do. The one goal I had, passed down from my parents, was to find a good, stable job that paid well. While searching for learning opportunities to further my education, I came across a work/study offer from Deutsche Telekom. They said it was part intern, part study program, and I had actually no clue what that meant, but I applied anyway. I had two job interviews but was very poorly prepared for either one. But they hired me anyway, God only knows why. Looking back now, I would like to thank the people that hired me. 🙏🏻
@@ -23,4 +23,4 @@ While it's always good to be very knowledgable in your field, you can achieve a 
 
 It covers the basics of color theory, layouts, and the other details of graphic design you will need to know to create compelling presentations. The concepts I learned in that book still help me to this day. For example, I learned that excellent visuals will more than compensate for minor mistakes in your work. Taking the time to read this book will definitely pay off.
 
-Any thoughts? Just send me a message on Twitter or LinkedIn. I love to read every single comment.
+Any thoughts? Just send me a message on twitter or LinkedIn. I love to read every single comment.
