@@ -63,7 +63,6 @@ const Headline = styled.div`
   line-height: 2.4rem;
 `
 
-
 export default function Template({
   data,
   pageContext: { languages = [] },
@@ -127,10 +126,10 @@ export default function Template({
           <Headline>{frontmatter.title}</Headline>
           <Version>{frontmatter.date}</Version>
           {/* <Text dangerouslySetInnerHTML={{ __html: html }} /> */}
-         {/* Text Component should be a MDX default layout: https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/#default-layouts */}
+          {/* Text Component should be a MDX default layout: https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/#default-layouts */}
           <Text>
             {/* <MDXProvider components={components}> */}
-              <MDXRenderer>{body}</MDXRenderer>
+            <MDXRenderer>{body}</MDXRenderer>
             {/* </MDXProvider> */}
           </Text>
         </Wrapper>
