@@ -7,6 +7,8 @@ import Footer from "../components/footer"
 import SEO from "../components/seo"
 import Banner from "../components/banner"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
+import { CodeSnippet } from "../components/mdx/codeSnippet"
 
 const Wrapper = styled.div`
   padding-left: 1rem;
@@ -54,6 +56,11 @@ const StyledLink = styled(Link)`
     margin-right: 0.3rem;
   }
 `
+
+const mdxComponents = {
+  // p: props => <p {...props} style={{ color: "rebeccapurple" }} />,
+  code: CodeSnippet,
+}
 
 const Headline = styled.div`
   color: ${({ theme }) => theme.secondary};
@@ -125,7 +132,9 @@ export default function Template({
           <Headline>{frontmatter.title}</Headline>
           <Version>{frontmatter.date}</Version>
           <Text>
-            <MDXRenderer>{body}</MDXRenderer>
+            <MDXProvider components={mdxComponents}>
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
           </Text>
         </Wrapper>
       </Body>
