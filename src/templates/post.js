@@ -80,7 +80,6 @@ export default function Template({
     <>
       <SEO
         title={frontmatter.title}
-        // desc={html}
         article={true}
         node={{
           first_publication_date: frontmatter.date,
@@ -125,12 +124,8 @@ export default function Template({
         <Wrapper>
           <Headline>{frontmatter.title}</Headline>
           <Version>{frontmatter.date}</Version>
-          {/* <Text dangerouslySetInnerHTML={{ __html: html }} /> */}
-          {/* Text Component should be a MDX default layout: https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/#default-layouts */}
           <Text>
-            {/* <MDXProvider components={components}> */}
             <MDXRenderer>{body}</MDXRenderer>
-            {/* </MDXProvider> */}
           </Text>
         </Wrapper>
       </Body>

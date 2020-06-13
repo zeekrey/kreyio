@@ -1,3 +1,15 @@
+// To be able to import components into mdx file we need to add this special webpack config.
+// See here: https://github.com/ChristopherBiscardi/gatsby-mdx/issues/176#issuecomment-429569578
+const path = require("path")
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
+  })
+}
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
