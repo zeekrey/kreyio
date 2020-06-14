@@ -144,8 +144,8 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
+  query($slug: String!, $langKey: String!) {
+    mdx(frontmatter: { slug: { eq: $slug }, langKey: { eq: $langKey } }) {
       body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

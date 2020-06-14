@@ -80,13 +80,16 @@ exports.createPages = async ({ actions, graphql }) => {
           ? `/${node.frontmatter.langKey}${node.frontmatter.slug}`
           : node.frontmatter.slug
 
-      console.log(`Creating a page under: ${path}`)
+      console.log(
+        `Creating a page under: ${path} with the following langKey: ${node.frontmatter.langKey}`
+      )
 
       createPage({
         path: path,
         component: blogPostTemplate,
         context: {
           slug: node.frontmatter.slug,
+          langKey: node.frontmatter.langKey,
           languages: blogMap.get(node.frontmatter.slug),
         },
       })
