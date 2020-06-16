@@ -9,6 +9,7 @@ import Banner from "../components/banner"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { CodeSnippet } from "../components/mdx/codeSnippet"
+import Feedback from "../components/feedback"
 
 const Wrapper = styled.div`
   padding-left: 1rem;
@@ -136,6 +137,7 @@ export default function Template({
               <MDXRenderer>{body}</MDXRenderer>
             </MDXProvider>
           </Text>
+          <Feedback />
         </Wrapper>
       </Body>
       <Footer />

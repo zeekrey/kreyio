@@ -66,7 +66,7 @@ const Footer = () => {
         style={{ maxWidth: "700px", marginLeft: "auto", marginRight: "auto" }}
       >
         <div style={{ textAlign: "center", margin: "2rem" }}>
-          You like my content? Woah! If you want, I can send you my latest blog
+          You like my content? Woah! If you want to, I can send you my latest blog
           posts right into your inbox.
         </div>
         <div ref={signUpContainer} />
