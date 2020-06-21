@@ -32,7 +32,7 @@ const Version = styled.div`
 
 const Text = styled.div`
   margin-top: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
   a {
     border-bottom: 1px solid ${({ theme }) => theme.secondary};
     padding-bottom: 0.1rem;
@@ -46,6 +46,10 @@ const Text = styled.div`
   h4,
   h5,
   h6 {
+    color: ${({ theme }) => theme.secondary};
+  }
+  code {
+    font-size: 1rem;
     color: ${({ theme }) => theme.secondary};
   }
 `
@@ -84,6 +88,8 @@ export default function Template({
     return pathname.indexOf(`/${language}/`) < 0 ? false : true
   })
 
+  const hasOtherLanguages = languages.length > 1 ? true : false
+
   return (
     <>
       <SEO
@@ -97,7 +103,7 @@ export default function Template({
       <Body>
         <Navigation />
         {/* This should only be displayed if there is no language key in path. */}
-        {!isNotDefaultLanguage && (
+        {!isNotDefaultLanguage && hasOtherLanguages && (
           <Banner>
             <div>
               <span>
@@ -120,7 +126,10 @@ export default function Template({
                 contribute other translations. See here
                 <a
                   href="https://github.com/zeekrey/kreyio"
-                  style={{ textDecoration: "underline", marginLeft: "0.4rem" }}
+                  style={{
+                    textDecoration: "underline",
+                    marginLeft: "0.4rem",
+                  }}
                 >
                   how to contribute
                 </a>

@@ -36,7 +36,9 @@ const SocialItem = styled.div`
 const Feedback = () => {
   return (
     <Wrapper>
-      <ExternalLink href="https://twitter.com/zeekrey_">
+      <ExternalLink
+        href={`https://twitter.com/intent/tweet?screen_name=zeekrey_`}
+      >
         <div>Any ideas or feedback? Let me know and send a tweet.</div>
         <SocialItem as={Twitter} />
       </ExternalLink>
