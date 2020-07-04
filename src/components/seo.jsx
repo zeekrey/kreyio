@@ -9,7 +9,16 @@ const Twitter = ({ type, username, title, desc, image }) => (
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    ></meta>
+    />
+    {/* This will make the iphone 'nodge' in a pwa the same color as the body. */}
+    {/* There are currently only the options: white, black and translucent. Translucent sets the text color to white, this doesn't work with the light mode. */}
+    {/* <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    /> */}
+    {/* This will make the android 'nodge' in a pwa the same color as the body. */}
+    {/* <meta name="theme-color" content="#014473" /> */}
     {username && <meta name="twitter:creator" content={username} />}
     <meta name="twitter:card" content={type} />
     <meta name="twitter:title" content={title} />
