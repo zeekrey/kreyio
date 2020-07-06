@@ -40,7 +40,7 @@ admin
         process.exit(1)
     })
 ```
-In order to use the admin SDK, you have to initialize it with credentials. If you initialize it in the way I just showed you, the credential file needs to be linked to a local environment variable like so: `export GOOGLE_APPLICATION_CREDENTIALS="/home/user/service-account-file.json"`. You can read more about <ExternalLink href='https://firebase.google.com/docs/admin/setup#initialize-sdk'>initilizing here</ExternalLink>.
+In order to use the admin SDK, you have to initialize it with credentials. If you initialize it in the way I just showed you, the credential file needs to be linked to a local environment variable like so: `export GOOGLE_APPLICATION_CREDENTIALS="/home/user/service-account-file.json"`. You can read more about <ExternalLink href='https://firebase.google.com/docs/admin/setup#initialize-sdk'>initializing here</ExternalLink>.
 
 ## Clear state and delete the test user
 
@@ -58,7 +58,7 @@ cy.exec('node ./cypress/cleanupFirebase.js', {
     console.log(result.stdout)
 })
 ```
-While this will work, there is still a small issue. The test state (in this case, the existence of the test user) should be cleaned both before and after the test run, because your test case should always be mounted on a clean and stable state. The <ExternalLink href='https://docs.cypress.io/guides/references/best-practices.html#Using-after-or-afterEach-hooks'>cypress docs</ExternalLink> say that you should always clean the state before testing, so if the test user doesn't exit, the firebase.auth will throw an error. However, since we want to continue our test case, we need to handle this error in the following way:
+While this will work, there is still a small issue. The test state (in this case, the existence of the test user) should be cleaned ~~both~~ before ~~and after~~ the test run, because your test case should always be mounted on a clean and stable state (well, I also clean the state afterwards just to cleanup my test database, although this shouldn't be necessary). The <ExternalLink href='https://docs.cypress.io/guides/references/best-practices.html#Using-after-or-afterEach-hooks'>cypress docs</ExternalLink> say that you should always clean the state before testing, so if the test user doesn't exit, the firebase.auth will throw an error. However, since we want to continue our test case, we need to handle this error in the following way:
 
 ```
 // clearFirebase.js
@@ -68,7 +68,7 @@ While this will work, there is still a small issue. The test state (in this case
         process.exit(1)
     })
 ```
-Now we can catch the _auth/user-not-found_ error code and resume our test case if the user already exists.
+Now we can catch the _auth/user-not-found_ error code and resume our test case if the user already exists. You can find the whole script here: <ExternalLink href='https://gist.github.com/zeekrey/4ca1a768ec4cc5793c3f41c88ee66eb2'>the gist.</ExternalLink>
 
 To be honest, I don't like E2E testing the whole system. It takes a lot of initial time and is pretty fragile. That's why I like to test only major and happy user paths end to end, and focus on unit and integration testing. I definitely recommend reading more about testing at the awesome <ExternalLink href='https://kentcdodds.com/blog/write-tests'>Kent C. Dodds blog</ExternalLink>.
 
