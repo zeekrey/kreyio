@@ -9,7 +9,7 @@ import { ExternalLink } from '../components/mdx/externalLink.jsx'
 
 I recently wrote some <ExternalLink href='https://www.cypress.io/'>Cypress</ExternalLink> tests for a project using <ExternalLink href='https://firebase.google.com/'>Firebase</ExternalLink>. While most of it was pretty straight forward, I had trouble testing the authentication flow. Signing up is not a problem, but before or after the test case, the corresponding test user needs to be deleted. The problem is that the Firebase Admin SDK needed to accomplish this needs a node.js environment.
 
-## Initilizing the Firebase Admin SDK
+## Initializing the Firebase Admin SDK
 
 The first thing I found was the <ExternalLink href='https://github.com/prescottprue/cypress-firebase'>Cypress-Firebase</ExternalLink> lib. The project is well documented and up-to-date, but I realized it wouldn't help me with the initial problem--deleting the test user after the test run. So I searched for another way, and I found that Cypress allows you to call a node script right from the test case itself. And that's what I will show you how to do.
 
