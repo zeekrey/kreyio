@@ -1,11 +1,25 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 import Body from "../components/body"
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import Me from "../components/me"
 import PostPreview from "../components/postPreview"
 import SEO from "../components/seo"
+
+const SkipLink = styled.a`
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000000;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  &:focus {
+    top: 0;
+  }
+`
 
 const IndexPage = ({
   data: {
@@ -20,9 +34,10 @@ const IndexPage = ({
     <>
       <SEO />
       <Body>
+        <SkipLink href="#main">Skip to main</SkipLink>
         <Navigation />
         <Me />
-        {Posts}
+        <main id="main">{Posts}</main>
       </Body>
       <Footer />
     </>

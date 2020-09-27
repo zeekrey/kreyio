@@ -27,7 +27,7 @@ const Brand = styled.div`
   font-weight: bold;
 `
 
-const Nav = styled.div`
+const Nav = styled.nav`
   flex: 1;
   text-align: end;
 `
