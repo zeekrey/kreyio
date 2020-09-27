@@ -8,7 +8,7 @@ module.exports = {
     titleTemplate: `%s · Me and my blog`,
     description: `My thoughts on software development, company development and other stuff.`,
     url: `https://krey.io`, // No trailing slash allowed!
-    image: `/images/me.png`, // Path to your image you placed in the 'static' folder
+    image: `/images/favicon.png`, // Path to your image you placed in the 'static' folder
     twitter: `@zeekrey_`,
     siteLanguage: `en`,
     author: `@zeekrey`,
@@ -20,6 +20,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/src/content/`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -34,25 +41,24 @@ module.exports = {
         background_color: `#FAFAFA`,
         theme_color: `#F65058`,
         display: `standalone`,
-        icon: `src/images/me.png`,
+        icon: `src/images/favicon.png`,
       },
     },
     `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        // CommonMark mode (default: true)
-        // commonmark: true,
-        // Footnotes mode (default: true)
-        // footnotes: true,
-        // Pedantic mode (default: true)
-        // pedantic: true,
-        // GitHub Flavored Markdown mode (default: true)
-        // gfm: true,
-        // Plugins configs
-        // plugins: [],
-      },
-    },
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: "gatsby-remark-external-links",
+    //         options: {
+    //           // target: "_blank",
+    //           // rel: "nofollow",
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -60,6 +66,22 @@ module.exports = {
         path: `${__dirname}/src/blog`,
       },
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `posts`,
+    //     path: `${__dirname}/src/posts/`,
+    //   },
+    // },
+    // {
+    //   resolve: "gatsby-plugin-page-creator",
+    //   options: {
+    //     path: `${__dirname}/src/blog`,
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

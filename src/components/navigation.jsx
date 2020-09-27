@@ -27,18 +27,9 @@ const Brand = styled.div`
   font-weight: bold;
 `
 
-const Nav = styled.div`
+const Nav = styled.nav`
   flex: 1;
   text-align: end;
-`
-
-const BoxShadow = styled.div`
-  padding: 1rem 1rem;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06),
-    0px 4px 8px rgba(0, 0, 0, 0.04);
-  @media (min-width: 400px) {
-    padding: ${({ theme }) => theme.paddingY} ${({ theme }) => theme.paddingX};
-  }
 `
 
 const ThemeMenu = styled.div`
@@ -80,37 +71,31 @@ const MenuWrapper = styled.div`
 const Menu = ({ menuIsVisible, setMenuIsVisible }) => {
   const menuRef = useRef(null)
 
-  function handleMouseDown(event) {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
+  function handleMouseClick(event) {
+    if (menuIsVisible && !menuRef.current.contains(event.target))
       setMenuIsVisible(false)
-    }
   }
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleMouseDown)
+    document.addEventListener("click", handleMouseClick)
 
     return () => {
-      document.removeEventListener("mousedown", handleMouseDown)
+      document.removeEventListener("click", handleMouseClick)
     }
   }, [menuRef])
 
   return (
-    <>
-      <MenuWrapper menuIsVisible={menuIsVisible} ref={menuRef}>
-        <ThemeMenu>
-          <ThemeButton
-            icon={<Sun color="#F65058" size={48} />}
-            color="#FFFFFF"
-          />
-          <ThemeButton
-            icon={<Moon color="#FBE053" size={48} />}
-            color="#2C3640"
-          />
-        </ThemeMenu>
-        <MeOn>Me On</MeOn>
-        <SocialIcons />
-      </MenuWrapper>
-    </>
+    <MenuWrapper menuIsVisible={menuIsVisible} ref={menuRef}>
+      <ThemeMenu>
+        <ThemeButton icon={<Sun color="#F65058" size={48} />} color="#FFFFFF" />
+        <ThemeButton
+          icon={<Moon color="#FBE053" size={48} />}
+          color="#2C3640"
+        />
+      </ThemeMenu>
+      <MeOn>Me On</MeOn>
+      <SocialIcons />
+    </MenuWrapper>
   )
 }
 
@@ -130,7 +115,12 @@ const Navigation = () => {
           />
         </Nav>
       </Header>
-      <Menu menuIsVisible={menuIsVisible} setMenuIsVisible={setMenuIsVisible} />
+      {menuIsVisible && (
+        <Menu
+          menuIsVisible={menuIsVisible}
+          setMenuIsVisible={setMenuIsVisible}
+        />
+      )}
     </Wrapper>
   )
 }

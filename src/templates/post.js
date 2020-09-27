@@ -6,6 +6,10 @@ import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import SEO from "../components/seo"
 import Banner from "../components/banner"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
+import { CodeSnippet } from "../components/mdx/codeSnippet"
+import Feedback from "../components/feedback"
 
 const Wrapper = styled.div`
   padding-left: 1rem;
@@ -28,6 +32,26 @@ const Version = styled.div`
 
 const Text = styled.div`
   margin-top: 1rem;
+  line-height: 1.6rem;
+  a {
+    border-bottom: 1px solid ${({ theme }) => theme.secondary};
+    padding-bottom: 0.1rem;
+    &:hover {
+      color: ${({ theme }) => theme.secondary};
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${({ theme }) => theme.secondary};
+  }
+  code {
+    font-size: 1rem;
+    color: ${({ theme }) => theme.secondary};
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -37,6 +61,11 @@ const StyledLink = styled(Link)`
     margin-right: 0.3rem;
   }
 `
+
+const mdxComponents = {
+  // p: props => <p {...props} style={{ color: "rebeccapurple" }} />,
+  code: CodeSnippet,
+}
 
 const Headline = styled.div`
   color: ${({ theme }) => theme.secondary};
@@ -51,19 +80,20 @@ export default function Template({
   pageContext: { languages = [] },
   location: { pathname },
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const { mdx } = data // data.markdownRemark holds your post data
+  const { frontmatter, body } = mdx
 
   const isNotDefaultLanguage = languages.find(language => {
     // .find needs to return falsy value, otherwise it will exit
     return pathname.indexOf(`/${language}/`) < 0 ? false : true
   })
 
+  const hasOtherLanguages = languages.length > 1 ? true : false
+
   return (
     <>
       <SEO
         title={frontmatter.title}
-        desc={html}
         article={true}
         node={{
           first_publication_date: frontmatter.date,
@@ -73,28 +103,33 @@ export default function Template({
       <Body>
         <Navigation />
         {/* This should only be displayed if there is no language key in path. */}
-        {!isNotDefaultLanguage && (
+        {!isNotDefaultLanguage && hasOtherLanguages && (
           <Banner>
             <div>
               <span>
                 This article is also availbe in the following languages:
               </span>
               <span>
-                {languages.map(language => (
-                  <StyledLink
-                    to={`/${language}${frontmatter.slug}`}
-                    key={language}
-                  >
-                    {language}
-                  </StyledLink>
-                ))}
+                {languages
+                  .filter(language => language !== "en")
+                  .map(language => (
+                    <StyledLink
+                      to={`/${language}${frontmatter.slug}`}
+                      key={language}
+                    >
+                      {language}
+                    </StyledLink>
+                  ))}
               </span>
               <span>
                 This blog is Open Source and I would love if you would like to
                 contribute other translations. See here
                 <a
                   href="https://github.com/zeekrey/kreyio"
-                  style={{ textDecoration: "underline", marginLeft: "0.4rem" }}
+                  style={{
+                    textDecoration: "underline",
+                    marginLeft: "0.4rem",
+                  }}
                 >
                   how to contribute
                 </a>
@@ -106,7 +141,12 @@ export default function Template({
         <Wrapper>
           <Headline>{frontmatter.title}</Headline>
           <Version>{frontmatter.date}</Version>
-          <Text dangerouslySetInnerHTML={{ __html: html }} />
+          <Text>
+            <MDXProvider components={mdxComponents}>
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </Text>
+          <Feedback />
         </Wrapper>
       </Body>
       <Footer />
@@ -115,9 +155,9 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
+  query($slug: String!, $langKey: String!) {
+    mdx(frontmatter: { slug: { eq: $slug }, langKey: { eq: $langKey } }) {
+      body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         slug
