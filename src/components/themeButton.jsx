@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import PropTypes from "prop-types"
 import ThemeStateContext from "./themeStateContext"
 import styled from "styled-components"
 
@@ -14,6 +15,16 @@ const Button = styled.button`
     padding: 4rem;
   }
 `
+
+ThemeButton.PropTypes = {
+  icon: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+}
+
+ThemeButton.defaultProps = {
+  icon: "",
+  color: "#FFFFFF",
+}
 
 const ThemeButton = ({ icon, color }) => {
   const { isDark, setIsDark } = useContext(ThemeStateContext)

@@ -3,6 +3,14 @@ import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+Twitter.propTypes = {
+  type: PropTypes.string,
+  username: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+}
+
 const Twitter = ({ type, username, title, desc, image }) => (
   <Helmet>
     {/* This will fix the 'nodge' issue. */}
@@ -27,21 +35,6 @@ const Twitter = ({ type, username, title, desc, image }) => (
     <meta name="twitter:image:alt" content={desc} />
   </Helmet>
 )
-
-/** 
- *Twitter.propTypes = {
-  type: PropTypes.string,
-  username: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-}
-
-Twitter.defaultProps = {
-  type: 'summary_large_image',
-  username: null,
-}
- */
 
 const SEO = ({ title, desc, banner, pathname, article, node }) => {
   const { site } = useStaticQuery(query)

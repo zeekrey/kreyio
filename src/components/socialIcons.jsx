@@ -24,6 +24,14 @@ const socialLinks = {
   linkedin: "https://www.linkedin.com/in/christiankrey",
 }
 
+SocialIcons.propTypes = {
+  color: PropTypes.string,
+}
+
+SocialIcons.defaultProps = {
+  color: "#FFFFFF",
+}
+
 const SocialIcons = ({ color }) => (
   <SocialMenu>
     <a
@@ -52,9 +60,5 @@ const SocialIcons = ({ color }) => (
     </a>
   </SocialMenu>
 )
-
-SocialIcons.propTypes = {
-  color: PropTypes.string,
-}
 
 export default SocialIcons
