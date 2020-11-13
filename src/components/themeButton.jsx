@@ -16,16 +16,6 @@ const Button = styled.button`
   }
 `
 
-ThemeButton.PropTypes = {
-  icon: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-}
-
-ThemeButton.defaultProps = {
-  icon: "",
-  color: "#FFFFFF",
-}
-
 const ThemeButton = ({ icon, color }) => {
   const { isDark, setIsDark } = useContext(ThemeStateContext)
 
@@ -46,6 +36,16 @@ const ThemeButton = ({ icon, color }) => {
       </Button>
     </>
   )
+}
+
+ThemeButton.PropTypes = {
+  icon: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+}
+
+ThemeButton.defaultProps = {
+  icon: "",
+  color: "#FFFFFF",
 }
 
 export default ThemeButton

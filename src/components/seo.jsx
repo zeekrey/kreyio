@@ -3,14 +3,6 @@ import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-Twitter.propTypes = {
-  type: PropTypes.string,
-  username: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-}
-
 const Twitter = ({ type, username, title, desc, image }) => (
   <Helmet>
     {/* This will fix the 'nodge' issue. */}

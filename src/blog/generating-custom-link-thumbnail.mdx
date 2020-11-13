@@ -1,0 +1,143 @@
+---
+slug: "/blog/generating-custom-link-thumbnail"
+date: "2020-11-13"
+title: "Generating a custom link thumbnail"
+langKey: "en"
+---
+
+import { ExternalLink } from "../components/mdx/externalLink.jsx"
+
+When working with <ExternalLink href='https://codesandbox.io/s/learning-react-context-04z7f'>nextjs</ExternalLink> you get all this crazy stuff like SSG, ISG and SSR. While leveraring the advantages of SSG I thought: _How cool would it be, if the link preview (og:image or twitter:image) would be inidividual per page?_ I played around and came up with a tiny project: covid.krey.io. For this project, I statically build one page per day for every german city. Every page has a custom og:image with the daylie covid-19 inzidenz number. See here how I did this.
+
+bild einfügen
+
+## The basic idea
+
+To dynamically generate the image I thought about rendering a react component and creating a image out of it. The solution I found was to acutally render the component by a headless browser and take a screenshot of it. A approach I found at repng. What they do is pretty cool:
+
+1. Take a component a render it
+2. Launch a headless browser (here puppeteer)
+3. Make a screenshot
+
+Cool! Let's apply this idea.
+
+## Statically render a component
+
+The first thing we need to do is to acutally render our component to static markup. We can do this with: `renderToStaticMarkup` from `react-dom/server`. What this does is the following:
+
+```javascript
+const ShowMyEmoji = ({ emoji }) => <div>{emoji}</div>
+
+renderToStaticMarkup(<ShowMyEmoji emoji="🕵️‍♂️" />)
+// <div>🕵️‍♂️</div>
+```
+
+Since we want a browser to show this component we need think about two things:
+
+1. We need to tell the component the exact size and width, since this will the acutall images size.
+2. We need to hinder the browser to add default styles (like a body margin around our component)
+
+### Screenshot size
+
+The width and height should be set to the component and to the brower window of our headless browser:
+
+```javascript
+// the component
+const ShowMyEmoji = ({ emoji, width, height }) => (
+  <div
+    style={{
+      width: width,
+      height: height,
+      backgroundColor: "gray",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    {emoji}
+  </div>
+)
+```
+
+```javascript
+// imagetocomponent
+await page.setViewportSize(size)
+```
+
+With this, the component will take up the whole viewport and we can easilly screenshot it.
+
+### Prevent browser default styles
+
+To prevent the browser applying default styles we need to wrap our component within a body:
+
+```html
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body style="display:inline-block">
+  ${html}
+</body>
+```
+
+Of course you can add here what ever you want. This is the stuff the the awesome maintaines from repng are using.
+
+With this we are ready to put everthing together like so:
+
+```typescript
+import { renderToStaticMarkup } from "react-dom/server"
+import { chromium } from "playwright"
+
+const imageFromComponent = async (
+  Component: React.ReactElement,
+  size: { width: number; height: number },
+  filename: string
+): Promise<Buffer> => {
+  // Render the component to html
+  const body = renderToStaticMarkup(Component)
+
+  // Open a browser window and set the wrap th component with a unstyled body
+  const browser = await chromium.launch()
+  const page = await browser.newPage()
+  await page.setContent(`<!DOCTYPE html><head>
+    <meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif}</style>
+    </head>
+    <body style="display:inline-block">
+    ${body}</body>`)
+
+  // Set the viewport size to the desired image size
+  await page.setViewportSize(size)
+
+  const result = await page.screenshot({
+    path: filename,
+    clip: {
+      x: 0,
+      y: 0,
+      ...size,
+    },
+    omitBackground: true,
+  })
+
+  await browser.close()
+
+  return result
+}
+
+export { imageFromComponent }
+```
+
+## Pittfalls
+
+There are some pittfalls you should think about:
+
+* Access static files and compiled dependencies - Your rendered component won't run within your normal project setup. Instead it will be rendered and loaded into the browser. File hosting and compiling mechanism will eventually not be available during this time.
+* The component is rendered within your build environment - I experienced this when using emojis. If you would like to use custom fonts make sure that these are available at you build system.
