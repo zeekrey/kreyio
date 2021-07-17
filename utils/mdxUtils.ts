@@ -12,14 +12,18 @@ export const postFilePaths = fs
   .filter(path => /\.mdx?$/.test(path))
 
 export const shikiRemarkPlugin = options => async tree => {
-  visit(tree, "code", node => {
-    node.type = "html"
-    node.children = undefined
-    node.value = options.highlighter
-      .codeToHtml(node.value, node.lang)
-      .replace(
-        '<pre class="shiki"',
-        `<pre class="shiki" language="${node.lang}" meta="${node.meta}"`
-      )
-  })
+  visit(
+    tree,
+    "code",
+    (node: { type: string; value: any; lang: string; meta: string }) => {
+      console.log(node)
+      node.type = "html"
+      node.value = options.highlighter
+        .codeToHtml(node.value, node.lang)
+        .replace(
+          '<pre class="shiki"',
+          `<pre class="shiki" language="${node.lang}" meta="${node.meta}"`
+        )
+    }
+  )
 }
