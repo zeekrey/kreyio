@@ -5,7 +5,7 @@ import Body from "../components/body"
 import Navigation from "../components/navigation"
 import Footer from "../components/footer"
 import SEO from "../components/seo"
-import {Phone, Mail, GitHub, Twitter} from 'react-feather'
+import { Phone, Mail, GitHub, Twitter } from "react-feather"
 
 // import { MDXRenderer } from "gatsby-plugin-mdx"
 
@@ -32,8 +32,12 @@ const H1 = styled.h1``
 
 const H2 = styled.h2``
 
-const TWITTER = Resume.basics.profiles.filter(profile => profile.network === 'Twitter')[0]
-const GITHUB = Resume.basics.profiles.filter(profile => profile.network === 'Github')[0]
+const TWITTER = Resume.basics.profiles.filter(
+  profile => profile.network === "Twitter"
+)[0]
+const GITHUB = Resume.basics.profiles.filter(
+  profile => profile.network === "Github"
+)[0]
 
 const AboutPage = ({ data }) => (
   <>
@@ -52,17 +56,17 @@ const AboutPage = ({ data }) => (
         </div>
         {/* Contact */}
         <div>
-        <H2>contact</H2>
-        <div>
-        <Phone />
-        <a href="tel:+">{Resume.basics.phone}</a>
+          <H2>contact</H2>
+          <div>
+            <Phone />
+            <a href="tel:+">{Resume.basics.phone}</a>
+          </div>
+          <div>
+            <Mail />
+            <a href="mailto:">{Resume.basics.email}</a>
+          </div>
         </div>
-        <div>
-        <Mail />
-        <a href="mailto:">{Resume.basics.email}</a>
-        </div>
-        </div>
-       
+
         {/* Experience */}
         {/**
          * "work": [
@@ -83,39 +87,43 @@ const AboutPage = ({ data }) => (
     }
   ],
          */}
-         <div>
-         <H2>experience</H2>
-         {Resume.work.map(job => (<>
         <div>
-          <span>{job.position}</span>
-          <span>{job.startDate} - {job.endDate}</span>
-        </div>
-        <a href={job.url}>{job.name}</a>
+          <H2>experience</H2>
+          {Resume.work.map(job => (
+            <>
+              <div>
+                <span>{job.position}</span>
+                <span>
+                  {job.startDate} - {job.endDate}
+                </span>
+              </div>
+              <a href={job.url}>{job.name}</a>
 
-        <div>{job.summary}</div>
-        <ul>
-          {job.highlights.map(highlight => <li>{highlight}</li>)}
-        </ul>
-         </>))}
-         </div>
-        
+              <div>{job.summary}</div>
+              <ul>
+                {job.highlights.map((highlight, index) => (
+                  <li key={index}>{highlight}</li>
+                ))}
+              </ul>
+            </>
+          ))}
+        </div>
+
         {/* Social */}
         <div>
-        <H2>social</H2>
-        {
-          TWITTER && 
-          <div>
-          <Twitter />
-          <a href={TWITTER.url}>{TWITTER.username}</a>
-          </div>
-        }
-      {
-          GITHUB && 
-          <div>
-          <GitHub />
-          <a href={GITHUB.url}>{GITHUB.username}</a>
-          </div>
-        }
+          <H2>social</H2>
+          {TWITTER && (
+            <div>
+              <Twitter />
+              <a href={TWITTER.url}>{TWITTER.username}</a>
+            </div>
+          )}
+          {GITHUB && (
+            <div>
+              <GitHub />
+              <a href={GITHUB.url}>{GITHUB.username}</a>
+            </div>
+          )}
         </div>
         {/* Educaion */}
         {/**
@@ -132,15 +140,21 @@ const AboutPage = ({ data }) => (
     }
   ],
          */}
-         <div>
-        <H2>education</H2>
-        {Resume.education.map(degree => (<>
         <div>
-          <span>{degree.studyType} - {degree.area}</span>
-          <span>{degree.startDate} - {degree.endDate}</span>
-        </div>
-        <a href={degree.url}>{degree.institution}</a>
-         </>))}
+          <H2>education</H2>
+          {Resume.education.map(degree => (
+            <>
+              <div>
+                <span>
+                  {degree.studyType} - {degree.area}
+                </span>
+                <span>
+                  {degree.startDate} - {degree.endDate}
+                </span>
+              </div>
+              <a href={degree.url}>{degree.institution}</a>
+            </>
+          ))}
         </div>
         {/* - */}
         <div></div>
@@ -159,18 +173,20 @@ const AboutPage = ({ data }) => (
     }
   ],
          */}
-         <div>
-         <H2>skill</H2>
-{Resume.skills.map(skill =>(
-  <>
-  <div>{skill.name}</div>
-  <div>{skill.level}</div>
-  <ul>
-    {skill.keywords.map(keyword => <li>{keyword}</li>)}
-  </ul>
-  </>
-))}
-         </div>
+        <div>
+          <H2>skill</H2>
+          {Resume.skills.map(skill => (
+            <>
+              <div>{skill.name}</div>
+              <div>{skill.level}</div>
+              <ul>
+                {skill.keywords.map(keyword => (
+                  <li key={keyword}>{keyword}</li>
+                ))}
+              </ul>
+            </>
+          ))}
+        </div>
         {/* - */}
         <div></div>
         {/* Projects */}
@@ -194,20 +210,24 @@ const AboutPage = ({ data }) => (
     }
   ],
          */}
-         <div>
-        <H2>Projects</H2>
-{
-  Resume.projects.map(project => (<>
-  <div>{project.name}</div>
-  <div>{project.description}</div>
-  <ul>
-    {project.highlights.map(highlight => <li>{highlight}</li>)}
-  </ul>
-  <div>{project.startDate} {project.endDate}</div>
-  <a href={project.url}>{project.url}</a>
-  </>))
-}
-         </div>
+        <div>
+          <H2>Projects</H2>
+          {Resume.projects.map(project => (
+            <>
+              <div>{project.name}</div>
+              <div>{project.description}</div>
+              <ul>
+                {project.highlights.map(highlight => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+              <div>
+                {project.startDate} {project.endDate}
+              </div>
+              <a href={project.url}>{project.url}</a>
+            </>
+          ))}
+        </div>
       </Grid>
 
       {/* <Text> */}

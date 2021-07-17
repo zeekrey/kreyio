@@ -7,10 +7,10 @@ import Box from "../components/Box"
 const Index = ({ source }) => {
   return (
     <>
-      <h1>Hey there, I'm Christian 🐱‍🚀</h1>
+      <h1>Hey there, I&apos;m Christian 🐱‍🚀</h1>
       <p>
-        I'm a selfthought developer focusing on stuff humans can use and
-        interact with. I'm currently into{" "}
+        I&apos;m a selfthought developer focusing on stuff humans can use and
+        interact with. I&apos;m currently into{" "}
         <a
           href="https://reactjs.org/"
           target="_blank"

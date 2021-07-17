@@ -16,7 +16,6 @@ export const shikiRemarkPlugin = options => async tree => {
     tree,
     "code",
     (node: { type: string; value: any; lang: string; meta: string }) => {
-      console.log(node)
       node.type = "html"
       node.value = options.highlighter
         .codeToHtml(node.value, node.lang)
