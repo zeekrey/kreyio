@@ -1,0 +1,89 @@
+---
+title: Just a tiny intro to the React Context API
+description: Three things I would recommend everyone entering a new job or position.
+published: "2020-09-27"
+---
+
+In React it's all about components and passing data between those components around. When I started with React it felt naturally to me. But there was allways this one question: What should I do, if I want to make data accessibel to all, or let's say alot of my components? - "Just use the React Context API" is what the offical docs say. While it sounds simple, I needed some time to really understand how the whole context thing works. Here is my take to explain it.
+
+Before we get into it, here is a corresponding [codesandbox](https://codesandbox.io/s/learning-react-context-04z7f').
+
+## A simple (static) context
+
+The first thing to do is to create the actual context:
+
+```javascript
+export const MyContext = React.createContext(
+  "Sorry, I'm not a child of MyContext.Provider.😭"
+)
+```
+
+When calling the createContext function you need to provide a default value. This value is used when a component does not have a matching provider above it in the component tree. In an real world this value is never used, it's only for testing purpose where there is not parent component. Knowing this you could assign it to null oder undefinied. But I think it is a lot easier to debug issues if this value is not null or undefinied in the first place. That's why I like to pass a string a shows me that there is something wrong. Of course you could also use this for fallback scenarios.
+
+Note that we export MyContext. That is neccessary because we will need to reference this variable the components that want to consume the context.
+
+Once you created the context, you place it within the component tree. You do this by placing a Provider in the component tree:
+
+```javascript
+<MyContext.Provider value="Hey, I'm a child of MyContext.Provider 😊">
+    <MyComponent />
+</MyContext.Provider>
+
+{/* The MyWrongComponent is not a child of the MyContextProvider, because of this it will not be able to consume the context. */}
+<MyWrongComponent />
+```
+
+Now what is happening here:
+
+- By placing MyContext.Provider we set the context frame. All components below this component are able to use the context value. Component on the same level or above in the component tree won't be able to use the context. If components from outside this frame want to consume the context, they will receive the value passed when we called React.createContext('this value').
+- MyComponent would be able to consume the context.
+- The prop value="Hey, I'm a child of MyContext.Provider 😊" sets the actual initial value.
+
+If MyComponent should be able to consume the context it needs to do this:
+
+```javascript
+import { MyContext } from '../path/to/MyContext'
+
+function MyComponent() {
+  // This component consumes the context by using React.useContext.
+  const contextValue = React.useContext(MyContext)
+  return <div>MyComponent: {contextValue}</div>
+}
+
+```
+
+Let me explain:
+
+- First we need to import the MyContext variable to reference it in our component.
+- Then we call React.useContext(MyContext) and assign it to a variable.
+
+## Read and write the context
+
+Now you got a somewhat static context. What if you would like to change the context? For this, you just need to assign a let's say state and a function to set the state:
+
+```javascript
+const [count, setCount] = React.useState(0);
+
+<MyDynamicContext.Provider value={{ count, setCount }}>
+    <MyDynamicComponent />
+</MyDynamicContext.Provider>
+```
+
+```javascript
+function MyDynamicComponent() {
+  const { count, setCount } = React.useContext(MyDynamicContext)
+  return (
+    <>
+      <div>{count}</div>
+      <button onClick={() => setCount(count + 1)}>Add</button>
+    </>
+  );
+}
+```
+
+While the React Context API is a pretty cool thing, you should use it sparingly as the [official docs](https://reactjs.org/docs/context.html#before-you-use-context) say.
+
+If you want to get a littlebit deeper into the whole context thing I defintly recommend the following sources:
+
+- [Kent C. Dodds ofcourse.](https://kentcdodds.com/blog/how-to-use-react-context-effectively/)
+- [Robin has some really awesome stuff on his blog.](https://www.robinwieruch.de/react-context/)

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Christian Krey",
+    "label": "Frontend dev and teach lead",
+    "image": "",
+    "email": "christian@krey.io",
+    "url": "https://krey.io/",
+    "summary": "I know how to create scaling IT system architectures, and entrepreneurship and web development are both passions of mine. I strive to grow and learn every day, and long-term, I want to apply my IT and entrepreneurship knowledge to make the world a better place.",
+    "location": {
+      "city": "Leipzig",
+      "countryCode": "DE"
+    },
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "@zeekrey_",
+        "url": "https://twitter.com/zeekrey_"
+      },
+      {
+        "network": "Github",
+        "username": "zeekrey",
+        "url": "https://github.com/zeekrey"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Porsche Leipzig GmbH",
+      "location": "Leipzig",
+      "position": "IT Management",
+      "url": "https://www.porsche-leipzig.de/",
+      "startDate": "2017-05",
+      "summary": "Management of IT projects using agile methods and leading developer teams.",
+      "highlights": [
+        "Leading frontend devs using Vue and React",
+        "Taking care of CI/CD standards and rules",
+        "Managing external partners and clients"
+      ]
+    },
+    {
+      "name": "Telekom Deutschland GmbH",
+      "location": "Bonn",
+      "position": "Database Marketing",
+      "url": "https://www.telekom.de/",
+      "startDate": "2014-01",
+      "endDate": "2017-04",
+      "summary": "Migration of the outdated on premise CRM solution to Salesforce. Responsible for the technical implementation.",
+      "highlights": [
+        "Defining the target system architecture",
+        "Accompaning the implementation process",
+        "Writing utility scripts to improve implementation process"
+      ]
+    },
+    {
+      "name": "Deutsche Telekom AG (a.o.)",
+      "location": "Bonn / Mülheim a.d. Ruhr / Singapore",
+      "position": "Multiple",
+      "url": "https://www.deutschetelekom.de/",
+      "startDate": "2010-09",
+      "endDate": "2013-12",
+      "summary": "IT Management and Marketing(part-time student)",
+      "highlights": [
+        "Geospatial analysis and development",
+        "Testmanagement",
+        "Reviewing coding standards"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Hochschule f. Telekommunikation Leipzig",
+      "url": "https://www.hft-leipzig.de/de/start.html",
+      "area": "Business Informatics",
+      "studyType": "Bachelor",
+      "startDate": "2010-10",
+      "endDate": "2013-12"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend",
+      "keywords": ["React", "Nextjs", "Javascript/Typescript"]
+    },
+    {
+      "name": "Backend",
+      "keywords": ["Node", "Serverless", "Docker"]
+    },
+    {
+      "name": "Devops",
+      "keywords": ["Vercel", "Github", "GCloud"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "German",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "Full working proficiency",
+      "fluency": "Native speaker"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Just C😷vid",
+      "description": "A static Covid-19 Dashboard to test dynamically generated SEO-Thumbnails.",
+      "highlights": [
+        "Statically generates all german cites.",
+        "Creates individual SEO-Thumbnails for every city on a daylie basis.",
+        "PWA enabled."
+      ],
+      "keywords": ["GoogleMaps", "Chrome Extension", "Javascript"],
+      "startDate": "2020-09-01",
+      "endDate": "2020-12-31",
+      "url": "https://krey.io/covid",
+      "roles": ["Web Developer", "Designer"],
+      "entity": "-",
+      "type": "website"
+    },
+    {
+      "name": "Teini",
+      "description": "A simple backendless webshop using Stripe as Payment Gateway.",
+      "highlights": [
+        "Backendless. Product data is stored is a file-datebase using Prisma.js as ORM.",
+        "Uses Stripe as payment gateway and printful as fullfillment solution.",
+        "Based on Next.js and Vercel."
+      ],
+      "keywords": ["GoogleMaps", "Chrome Extension", "Javascript"],
+      "startDate": "2021-01-01",
+      "endDate": "2021-04-30",
+      "url": "https://teini.co/",
+      "roles": ["Web Developer", "Designer"],
+      "entity": "-",
+      "type": "website"
+    }
+  ],
+  "meta": {
+    "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/resume.json",
+    "version": "v1.0.0",
+    "lastModified": "2017-12-24T15:53:00"
+  }
+}

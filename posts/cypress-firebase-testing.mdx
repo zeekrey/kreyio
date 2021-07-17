@@ -1,0 +1,74 @@
+---
+title: Testing Firebase Authentication with Cypress
+description: How to test the firebase user authentication with Cypress.
+published: "2019-02-13"
+---
+
+I recently wrote some [Cypress](https://www.cypress.io/) tests for a project using [Firebase](https://firebase.google.com/). While most of it was pretty straight forward, I had trouble testing the authentication flow. Signing up is not a problem, but before or after the test case, the corresponding test user needs to be deleted. The problem is that the Firebase Admin SDK needed to accomplish this needs a node.js environment.
+
+## Initializing the Firebase Admin SDK
+
+The first thing I found was the [Cypress-Firebase](https://github.com/prescottprue/cypress-firebase) lib. The project is well documented and up-to-date, but I realized it wouldn't help me with the initial problem - deleting the test user after the test run. So I searched for another way, and I found that Cypress allows you to call a node script right from the test case itself. And that's what I will show you how to do.
+
+The [cy.exec](https://docs.cypress.io/api/commands/exec.html) function allows us to run a system command. So, why not call a node script that initializes the firebase admin SDK and deletes our test user?
+
+```javascript
+// clearFirebase.js
+var admin = require('firebase-admin')
+var app = admin.initializeApp()
+
+admin
+    .auth()
+    .getUserByEmail(<theEmail>)
+    .then(function (userRecord) {
+        admin
+            .auth()
+            .deleteUser(userRecord.uid)
+            .then(function () {
+                console.log('Successfully deleted user')
+                process.exit(0)
+            })
+            .catch(function (error) {
+                console.log(error.code)
+                process.exit(1)
+            })
+    })
+    .catch(function (error) {
+        console.log('Error fetching user data:', error)
+        process.exit(1)
+    })
+```
+
+In order to use the admin SDK, you have to initialize it with credentials. If you initialize it in the way I just showed you, the credential file needs to be linked to a local environment variable like so: `export GOOGLE_APPLICATION_CREDENTIALS="/home/user/service-account-file.json"`. You can read more about [initializing here](https://firebase.google.com/docs/admin/setup#initialize-sdk).
+
+## Clear state and delete the test user
+
+Deleting the test user is pretty basic, and you can read more about how to accomplish that in the offical [firebase docs](https://firebase.google.com/docs/auth/admin/manage-users#delete_a_user). But the missing piece is: `.getUserByEmail(<theEmail>)`. Our cypress test needs to somehow provide a user identifier to the script. To make this possible, we can pass an environment variable to the script:
+
+```javascript
+//yourtest.spec.js
+cy.exec('node ./cypress/cleanupFirebase.js', {
+    // user.email comes from a fixture file but you can use a simple string as well
+    env: { email: user.email }
+}).then((result) => {
+    //Just for debugging
+    console.log(result.code)
+    console.log(result.stderr)
+    console.log(result.stdout)
+})
+```
+
+While this will work, there is still a small issue. The test state (in this case, the existence of the test user) should be cleaned ~~both~~ before ~~and after~~ the test run, because your test case should always be mounted on a clean and stable state (well, I also clean the state afterwards just to cleanup my test database, although this shouldn't be necessary). The [cypress docs](https://docs.cypress.io/guides/references/best-practices.html#Using-after-or-afterEach-hooks) say that you should always clean the state before testing, so if the test user doesn't exit, the firebase.auth will throw an error. However, since we want to continue our test case, we need to handle this error in the following way:
+
+```javascript
+// clearFirebase.js
+.catch(function (error) {
+        if (error.code === 'auth/user-not-found') process.exit(0)
+        console.log('Error fetching user data:', error)
+        process.exit(1)
+    })
+```
+
+Now we can catch the _auth/user-not-found_ error code and resume our test case if the user already exists. You can find the whole script here: [the gist](https://gist.github.com/zeekrey/4ca1a768ec4cc5793c3f41c88ee66eb2).
+
+To be honest, I don't like E2E testing the whole system. It takes a lot of initial time and is pretty fragile. That's why I like to test only major and happy user paths end to end, and focus on unit and integration testing. I definitely recommend reading more about testing at the awesome [Kent C. Dodds blog](https://kentcdodds.com/blog/write-tests).
