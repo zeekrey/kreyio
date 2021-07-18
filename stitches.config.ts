@@ -1,31 +1,25 @@
 import { createCss } from "@stitches/react"
 import { grass, grassDark, olive, oliveDark } from "@radix-ui/colors"
 
-export const {
-  styled,
-  css,
-  global,
-  keyframes,
-  getCssString,
-  theme,
-} = createCss({
-  theme: {
-    colors: {
-      ...grass,
-      ...olive,
+export const { styled, css, global, keyframes, getCssString, theme } =
+  createCss({
+    theme: {
+      colors: {
+        ...grass,
+        ...olive,
+      },
+      shadows: {
+        ...grass,
+        ...olive,
+      },
     },
-    shadows: {
-      ...grass,
-      ...olive,
+    media: {
+      small: "(min-width: 576px)",
+      medium: "(min-width: 768px)",
+      large: "(min-width: 992px)",
+      xlarge: "(min-width: 1200px)",
     },
-  },
-  media: {
-    small: "(min-width: 576px)",
-    medium: "(min-width: 768px)",
-    large: "(min-width: 992px)",
-    xlarge: "(min-width: 1200px)",
-  },
-})
+  })
 
 // const darkTheme = theme({
 //   colors: {
@@ -64,5 +58,21 @@ export const globalStyles = global({
     padding: "0.75rem",
     borderRadius: "0.3rem",
     overflowY: "auto",
+  },
+
+  // Line numbers
+  code: {
+    counterReset: "step",
+    counterIncrement: "step 0",
+
+    ".line::before": {
+      content: "counter(step)",
+      counterIncrement: "step",
+      width: "1rem",
+      marginRight: "1.5rem",
+      display: "inline-block",
+      textAlign: "right",
+      color: "rgba(115,138,148,.4)",
+    },
   },
 })
