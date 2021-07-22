@@ -1,6 +1,6 @@
 ---
 title: Just a tiny intro to the React Context API
-description: Three things I would recommend everyone entering a new job or position.
+description: While it sounds simple, I needed some time to really understand how the whole context thing works. Here is my take to explain it.
 published: "2020-09-27"
 ---
 
@@ -25,12 +25,14 @@ Note that we export MyContext. That is neccessary because we will need to refere
 Once you created the context, you place it within the component tree. You do this by placing a Provider in the component tree:
 
 ```javascript
-<MyContext.Provider value="Hey, I'm a child of MyContext.Provider 😊">
-    <MyComponent />
+;<MyContext.Provider value="Hey, I'm a child of MyContext.Provider 😊">
+  <MyComponent />
 </MyContext.Provider>
 
-{/* The MyWrongComponent is not a child of the MyContextProvider, because of this it will not be able to consume the context. */}
-<MyWrongComponent />
+{
+  /* The MyWrongComponent is not a child of the MyContextProvider, because of this it will not be able to consume the context. */
+}
+;<MyWrongComponent />
 ```
 
 Now what is happening here:
@@ -42,14 +44,13 @@ Now what is happening here:
 If MyComponent should be able to consume the context it needs to do this:
 
 ```javascript
-import { MyContext } from '../path/to/MyContext'
+import { MyContext } from "../path/to/MyContext"
 
 function MyComponent() {
   // This component consumes the context by using React.useContext.
   const contextValue = React.useContext(MyContext)
   return <div>MyComponent: {contextValue}</div>
 }
-
 ```
 
 Let me explain:
@@ -62,10 +63,10 @@ Let me explain:
 Now you got a somewhat static context. What if you would like to change the context? For this, you just need to assign a let's say state and a function to set the state:
 
 ```javascript
-const [count, setCount] = React.useState(0);
+const [count, setCount] = React.useState(0)
 
-<MyDynamicContext.Provider value={{ count, setCount }}>
-    <MyDynamicComponent />
+;<MyDynamicContext.Provider value={{ count, setCount }}>
+  <MyDynamicComponent />
 </MyDynamicContext.Provider>
 ```
 
@@ -77,7 +78,7 @@ function MyDynamicComponent() {
       <div>{count}</div>
       <button onClick={() => setCount(count + 1)}>Add</button>
     </>
-  );
+  )
 }
 ```
 

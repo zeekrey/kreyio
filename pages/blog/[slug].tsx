@@ -2,9 +2,7 @@ import fs from "fs"
 import matter from "gray-matter"
 import { MDXRemote } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
-import dynamic from "next/dynamic"
 import Head from "next/head"
-import Link from "next/link"
 import path from "path"
 import CustomLink from "../../components/CustomLink"
 import PageLayout from "../../layouts/PageLayout"
@@ -27,19 +25,7 @@ const components = {
 const PostPage = ({ source, frontMatter }) => {
   return (
     <div>
-      <header>
-        <nav>
-          <Link href="/">
-            <a>👈 Go back home</a>
-          </Link>
-        </nav>
-      </header>
-      <div className="post-header">
-        <h1>{frontMatter.title}</h1>
-        {frontMatter.description && (
-          <p className="description">{frontMatter.description}</p>
-        )}
-      </div>
+      <h1>{frontMatter.title}</h1>
       <main>
         <MDXRemote {...source} components={components} />
       </main>
@@ -57,7 +43,7 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data } = matter(source)
 
-  const shiki = await import('shiki')
+  const shiki = await import("shiki")
   const highlighter = await shiki.getHighlighter({
     theme: "github-dark",
   })
