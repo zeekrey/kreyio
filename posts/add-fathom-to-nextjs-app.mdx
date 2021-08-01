@@ -1,0 +1,103 @@
+---
+title: Add Fathom to your Next.js App
+description: I used Google Analytics for almost forever. But since GDPR requires you to add a notfication if you use cookies I switched to Fathom. Here is how to add it to a Next.js app.
+published: "2021-08-01"
+---
+
+While the official installation process at [usefathom.com](https://usefathom.com/ref/Q0QUXX) references a blog post by [Vercel](https://vercel.com/guides/deploying-nextjs-using-fathom-analytics-with-vercel) which describes the required steps pretty good, I sill had add to some thoughts myself. Here are things I will cover in this post:
+
+- Install the fathom-client
+- Store the tracking identifier in an environment variable
+
+## Install the fathom-client
+
+First, you need to log into or signup at [usefathom.com](https://usefathom.com/ref/Q0QUXX) and create a site. After this you need to add a script tag to your website or you use a client library instead. I would recommend the following library: [fathom-client](https://github.com/derrickreimer/fathom-client).
+
+```bash
+yarn add fathom-client
+```
+
+This lib provides three functions:
+
+- [load()](https://github.com/derrickreimer/fathom-client#loadsiteid-string-opts-object) - Injects the Fathom script into the DOM and lets you set some config
+- [trackPageview()](https://github.com/derrickreimer/fathom-client#trackpageviewopts-object) - Tracks a page view
+- [trackGoal()](https://github.com/derrickreimer/fathom-client#trackgoalcode-string-cents-number) - Tracks custom goals
+
+All this needs to be implemented in a custom `_app.js` file like so:
+
+```javascript
+//within pages/_app.js
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+function App({ Component, pageProps }) {
+
+  //...
+
+  const router = useRouter();
+
+  useEffect(() => {
+    Fathom.load("your-tracking-id", {
+      // Including domains is optional, but I would recommend it as it will only count page views and events on this domains. Dev environments will be excluded with this config.
+      includedDomains: ["yourdomain.com"],
+    }
+
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+    // Record a pageview when route changes
+    router.events.on("routeChangeComplete", onRouteChangeComplete);
+
+    // Unassign event listener
+    return () => {
+      router.events.off("routeChangeComplete", onRouteChangeComplete);
+    };
+  }, [router.events]);
+
+  //...
+```
+
+## Store the tracking identifier in a environment variable
+
+It's really not a good idea to store your keys (even if they are no secrets) within your source code. To store them within the environment here is what you need to do:
+
+```javascript
+//within pages/_app.js
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+function App({ Component, pageProps }) {
+
+  //...
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // Test if the fathom key is available within process.env
+     if (process.env.NEXT_PUBLIC_FATHOM) {
+       // !!! Don't forget the NEXT_PUBLIC_* since only this will make the variable available to your frontend
+        Fathom.load(process.env.NEXT_PUBLIC_FATHOM, {
+          includedDomains: ["yourdomain.com"],
+        });
+      } else {
+        // If it is not available, print a message.
+        console.warn("Tried to load Fathom but no key was provided.");
+      }
+
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+    // Record a pageview when route changes
+    router.events.on("routeChangeComplete", onRouteChangeComplete);
+
+    // Unassign event listener
+    return () => {
+      router.events.off("routeChangeComplete", onRouteChangeComplete);
+    };
+  }, [router.events]);
+
+  //...
+```
+If you want to track goals, like newsletter signups or checkouts call the [trackGoal()](https://github.com/derrickreimer/fathom-client#trackgoalcode-string-cents-number) function whereever you like.
+
+While it should [not be required](https://usefathom.com/compliance) to add a annoying cookie notice when using Fathom, you probably should update your privacy policy text on your website. Fathom has a nice [little snippet](https://usefathom.com/docs/legal/privacy-policy-sample) which can be easily added to your website.
