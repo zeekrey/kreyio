@@ -4,6 +4,9 @@ import { MDXRemote } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import Head from "next/head"
 import path from "path"
+import { NextSeo } from "next-seo"
+import { useRouter } from "next/router"
+
 import CustomLink from "../../components/CustomLink"
 import PageLayout from "../../layouts/PageLayout"
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
@@ -23,13 +26,41 @@ const components = {
 }
 
 const PostPage = ({ source, frontMatter }) => {
+  const { asPath, basePath, pathname } = useRouter()
   return (
-    <div>
-      <h1>{frontMatter.title}</h1>
-      <main>
-        <MDXRemote {...source} components={components} />
-      </main>
-    </div>
+    <>
+      <NextSeo
+        title={frontMatter.title}
+        description={frontMatter.description}
+        canonical={`https://krey.io${asPath}`}
+        openGraph={{
+          type: "website",
+          url: `https://krey.io${asPath}`,
+          title: frontMatter.title,
+          description: frontMatter.description,
+          images: [
+            {
+              url: `https://krey.io${asPath}.png`,
+              width: 1012,
+              height: 506,
+              alt: "Og Image Alt",
+            },
+          ],
+          site_name: "krey.io",
+        }}
+        twitter={{
+          handle: "@zeekrey_",
+          site: "@zeekrey_",
+          cardType: "summary_large_image",
+        }}
+      />
+      <div>
+        <h1>{frontMatter.title}</h1>
+        <main>
+          <MDXRemote {...source} components={components} />
+        </main>
+      </div>
+    </>
   )
 }
 

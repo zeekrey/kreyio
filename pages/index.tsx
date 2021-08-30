@@ -1,5 +1,6 @@
 import { serialize } from "next-mdx-remote/serialize"
 import { MDXRemote } from "next-mdx-remote"
+import { NextSeo } from "next-seo"
 import PageLayout from "../layouts/PageLayout"
 
 import Box from "../components/Box"
@@ -7,6 +8,31 @@ import Box from "../components/Box"
 const Index = ({ source }) => {
   return (
     <>
+      <NextSeo
+        title="Christian Krey"
+        description="Something about me and the things I'm building."
+        canonical="https://krey.io"
+        openGraph={{
+          type: "website",
+          url: "https://krey.io",
+          title: "Christian Krey",
+          description: "Something about me and the things I'm building.",
+          // images: [
+          //   {
+          //     url: `https://krey.io${asPath}.png`,
+          //     width: 1012,
+          //     height: 506,
+          //     alt: "Og Image Alt",
+          //   },
+          // ],
+          site_name: "krey.io",
+        }}
+        twitter={{
+          handle: "@zeekrey_",
+          site: "@zeekrey_",
+          cardType: "summary_large_image",
+        }}
+      />
       <h1>Hey there, I&apos;m Christian 🐱‍🚀</h1>
       <p>
         I&apos;m a selfthought developer focusing on stuff humans can use and
