@@ -1,8 +1,8 @@
-import { createCss } from "@stitches/react"
-import { grass, grassDark, olive, oliveDark } from "@radix-ui/colors"
+import { createStitches } from "@stitches/react"
+import { grass, olive } from "@radix-ui/colors"
 
-export const { styled, css, global, keyframes, getCssString, theme } =
-  createCss({
+export const { styled, css, globalCss, keyframes, getCssText, createTheme } =
+  createStitches({
     theme: {
       colors: {
         ...grass,
@@ -21,14 +21,7 @@ export const { styled, css, global, keyframes, getCssString, theme } =
     },
   })
 
-// const darkTheme = theme({
-//   colors: {
-//     ...grassDark,
-//     ...oliveDark,
-//   },
-// })
-
-export const globalStyles = global({
+export const globalStyles = globalCss({
   body: {
     margin: 0,
     padding: 0,
