@@ -97,7 +97,7 @@ const Index = ({ source }) => {
         <ul>
           <li>Statically generates all Germany cites.</li>
           <li>
-            Create individual SEO-Thumbnails for every city on a daylie basis.
+            Create individual SEO-Thumbnails for every city on a daily basis.
           </li>
           <li>PWA enabled.</li>
         </ul>
@@ -129,7 +129,7 @@ const Index = ({ source }) => {
         <p>A simple backendless webshop using Stripe as payment gateway.</p>
         <ul>
           <li>
-            Backendless. Product data is stored is a file-datebase using
+            Backendless. Product data is stored in a file-datebase using
             Prisma.js as ORM.
           </li>
           <li>
