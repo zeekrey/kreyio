@@ -34,7 +34,7 @@ const H2 = styled("h2", {
 })
 
 const octokit = new Octokit({
-  auth: `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`,
+  auth: process.env.github_token,
 })
 
 export const getStaticProps: GetStaticProps = async () => {
