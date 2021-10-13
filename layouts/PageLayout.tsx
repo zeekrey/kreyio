@@ -4,8 +4,9 @@ import Nav from "../components/Nav"
 
 const Container = styled("div", {
   display: "grid",
-  backgroundColor: "$grass1",
+  backgroundColor: "$sand1",
   gridTemplateColumns: "repeat(12, 1fr)",
+  minHeight: "100vh",
 })
 
 const Body = styled("main", {
@@ -21,7 +22,7 @@ const Body = styled("main", {
     gridColumn: "3/10",
   },
 
-  color: "$olive12",
+  color: "$sand12",
 })
 
 const PageLayout: React.FunctionComponent = ({ children }) => (

@@ -1,9 +1,19 @@
-import { styled } from "../stitches.config"
+import { styled, Box } from "../stitches.config"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { useTheme } from "next-themes"
+import {
+  ArrowLeftIcon,
+  SunIcon,
+  MoonIcon,
+  GitHubLogoIcon,
+  TwitterLogoIcon,
+} from "@modulz/radix-icons"
 
 const Container = styled("nav", {
   gridColumn: "1/12",
+  display: "flex",
+  justifyContent: "space-between",
 })
 
 const Ul = styled("ul", {
@@ -13,6 +23,7 @@ const Ul = styled("ul", {
   listStyle: "none",
   display: "flex",
   justifyContent: "flex-end",
+  alignItems: "center",
 
   li: {
     paddingLeft: "1rem",
@@ -24,32 +35,50 @@ const Ul = styled("ul", {
 })
 
 const Li = styled("li", {
-  variants: {
-    isActive: {
-      true: {
-        a: {
-          boxShadow: "0px 2px $grass6",
-        },
-      },
-      false: {
-        a: {
-          boxShadow: "none",
-        },
-      },
-    },
+  cursor: "pointer",
+
+  "&:hover": {
+    color: "$yellow12",
   },
 })
 
 const Nav = () => {
   const { asPath } = useRouter()
+  const { theme, setTheme } = useTheme()
+
+  console.log(asPath)
   return (
     <Container>
+      <div>
+        {asPath !== "/" && (
+          <Link href="/" passHref>
+            <Box
+              as="a"
+              css={{
+                fontSize: "10px",
+                display: "flex",
+                alignItems: "center",
+                span: { paddingLeft: "10px" },
+              }}
+            >
+              <ArrowLeftIcon /> <span>Home</span>
+            </Box>
+          </Link>
+        )}
+      </div>
       <Ul>
-        <Li isActive={asPath === "/"}>
-          <Link href="/">Me</Link>
+        <Li>
+          <a href="https://twitter.com/zeekrey_">
+            <TwitterLogoIcon />
+          </a>
         </Li>
-        <Li isActive={asPath === "/blog"}>
-          <Link href="/blog">Blog</Link>
+        <Li>
+          <a href="https://github.com/zeekrey">
+            <GitHubLogoIcon />
+          </a>
+        </Li>
+        <Li onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          {theme === "light" ? <MoonIcon /> : <SunIcon />}
         </Li>
       </Ul>
     </Container>

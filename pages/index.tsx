@@ -1,11 +1,93 @@
-import { serialize } from "next-mdx-remote/serialize"
-import { MDXRemote } from "next-mdx-remote"
+import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
 import PageLayout from "../layouts/PageLayout"
-
+import { styled } from "../stitches.config"
+import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils"
+import fs from "fs"
+import matter from "gray-matter"
+import path from "path"
+import PostPreview from "../components/PostPreview"
+import { Octokit } from "octokit"
 import Box from "../components/Box"
+import Project from "../components/Project"
 
-const Index = ({ source }) => {
+const sortByPublished = (a, b) =>
+  Date.parse(b.data.published) - Date.parse(a.data.published)
+
+const Headline = styled("div", {
+  paddingTop: "48px",
+
+  h1: {
+    fontSize: "72px",
+    lineHeight: "64px",
+    color: "$sand12",
+    margin: 0,
+  },
+
+  div: {
+    color: "$sand11",
+  },
+})
+
+const H2 = styled("h2", {
+  color: "$sand3",
+})
+
+const octokit = new Octokit({
+  auth: `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`,
+})
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = postFilePaths.map(filePath => {
+    const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
+    const { content, data } = matter(source)
+
+    return {
+      content,
+      data,
+      filePath,
+    }
+  })
+
+  const {
+    user: { pinnedItems },
+  } = await octokit.graphql(
+    `
+    {
+      user(login: "zeekrey") {
+        pinnedItems(first: 10) {
+          edges {
+            node {
+              ... on Repository {
+                id
+                name
+                createdAt
+                description
+                forkCount
+                primaryLanguage {
+                  name
+                  color
+                }
+                pushedAt
+                stargazers {
+                  totalCount
+                }
+                updatedAt
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    `
+  )
+
+  return { props: { posts: posts, projects: pinnedItems.edges } }
+}
+
+const Index = ({ posts, projects }) => {
   return (
     <>
       <NextSeo
@@ -33,8 +115,11 @@ const Index = ({ source }) => {
           cardType: "summary_large_image",
         }}
       />
-      <h1>Hey there, I&apos;m Christian 🐱‍🚀</h1>
-      <p>
+      <Headline>
+        <div>Hey there, I&apos;m</div>
+        <h1>zeekrey</h1>
+      </Headline>
+      <Box as="p" css={{ padding: "48px 0" }}>
         I&apos;m a selfthought developer focusing on stuff humans can use and
         interact with. I&apos;m currently into{" "}
         <a
@@ -64,86 +149,21 @@ const Index = ({ source }) => {
           Vercel
         </a>
         .
-      </p>
-      <div>
-        Twitter: <a href="https://twitter.com/zeekrey_">zeekrey_</a>
-      </div>
-      <div>
-        Github: <a href="https://github.com/zeekrey">zeekrey</a>
-      </div>
-      <p>Here are some of my projects:</p>
-
-      {/* Just Covid */}
-
-      <Box
-        css={{
-          paddingBottom: "1rem",
-          marginBottom: "1rem",
-          borderBottom: "1px solid $olive6",
-        }}
-      >
-        <Box css={{ display: "flex", justifyContent: "space-between" }}>
-          <Box as="h2" css={{ margin: 0 }}>
-            Just C😷vid
-          </Box>
-          <Box as="a" href="https://covid.krey.io/" css={{ height: "100%" }}>
-            https://covid.krey.io/
-          </Box>
-        </Box>
-        <p>
-          A static Covid-19 Dashboard to test dynamically generated
-          SEO-Thumbnails.
-        </p>
-        <ul>
-          <li>Statically generates all Germany cites.</li>
-          <li>
-            Create individual SEO-Thumbnails for every city on a daylie basis.
-          </li>
-          <li>PWA enabled.</li>
-        </ul>
       </Box>
-
-      {/* Teni */}
-
-      <Box
-        css={{
-          paddingBottom: "1rem",
-          marginBottom: "1rem",
-          borderBottom: "1px solid $olive6",
-        }}
-      >
-        <Box
-          css={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Box as="h2" css={{ margin: 0 }}>
-            Teini
-          </Box>
-          <Box as="a" href="https://teini.co/" css={{ height: "100%" }}>
-            https://teini.co/
-          </Box>
-        </Box>
-        <p>A simple backendless webshop using Stripe as payment gateway.</p>
-        <ul>
-          <li>
-            Backendless. Product data is stored is a file-datebase using
-            Prisma.js as ORM.
-          </li>
-          <li>
-            Uses Stripe as payment gateway and printful as fullfillment
-            solution.
-          </li>
-          <li>Based on Next.js and Vercel.</li>
-        </ul>
+      <H2>Blog</H2>
+      <Box as="ul" css={{ margin: 0, padding: 0, listStyle: "none" }}>
+        {posts.sort(sortByPublished).map(post => (
+          <PostPreview post={post} key={post.data.title} />
+        ))}
       </Box>
-
-      <details>
-        <summary>Want to know more about me?</summary>
-        <MDXRemote {...source} />
-      </details>
+      <H2>Open Source Projects</H2>
+      {projects
+        .sort(({ node: prevNode }, { node }) =>
+          prevNode.stargazers.totalCount < node.stargazers.totalCount ? 1 : -1
+        )
+        .map(({ node }) => (
+          <Project {...node} key={node.id} />
+        ))}
     </>
   )
 }
@@ -151,13 +171,3 @@ const Index = ({ source }) => {
 Index.Layout = PageLayout
 
 export default Index
-
-export const getStaticProps = async () => {
-  const source = `Born in **Leipzig, Germany**, I moved to Cologne to study computer science and economics when I was nineteen. That was a big move for me, but it seemed like the right thing to do. For years I had cultivated a passion for computers and math, and if building my career meant moving away from everything I had ever known, then I could do that. This is not to say, of course, that I made the decision lightly. Not at all! It just seemed to make sense to me on multiple levels.
-  
-  Since graduating, I have taken jobs at large companies for the most part. These jobs have all presented their own unique challenges, and as stressful as the pressure seemed in the beginning, they prepared me well to help organizations navigate all the most significant and common challenges in their industries. The most complex systems are the ones that call out to me most loudly. There is something about complexity that is endlessly attractive to me, and any time I can take an outdated, outmoded process and reshape it into something more modern and cutting-edge, I am eager to do so. An innovator at heart, I solve problems through creativity, thinking outside the box and pushing out of the realm of what is likely into the realm of what is possible. If all this sounds a little scary, that's because it is!
-
-I know how to create scaling IT system architectures, and entrepreneurship and web development are both passions of mine. I strive to grow and learn every day, and long-term, I want to apply my IT and entrepreneurship knowledge to make the world a better place. I am available for networking, public talk, presentation, start-up, and nonprofit opportunities that make good use of my skills.`
-  const mdxSource = await serialize(source)
-  return { props: { source: mdxSource } }
-}

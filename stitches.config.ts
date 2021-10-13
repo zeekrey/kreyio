@@ -1,16 +1,16 @@
 import { createStitches } from "@stitches/react"
-import { grass, olive } from "@radix-ui/colors"
+import { sand, sandDark, yellow, yellowDark } from "@radix-ui/colors"
 
 export const { styled, css, globalCss, keyframes, getCssText, createTheme } =
   createStitches({
     theme: {
       colors: {
-        ...grass,
-        ...olive,
+        ...sand,
+        ...yellow,
       },
       shadows: {
-        ...grass,
-        ...olive,
+        ...sandDark,
+        ...yellowDark,
       },
     },
     media: {
@@ -20,6 +20,17 @@ export const { styled, css, globalCss, keyframes, getCssText, createTheme } =
       xlarge: "(min-width: 1200px)",
     },
   })
+
+export const darkTheme = createTheme({
+  colors: {
+    ...sandDark,
+    ...yellowDark,
+  },
+  shadows: {
+    ...sand,
+    ...yellow,
+  },
+})
 
 export const globalStyles = globalCss({
   body: {
@@ -31,15 +42,15 @@ export const globalStyles = globalCss({
     border: "none",
     appearance: "none",
     textDecoration: "none",
-    boxShadow: "0px 2px $grass6",
+    boxShadow: "0px 1px $sand12",
     color: "inherit",
 
     "&:hover": {
-      color: "$grass8",
+      color: "$yellow10",
     },
 
     "&:active, &:focus": {
-      color: "$grass9",
+      color: "$yellow11",
     },
   },
   "p, a, li": {
@@ -69,3 +80,5 @@ export const globalStyles = globalCss({
     },
   },
 })
+
+export const Box = styled("div", {})

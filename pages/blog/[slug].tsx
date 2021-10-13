@@ -1,4 +1,5 @@
 import fs from "fs"
+import { styled } from "../../stitches.config"
 import matter from "gray-matter"
 import { MDXRemote } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
@@ -6,24 +7,20 @@ import Head from "next/head"
 import path from "path"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
-
 import CustomLink from "../../components/CustomLink"
 import PageLayout from "../../layouts/PageLayout"
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
 import { shikiRemarkPlugin } from "../../utils/mdxUtils"
 
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
 const components = {
   a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  // TestComponent: dynamic(() => import("../../components/TestComponent")),
   Head,
 }
+
+const H1 = styled("h1", {
+  fontSize: "45px",
+  padding: "32px 0",
+})
 
 const PostPage = ({ source, frontMatter }) => {
   const { asPath, basePath, pathname } = useRouter()
@@ -55,7 +52,7 @@ const PostPage = ({ source, frontMatter }) => {
         }}
       />
       <div>
-        <h1>{frontMatter.title}</h1>
+        <H1>{frontMatter.title}</H1>
         <main>
           <MDXRemote {...source} components={components} />
         </main>

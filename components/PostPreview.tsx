@@ -1,16 +1,45 @@
 import { styled } from "../stitches.config"
 import Link from "next/link"
 import Box from "./Box"
+import { ArrowRightIcon } from "@modulz/radix-icons"
 
 const Wrapper = styled("li", {
-  padding: "1rem 0",
+  borderBottom: "1px solid $sand2",
+  padding: "18px 10px",
+  borderRadius: "2px",
+  cursor: "pointer",
+
+  transition: "all .1s",
+
+  "&:last-of-type": {
+    borderBottom: "none",
+  },
+
+  "&:hover": {
+    background: "$sand2",
+    color: "$yellow10",
+
+    time: {
+      color: "$yellow10",
+    },
+  },
+
+  "&:active, &:focus": {
+    boxShadow: "0 0 0px 2px $sand11",
+  },
 })
 
-const H2 = styled("h2", {
-  marginBottom: "0.75rem",
-  marginTop: 0,
-  fontSize: "1.2rem",
+const PostingHeadline = styled("h2", {
+  margin: 0,
+  fontSize: "16px",
   flex: 1,
+  textAlign: "left",
+})
+
+const PostingTimestamp = styled("time", {
+  color: "$sand11",
+  paddingRight: "0.5rem",
+  width: "64px",
 })
 
 const PostPreview: React.FunctionComponent<{
@@ -31,14 +60,20 @@ const PostPreview: React.FunctionComponent<{
           <Box
             css={{
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "flex-start",
+              justifyContent: "space-between",
             }}
           >
-            <H2>{post.data.title}</H2>
-            <time dateTime={post.data.published}>{post.data.published}</time>
+            <Box css={{ width: "110px" }}>
+              <PostingTimestamp dateTime={post.data.published}>
+                {post.data.published}
+              </PostingTimestamp>
+            </Box>
+            <PostingHeadline>{post.data.title}</PostingHeadline>
+            <Box as="button" css={{ all: "unset" }}>
+              <ArrowRightIcon />
+            </Box>
           </Box>
-          <div>{post.data.description}</div>
         </Box>
       </Link>
     </Wrapper>
