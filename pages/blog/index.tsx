@@ -14,7 +14,7 @@ const sortByPublished = (a, b) =>
 const Blog = ({ posts }) => {
   return (
     <>
-      <h1>Blog 📖</h1>
+      <h1>Blog</h1>
       <Box as="ul" css={{ margin: 0, padding: 0, listStyle: "none" }}>
         {posts.sort(sortByPublished).map(post => (
           <PostPreview post={post} key={post.data.title} />

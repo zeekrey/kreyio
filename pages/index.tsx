@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
+import Link from "next/link"
 import PageLayout from "../layouts/PageLayout"
 import { styled } from "../stitches.config"
 import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils"
@@ -10,6 +11,7 @@ import PostPreview from "../components/PostPreview"
 import { Octokit } from "octokit"
 import Box from "../components/Box"
 import Project from "../components/Project"
+import Button from "../components/Button"
 
 const sortByPublished = (a, b) =>
   Date.parse(b.data.published) - Date.parse(a.data.published)
@@ -38,16 +40,18 @@ const octokit = new Octokit({
 })
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = postFilePaths.map(filePath => {
-    const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
-    const { content, data } = matter(source)
+  const posts = postFilePaths
+    .map(filePath => {
+      const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
+      const { content, data } = matter(source)
 
-    return {
-      content,
-      data,
-      filePath,
-    }
-  })
+      return {
+        content,
+        data,
+        filePath,
+      }
+    })
+    .slice(0, 5)
 
   const {
     user: { pinnedItems },
@@ -156,6 +160,14 @@ const Index = ({ posts, projects }) => {
           <PostPreview post={post} key={post.data.title} />
         ))}
       </Box>
+      <Box
+        css={{ display: "flex", justifyContent: "flex-end", paddingTop: "5px" }}
+      >
+        <Link href="/blog" passHref>
+          <Button as="a">See all</Button>
+        </Link>
+      </Box>
+
       <H2>Open Source Projects</H2>
       {projects
         .sort(({ node: prevNode }, { node }) =>
