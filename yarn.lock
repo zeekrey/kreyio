@@ -231,6 +231,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.13.10":
+  version "7.15.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
+  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.12.7", "@babel/template@^7.14.5":
   version "7.14.5"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.14.5.tgz#a9bc9d8b33354ff6e55a9c60d1109200a68974f4"
@@ -695,6 +702,37 @@
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/@radix-ui/colors/-/colors-0.1.7.tgz#055cdf104f92ae58a7d6a7f1c7327c635b90747f"
   integrity sha512-E6+ZPQ+FFn1/NZ4c/KRvZTu9KjC/MXrbJNETYs1HKe96gyxQivPu65FkhOsRnPigvJ0YJ9ZxYGxayqDNmaC1cQ==
+
+"@radix-ui/react-aspect-ratio@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-aspect-ratio/-/react-aspect-ratio-0.1.1.tgz#c198819da318b88682e093f13a5d2732dc7b0e05"
+  integrity sha512-yi/BQqbx5/RO9IoZmny0tDNM645YukytyFRo6Wj06e8aU5GA9O1pHXEQObEkXIALqhoWr+5SCxvmwcSkr/rbHw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-primitive" "0.1.1"
+
+"@radix-ui/react-compose-refs@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-compose-refs/-/react-compose-refs-0.1.0.tgz#cff6e780a0f73778b976acff2c2a5b6551caab95"
+  integrity sha512-eyclbh+b77k+69Dk72q3694OHrn9B3QsoIRx7ywX341U9RK1ThgQjMFZoPtmZNQTksXHLNEiefR8hGVeFyInGg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+
+"@radix-ui/react-primitive@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-0.1.1.tgz#98e64d9c3094df737d0f49f0e9e48ff2f44498b0"
+  integrity sha512-65GCHeDV/ikicXKR2rLSO6w+dyUQwSG2J1JD2qm4suK1259nTuRvPsPBrbhZpoXWQKj2drMZfhhclXVfzwW1Kw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-slot" "0.1.1"
+
+"@radix-ui/react-slot@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-0.1.1.tgz#9dbc2070ccc492847f7e43747b4847bc54786a76"
+  integrity sha512-deq3K7cCXQ+tWMZF2GKl3zGMcwVbyQDiMY/UcPI0Q1DDudRG2dWrEwcYbYajEelc07oOxzNyKpaXZLOpNxquuA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-compose-refs" "0.1.0"
 
 "@rushstack/eslint-patch@^1.0.6":
   version "1.0.6"

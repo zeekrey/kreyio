@@ -1,23 +1,17 @@
 import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
 import Image from "next/image"
-import Link from "next/link"
 import PageLayout from "../layouts/PageLayout"
 import { styled } from "../stitches.config"
 import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils"
 import fs from "fs"
 import matter from "gray-matter"
 import path from "path"
-import PostPreview from "../components/PostPreview"
 import { Octokit } from "octokit"
 import Box from "../components/Box"
-import Project from "../components/Project"
-import Button from "../components/Button"
 
 import TeiniImage from "../public/portfolio/teini.png"
-
-const sortByPublished = (a, b) =>
-  Date.parse(b.data.published) - Date.parse(a.data.published)
+import SterchImage from "../public/portfolio/sterch.png"
 
 const Headline = styled("div", {
   paddingTop: "48px",
@@ -106,12 +100,12 @@ const portfolioItems = [
     id: 2,
     name: "Sterch Shop",
     description:
-      "Online Shop für mittelständisches Unternehmen, welches Kennzeichnungstechnik verkauft.",
+      "A webshop for a medium sized company that sells marking technology. It's a headless storefront, querying the BigCommerce backend with GraphQl.",
     techStack: ["Nextjs", "React", "Typescript", "BigCommerce", "GraphQl"],
     duration: "6 Month",
     employment: "Freelancer",
     href: "https://shop.sterch.de/",
-    image: TeiniImage,
+    image: SterchImage,
   },
 ]
 
@@ -167,20 +161,25 @@ const PortfolioItem: React.FunctionComponent<{
     <Wrapper>
       <Box
         css={{
-          position: "relative",
-          width: "540px",
-          borderRadius: "2px",
-          overflow: "hidden",
-
           display: "none",
           "@medium": {
-            display: "inherit",
+            display: "grid",
+            placeContent: "center",
           },
         }}
       >
-        <Image src={image} layout="fill" objectFit="cover" />
+        <Box
+          css={{
+            width: 300,
+            borderRadius: 6,
+            overflow: "hidden",
+            boxShadow: `0 2px 10px $sand12`,
+          }}
+        >
+          <Image src={image} layout="responsive" />
+        </Box>
       </Box>
-      <Box css={{ "@medium": { padding: "20px 32px" } }}>
+      <Box css={{ flex: 2, "@medium": { padding: "20px 32px" } }}>
         <PortfolioName>{name}</PortfolioName>
         <PortfolioMeta as="a" css={{ cursor: "pointer" }} href={href}>
           {href}
@@ -188,7 +187,14 @@ const PortfolioItem: React.FunctionComponent<{
         <p>{description}</p>
         <PortfolioMeta>Duration: {duration}</PortfolioMeta>
         <PortfolioMeta>Employment: {employment}</PortfolioMeta>
-        <Box css={{ display: "flex", gap: "10px", paddingTop: "1em" }}>
+        <Box
+          css={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px",
+            paddingTop: "1em",
+          }}
+        >
           {techStack.map(tech => (
             <Tag>{tech}</Tag>
           ))}
@@ -262,7 +268,7 @@ const Portfolio = ({ posts, projects }) => {
         .
       </Box>
       {portfolioItems.map(portfolioItem => (
-        <PortfolioItem {...portfolioItem} />
+        <PortfolioItem key={portfolioItem.id} {...portfolioItem} />
       ))}
     </>
   )

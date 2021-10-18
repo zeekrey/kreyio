@@ -46,7 +46,6 @@ const Nav = () => {
   const { asPath } = useRouter()
   const { theme, setTheme } = useTheme()
 
-  console.log(asPath)
   return (
     <Container>
       <div>
