@@ -8,9 +8,9 @@ import path from "path"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
 import CustomLink from "../../components/CustomLink"
-import PageLayout from "../../layouts/PageLayout"
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
 import { shikiRemarkPlugin } from "../../utils/mdxUtils"
+import BlogLayout from "../../layouts/BlogLayout"
 
 const components = {
   a: CustomLink,
@@ -61,7 +61,7 @@ const PostPage = ({ source, frontMatter }) => {
   )
 }
 
-PostPage.Layout = PageLayout
+PostPage.Layout = BlogLayout
 
 export default PostPage
 
