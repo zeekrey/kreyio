@@ -1,11 +1,11 @@
 import fs from "fs"
 import matter from "gray-matter"
 import path from "path"
+import { Box } from "../../stitches.config"
 
 import PageLayout from "../../layouts/PageLayout"
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
 
-import Box from "../../components/Box"
 import PostPreview from "../../components/PostPreview"
 
 const sortByPublished = (a, b) =>
