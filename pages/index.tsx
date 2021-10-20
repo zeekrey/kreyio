@@ -88,7 +88,10 @@ export const getStaticProps: GetStaticProps = async () => {
   )
 
   return {
-    props: { posts: posts, projects: pinnedItems.edges },
+    props: {
+      posts: posts.filter(post => !post.data.isDraft),
+      projects: pinnedItems.edges,
+    },
     revalidate: 60 * 60, //Once per hour 60seconds * 60minutes
   }
 }

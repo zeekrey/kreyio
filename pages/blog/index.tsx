@@ -33,6 +33,8 @@ export function getStaticProps() {
     const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
     const { content, data } = matter(source)
 
+    console.log(data)
+
     return {
       content,
       data,
@@ -40,5 +42,6 @@ export function getStaticProps() {
     }
   })
 
-  return { props: { posts } }
+  // Remove the blog posts that a flagged with isDraft
+  return { props: { posts: posts.filter(post => !post.data.isDraft) } }
 }
