@@ -147,16 +147,7 @@ const PortfolioItem: React.FunctionComponent<{
   href: string
   employment: string
   duration: string
-}> = ({
-  id,
-  name,
-  description,
-  techStack,
-  image,
-  href,
-  duration,
-  employment,
-}) => {
+}> = ({ name, description, techStack, image, href, duration, employment }) => {
   return (
     <Wrapper>
       <Box
@@ -176,7 +167,7 @@ const PortfolioItem: React.FunctionComponent<{
             boxShadow: `0 2px 10px $sand12`,
           }}
         >
-          <Image src={image} layout="responsive" />
+          <Image src={image} layout="responsive" alt="A portfolio image" />
         </Box>
       </Box>
       <Box css={{ flex: 2, "@medium": { padding: "20px 32px" } }}>
@@ -196,7 +187,7 @@ const PortfolioItem: React.FunctionComponent<{
           }}
         >
           {techStack.map(tech => (
-            <Tag>{tech}</Tag>
+            <Tag key={tech}>{tech}</Tag>
           ))}
         </Box>
       </Box>
