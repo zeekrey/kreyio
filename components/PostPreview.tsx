@@ -1,6 +1,5 @@
-import { styled } from "../stitches.config"
+import { styled, Box } from "../stitches.config"
 import Link from "next/link"
-import Box from "./Box"
 import { ArrowRightIcon } from "@modulz/radix-icons"
 
 const Wrapper = styled("li", {
