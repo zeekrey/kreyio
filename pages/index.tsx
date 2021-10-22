@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps = async () => {
       posts: posts.filter(post => !post.data.isDraft),
       projects: pinnedItems.edges,
     },
-    revalidate: 60 * 60, //Once per hour 60seconds * 60minutes
+    // revalidate: 60 * 60, Once per hour 60seconds * 60minutes REMOVE THIS FOR NOW, DEPLOYMENT FAILS IF ENABLED
   }
 }
 
