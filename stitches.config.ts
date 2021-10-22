@@ -18,6 +18,7 @@ export const { styled, css, globalCss, keyframes, getCssText, createTheme } =
       medium: "(min-width: 768px)",
       large: "(min-width: 992px)",
       xlarge: "(min-width: 1200px)",
+      print: "print",
     },
   })
 

@@ -1,6 +1,6 @@
 import { NextPage } from "next"
 import type { AppProps } from "next/app"
-import React from "react"
+import React, { useEffect } from "react"
 import { globalStyles } from "../stitches.config"
 import { ThemeProvider } from "next-themes"
 import { darkTheme } from "../stitches.config"

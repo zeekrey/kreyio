@@ -14,6 +14,11 @@ const Container = styled("nav", {
   gridColumn: "1/12",
   display: "flex",
   justifyContent: "space-between",
+
+  "@print": {
+    display: "none",
+    visibility: "hidden",
+  },
 })
 
 const Ul = styled("ul", {
@@ -54,9 +59,11 @@ const Nav = () => {
             <Box
               as="a"
               css={{
+                all: "unset",
                 fontSize: "10px",
                 display: "flex",
                 alignItems: "center",
+                cursor: "pointer",
                 span: { paddingLeft: "10px" },
               }}
             >

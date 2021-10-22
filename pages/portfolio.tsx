@@ -11,6 +11,8 @@ import { Octokit } from "octokit"
 
 import TeiniImage from "../public/portfolio/teini.png"
 import SterchImage from "../public/portfolio/sterch.png"
+import { useCallback, useEffect, useRef } from "react"
+import { useTheme } from "next-themes"
 
 const Headline = styled("div", {
   paddingTop: "48px",
@@ -194,7 +196,34 @@ const PortfolioItem: React.FunctionComponent<{
   )
 }
 
-const Portfolio = ({ posts, projects }) => {
+const Portfolio = () => {
+  const { theme, setTheme } = useTheme()
+  const themeSwitchedFrom = useRef(false)
+
+  // Improve print: switch to light theme before print. Switch back after print.
+  useEffect(() => {
+    const handleBeforePrint = () => {
+      if (theme === "dark") {
+        themeSwitchedFrom.current = true
+        setTheme("light")
+      } else {
+        themeSwitchedFrom.current = false
+      }
+    }
+
+    const handleAfterPrint = () => {
+      if (themeSwitchedFrom.current) setTheme("dark")
+    }
+
+    window.addEventListener("beforeprint", handleBeforePrint)
+    window.addEventListener("afterprint", handleAfterPrint)
+
+    return () => {
+      window.removeEventListener("beforeprint", handleBeforePrint)
+      window.addEventListener("afterprint", handleAfterPrint)
+    }
+  }, [theme, setTheme])
+
   return (
     <>
       <NextSeo
