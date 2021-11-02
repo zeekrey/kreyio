@@ -108,14 +108,14 @@ const Index = ({ posts, projects }) => {
           url: "https://krey.io",
           title: "Christian Krey",
           description: "Something about me and the things I'm building.",
-          // images: [
-          //   {
-          //     url: `https://krey.io${asPath}.png`,
-          //     width: 1012,
-          //     height: 506,
-          //     alt: "Og Image Alt",
-          //   },
-          // ],
+          images: [
+            {
+              url: `https://krey.io/thumbnail.png`,
+              width: 1012,
+              height: 506,
+              alt: "https://krey.io/",
+            },
+          ],
           site_name: "krey.io",
         }}
         twitter={{
