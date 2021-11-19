@@ -46,7 +46,7 @@ const Project: React.FunctionComponent<{
   createdAt: string
   description: string
   forkCount: number
-  primaryLanguage: {
+  primaryLanguage?: {
     name: string
     color: string
   }
@@ -67,7 +67,7 @@ const Project: React.FunctionComponent<{
         <p>{description}</p>
       </div>
       <div>
-        <Tag>{primaryLanguage.name}</Tag>
+        {primaryLanguage && <Tag>{primaryLanguage.name}</Tag>}
         <Box
           css={{
             display: "flex",
