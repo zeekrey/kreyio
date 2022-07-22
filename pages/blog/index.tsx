@@ -33,7 +33,7 @@ export function getStaticProps() {
     const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
     const { content, data } = matter(source)
 
-    console.log(data)
+    // console.log(data)
 
     return {
       content,

@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import PageLayout from "../layouts/PageLayout"
 import { styled, Box } from "../stitches.config"
 import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils"

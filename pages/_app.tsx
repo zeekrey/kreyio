@@ -9,7 +9,7 @@ import * as Fathom from "fathom-client"
 const MyApp = ({
   Component,
   pageProps,
-}: AppProps & { Component: { Layout?: React.FunctionComponent } }) => {
+}: AppProps & { Component: { Layout?: React.FC<{children: React.ReactNode}> }}) => {
   const router = useRouter()
   //   Apply page layout
   const Layout = Component.Layout || (({ children }) => <>{children}</>)

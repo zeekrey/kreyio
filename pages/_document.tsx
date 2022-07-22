@@ -1,5 +1,4 @@
 import React from "react"
-// eslint-disable-next-line
 import NextDocument, { Html, Head, Main, NextScript } from "next/document"
 import { getCssText } from "../stitches.config"
 

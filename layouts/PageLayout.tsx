@@ -25,7 +25,7 @@ const Body = styled("main", {
   color: "$sand12",
 })
 
-const PageLayout: React.FunctionComponent = ({ children }) => (
+const PageLayout: React.FunctionComponent<{children: React.ReactNode}> = ({ children }) => (
   <Container>
     <Body>
       <Nav />

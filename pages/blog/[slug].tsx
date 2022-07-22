@@ -78,10 +78,11 @@ export const getStaticProps = async ({ params }) => {
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [[shikiRemarkPlugin, { highlighter }]],
-      rehypePlugins: [],
+      // remarkPlugins: [[shikiRemarkPlugin, { highlighter }]],
+      // rehypePlugins: [],
     },
     scope: data,
+    // parseFrontmatter: true,
   })
 
   return {

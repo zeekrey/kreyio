@@ -1,5 +1,4 @@
 import { styled } from "../stitches.config"
-
 import Nav from "../components/Nav"
 
 const Container = styled("div", {
@@ -17,7 +16,7 @@ const Body = styled("main", {
   color: "$sand12",
 })
 
-const BlogLayout: React.FunctionComponent = ({ children }) => (
+const BlogLayout: React.FunctionComponent<{children: React.ReactNode}> = ({ children }) => (
   <Container>
     <Body>
       <Nav />
