@@ -1,0 +1,159 @@
+---
+title: draft
+description: Idraft.
+published: "2021-08-01"
+isDraft: true
+---
+
+CLI (Command Line Interface) Tools are so much versatile and almost every project needs one for different tasks. To get you started building a tiny CLI with Node.js, here are some basic steps.
+
+We're going to build a tiny time tracker. One that you can start at you workday and stop, once your workday is over. It should be possible to set a pause. The CLI surface should look like the following:
+
+```shell
+node ./zeitig.js start #start the timer, a --file flag is optional
+# Let's get the day started! 🌞
+node ./zeitig.js stop
+# You did it! You've worked 7hours and 52minutes! ⚡
+node ./zeitig.js pause
+# Make some coffee or round around the house. 💨
+```
+
+Disclaimer: If you want to dig deep into the CLI stuff, definitly read this: https://clig.dev/ My knowledge and the following is based on this awesome piece of content.
+
+## Parse arguments and flags
+
+A CLI depends on arguments and flags. Arguments are just strings following the command or cli binary:
+
+```shell
+node ./mycli.js thisIsAnArgument
+```
+
+In addition to argumetns there are also flags. Flags are are strings like "--flag", often with a shorthand "-f", followed by the acutal input string:
+
+```shell
+node ./mycli.js --flag theFlag
+```
+
+With these two incredients we can see how almost any popluar cli looks like:
+
+```shell
+node ./mycli.js thisIsAnArgument --flag theFlag
+```
+
+The most prominent flag is the `--help` (shorthand: `-h`) flag. Calling the cli with this flag prints out instructions on how to use the cli.
+
+## Building the basics
+
+Implementing this basics - argument and flag parsing, showing a help text - shouldn't be done individually. Instead, a robust and well testes parsing library should be used. There are a lot, some of them really mighty. I'll use Meow - a tiny "CLI app helper": https://github.com/sindresorhus/meow
+
+In the end, we want to run our node script by calling its name from every location in the terminal. To do this, we need to some steps. Let's do them first and I'll explain them afterwards:
+
+1. `npm init -y`
+2. Add the following things to the `package.json`:
+
+```json
+"main": ".bin/main.js",
+"type": "module",
+"bin": {
+	"zeitig": "./.bin/main.js"
+},
+```
+
+3. Add a folder called `.bin`
+4. Add a files called `main.js` within the `.bin` folder
+
+The only interesting part are the changes to the `package.json`:
+`"main": ".bin/main.js"`: It is good practice to put the actual artefact or let's say your final product in a binaries (bin) folder. The dot in front of the folder usally means, that this folder should not be commited (you can easily add this to your .gitignore file).
+`"type": "module"`: Tells node that we would like to use fance `import/export` statements instead of those rusty `require` stuff.
+`"bin": ...`: Tells npm that our binaries life in this folder.
+
+Now let's add something we can actually call. For this, let's installe meow and copy its example code and implements a tiny tweak:
+
+```javascript
+#!/usr/bin/env node
+// .bin/main.js
+
+import meow from "meow"
+
+const foo = (input, flags) => console.log(input)
+
+const cli = meow(
+  `
+
+ Usage
+
+ $ foo <input>
+
+  
+
+ Options
+
+ --rainbow, -r  Include a rainbow
+
+  
+
+ Examples
+
+ $ foo unicorns --rainbow
+
+ 🌈 unicorns 🌈
+
+`,
+
+  {
+    importMeta: import.meta,
+
+    flags: {
+      rainbow: {
+        type: "boolean",
+
+        alias: "r",
+      },
+    },
+  }
+)
+
+/*
+
+{
+
+ input: ['unicorns'],
+
+ flags: {rainbow: true},
+
+ ...
+
+}
+
+*/
+
+foo(cli.input[0], cli.flags)
+```
+
+Now, call this file:
+
+```shell
+node .bin/main.js hello
+```
+
+This should print out `hello`. This first line in the file is not really javascript. It is called shebang and tells the OS, that this file should be executed with `node`. Unfortunatelly this only works in Unix systems. In all other systems you need to explitly call your CLI with `node ./bin/main.js`
+
+Cool! Now we don't want to call `./bin/main.js` all the time we can use npm to create a symlink:
+
+```bash
+npm link
+```
+
+After this you should be able to call your CLI like this:
+
+```shell
+zeitig hello # hello
+```
+
+Yeah! That was fun. Now to the not so funny part - well, it is still fun, this can be tricky some times. Typesaftyness is some awesome stuff, that's why I'll add typescript to the game. For this we need Typescript.
+
+type in package.json muss 'module ' sein, damit esm imports verwendet werden kkönnen
+
+```javascript
+yarn add link:./../your-project
+```
