@@ -9,8 +9,8 @@ import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
 import CustomLink from "../../components/CustomLink"
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
-import { shikiRemarkPlugin } from "../../utils/mdxUtils"
 import BlogLayout from "../../layouts/BlogLayout"
+import rehypePrettyCode from 'rehype-pretty-code'
 
 const components = {
   a: CustomLink,
@@ -71,18 +71,31 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data } = matter(source)
 
-  const shiki = await import("shiki")
-  const highlighter = await shiki.getHighlighter({
-    theme: "github-dark",
-  })
+
+
+  const options = {
+    theme: 'github-dark',
+    onVisitLine(node) {
+      // Prevent lines from collapsing in `display: grid` mode, and
+      // allow empty lines to be copy/pasted
+      if (node.children.length === 0) {
+        node.children = [{type: 'text', value: ' '}];
+      }
+    },
+    // Feel free to add classNames that suit your docs
+    // onVisitHighlightedLine(node) {
+    //   node.properties.className.push('highlighted');
+    // },
+    // onVisitHighlightedWord(node) {
+    //   node.properties.className = ['word'];
+    // },
+  };
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      // remarkPlugins: [[shikiRemarkPlugin, { highlighter }]],
-      // rehypePlugins: [],
+      rehypePlugins: [[rehypePrettyCode, options]],
     },
     scope: data,
-    // parseFrontmatter: true,
   })
 
   return {
