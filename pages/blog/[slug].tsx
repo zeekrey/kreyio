@@ -107,6 +107,13 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: [],
+      fallback: 'blocking'
+    }
+  }
+
   const paths = postFilePaths
     // Remove file extensions for page paths
     .map(path => path.replace(/\.mdx?$/, ""))
