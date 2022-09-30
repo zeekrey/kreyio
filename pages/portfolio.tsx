@@ -49,7 +49,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const {
     user: { pinnedItems },
-  } = await octokit.graphql(
+  } = await octokit.graphql<{ user: { pinnedItems: { edges: unknown } } }>(
     `
     {
       user(login: "zeekrey") {

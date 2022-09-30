@@ -9,6 +9,7 @@ import matter from "gray-matter"
 import path from "path"
 import PostPreview from "../components/PostPreview"
 import { Octokit } from "octokit"
+import type { GraphQlQueryResponseData } from "@octokit/graphql"
 import Project from "../components/Project"
 import Button from "../components/Button"
 
@@ -54,7 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const {
     user: { pinnedItems },
-  } = await octokit.graphql(
+  } = await octokit.graphql<{ user: { pinnedItems: { edges: unknown } } }>(
     `
     {
       user(login: "zeekrey") {
@@ -126,7 +127,7 @@ const Index = ({ posts, projects }) => {
       />
       <Headline>
         <div>Hey there, I&apos;m</div>
-        <h1>zeekrey</h1>
+        <h1>Christian 👋🏻</h1>
       </Headline>
       <Box as="p" css={{ padding: "48px 0" }}>
         I&apos;m a frontend developer focusing on stuff humans can use and
