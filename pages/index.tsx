@@ -2,7 +2,6 @@ import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
 import Link from "next/link"
 import PageLayout from "../layouts/PageLayout"
-import { styled, Box } from "../stitches.config"
 import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils"
 import fs from "fs"
 import matter from "gray-matter"
@@ -15,25 +14,6 @@ import Button from "../components/Button"
 
 const sortByPublished = (a, b) =>
   Date.parse(b.data.published) - Date.parse(a.data.published)
-
-const Headline = styled("div", {
-  paddingTop: "48px",
-
-  h1: {
-    fontSize: "72px",
-    lineHeight: "64px",
-    color: "$sand12",
-    margin: 0,
-  },
-
-  div: {
-    color: "$sand11",
-  },
-})
-
-const H2 = styled("h2", {
-  color: "$sand3",
-})
 
 const octokit = new Octokit({
   auth: process.env.github_token,
@@ -125,11 +105,14 @@ const Index = ({ posts, projects }) => {
           cardType: "summary_large_image",
         }}
       />
-      <Headline>
+      {/* Headline */}
+      <div className="pt-16">
         <div>Hey there, I&apos;m</div>
-        <h1>Christian 👋🏻</h1>
-      </Headline>
-      <Box as="p" css={{ padding: "48px 0" }}>
+        <h1 className="text-3xl leading-normal text-blue-500 m-0">
+          Christian 👋🏻
+        </h1>
+      </div>
+      <div className="px-16">
         I&apos;m a frontend developer focusing on stuff humans can use and
         interact with. I&apos;m currently into{" "}
         <a
@@ -159,22 +142,20 @@ const Index = ({ posts, projects }) => {
           Vercel
         </a>
         .
-      </Box>
-      <H2>Blog</H2>
-      <Box as="ul" css={{ margin: 0, padding: 0, listStyle: "none" }}>
+      </div>
+      <h2>Blog</h2>
+      <ul className="m-0 p-0 list-none">
         {posts.sort(sortByPublished).map(post => (
           <PostPreview post={post} key={post.data.title} />
         ))}
-      </Box>
-      <Box
-        css={{ display: "flex", justifyContent: "flex-end", paddingTop: "5px" }}
-      >
+      </ul>
+      <div className="flex content-end pt-2">
         <Link href="/blog" passHref>
           <Button as="a">See all</Button>
         </Link>
-      </Box>
+      </div>
 
-      <H2>Open Source Projects</H2>
+      <h2>Open Source Projects</h2>
       {projects
         .sort(({ node: prevNode }, { node }) =>
           prevNode.stargazers.totalCount < node.stargazers.totalCount ? 1 : -1

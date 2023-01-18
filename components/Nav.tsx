@@ -1,4 +1,3 @@
-import { styled, Box } from "../stitches.config"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useTheme } from "next-themes"
@@ -10,84 +9,72 @@ import {
   TwitterLogoIcon,
 } from "@modulz/radix-icons"
 
-const Container = styled("nav", {
-  gridColumn: "1/12",
-  display: "flex",
-  justifyContent: "space-between",
+// const Ul = styled("ul", {
+//   padding: 0,
+//   margin: 0,
+//   appearance: "none",
+//   listStyle: "none",
+//   display: "flex",
+//   justifyContent: "flex-end",
+//   alignItems: "center",
 
-  "@print": {
-    display: "none",
-    visibility: "hidden",
-  },
-})
+//   li: {
+//     paddingLeft: "1rem",
+//   },
 
-const Ul = styled("ul", {
-  padding: 0,
-  margin: 0,
-  appearance: "none",
-  listStyle: "none",
-  display: "flex",
-  justifyContent: "flex-end",
-  alignItems: "center",
+//   a: {
+//     boxShadow: "none",
+//   },
+// })
 
-  li: {
-    paddingLeft: "1rem",
-  },
+// const Li = styled("li", {
+//   cursor: "pointer",
 
-  a: {
-    boxShadow: "none",
-  },
-})
-
-const Li = styled("li", {
-  cursor: "pointer",
-
-  "&:hover": {
-    color: "$yellow12",
-  },
-})
+//   "&:hover": {
+//     color: "$yellow12",
+//   },
+// })
 
 const Nav = () => {
   const { asPath } = useRouter()
   const { theme, setTheme } = useTheme()
 
   return (
-    <Container>
+    <nav className="col-start-1 col-end-12 flex justify-center">
       <div>
         {asPath !== "/" && (
           <Link href="/" passHref>
-            <Box
-              as="a"
-              css={{
-                all: "unset",
-                fontSize: "10px",
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-                span: { paddingLeft: "10px" },
-              }}
+            <div
+              // css={{
+              //   all: "unset",
+              //   fontSize: "10px",
+              //   display: "flex",
+              //   alignItems: "center",
+              //   cursor: "pointer",
+              //   span: { paddingLeft: "10px" },
+              // }}
             >
               <ArrowLeftIcon /> <span>Home</span>
-            </Box>
+            </div>
           </Link>
         )}
       </div>
-      <Ul>
-        <Li>
+      <ul>
+        <li>
           <a href="https://twitter.com/zeekrey_">
             <TwitterLogoIcon />
           </a>
-        </Li>
-        <Li>
+        </li>
+        <li>
           <a href="https://github.com/zeekrey">
             <GitHubLogoIcon />
           </a>
-        </Li>
-        <Li onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+        </li>
+        <li onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
           {theme === "light" ? <MoonIcon /> : <SunIcon />}
-        </Li>
-      </Ul>
-    </Container>
+        </li>
+      </ul>
+    </nav>
   )
 }
 

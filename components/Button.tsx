@@ -1,20 +1,10 @@
-import { styled } from "../stitches.config"
-
-const Button = styled("button", {
-  all: "unset",
-  padding: "8px 10px",
-  background: "$sand1",
-  borderRadius: "4px",
-  cursor: "pointer",
-
-  "&:hover": {
-    background: "$sand2",
-    color: '$yellow10'
-  },
-
-  "&:active, &:focus": {
-    boxShadow: "0 0 0px 2px $sand11",
-  },
-})
+const Button = ({ children, ...props }) => (
+  <button
+    className="appearance-none px-1 py-2 bg-slate-500 border-r-4 cursor-pointer hover:bg-slate-600 hover:text-cyan-600 active:shadow-sm focus:shadow-sm"
+    {...props}
+  >
+    {children}
+  </button>
+)
 
 export default Button

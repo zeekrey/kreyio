@@ -1,44 +1,4 @@
-import { styled, Box } from "../stitches.config"
 import { StarIcon, CommitIcon } from "@modulz/radix-icons"
-
-const Wrapper = styled("a", {
-  all: "unset",
-  display: "flex",
-  justifyContent: "space-between",
-  padding: "10px",
-  borderRadius: "2px",
-  cursor: "pointer",
-  transition: "all .1s",
-
-  "&:last-of-type": {
-    borderBottom: "none",
-  },
-
-  "&:hover": {
-    background: "$sand2",
-    color: "inherit",
-  },
-
-  "&:active, &:focus": {
-    boxShadow: "0 0 0px 2px $sand11",
-  },
-})
-
-const Headline = styled("div", {
-  small: {
-    color: "$sand9",
-  },
-
-  strong: {},
-})
-
-const Tag = styled("div", {
-  padding: "5px 12px",
-  background: "$yellow4",
-  color: "$yellow12",
-  borderRadius: "2px",
-  fontSize: "12px",
-})
 
 const Project: React.FunctionComponent<{
   id: string
@@ -58,49 +18,35 @@ const Project: React.FunctionComponent<{
   url: string
 }> = ({ name, description, primaryLanguage, forkCount, stargazers, url }) => {
   return (
-    <Wrapper href={url}>
+    <a
+      href={url}
+      className="appearance-none flex justify-between p-2 border-r-2 cursor-pointer transition-all last-of-type:border-b-0 hover:bg-slate-200 text-slate-300 active:shadow-sm focus:shadow-sm"
+    >
       <div>
-        <Headline>
+        <div>
           <small>zeekrey/</small>
           <strong>{name}</strong>
-        </Headline>
+        </div>
         <p>{description}</p>
       </div>
       <div>
-        {primaryLanguage && <Tag>{primaryLanguage.name}</Tag>}
-        <Box
-          css={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: "15px",
-            paddingTop: "10px",
-          }}
-        >
-          <Box
-            css={{
-              display: "grid",
-              placeContent: "center",
-              textAlign: "center",
-              gap: "5px",
-            }}
-          >
+        {primaryLanguage && (
+          <div className="px-2 py-8 bg-slate-400 text-gray-500 border-r-2 text-sm">
+            {primaryLanguage.name}
+          </div>
+        )}
+        <div className="flex justify-end gap-4 pt-2">
+          <div className="flex content-center text-center gap-4">
             <CommitIcon />
             <small>{forkCount}</small>
-          </Box>
-          <Box
-            css={{
-              display: "grid",
-              placeContent: "center",
-              textAlign: "center",
-              gap: "5px",
-            }}
-          >
+          </div>
+          <div className="grid content-center text-center gap-4">
             <StarIcon />
             <small>{stargazers.totalCount}</small>
-          </Box>
-        </Box>
+          </div>
+        </div>
       </div>
-    </Wrapper>
+    </a>
   )
 }
 
