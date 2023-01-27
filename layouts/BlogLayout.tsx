@@ -3,11 +3,13 @@ import Nav from "../components/Nav"
 const BlogLayout: React.FunctionComponent<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <div className="w-screen h-screen bg-slate-200">
-    <main className="max-w-xl px-7 py-5 m-auto leading-relaxed text-cyan-600">
-      <Nav />
-      {children}
-    </main>
+  <div className="overflow-hidden">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="relative">
+        <Nav />
+        <main className="leading-relaxed">{children}</main>
+      </div>
+    </div>
   </div>
 )
 

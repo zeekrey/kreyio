@@ -26,11 +26,13 @@ import Nav from "../components/Nav"
 const PageLayout: React.FunctionComponent<{ children: React.ReactNode }> = ({
   children,
 }) => (
-  <div className="grid min-h-screen grid-cols-12">
-    <main className="p-8 col-start-1 col-end-13 md:col-start-3 md:col-end-11 lg:col-start-3 lg:col-end-10">
-      <Nav />
-      {children}
-    </main>
+  <div className="overflow-hidden">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="relative">
+        <Nav />
+        <main>{children}</main>
+      </div>
+    </div>
   </div>
 )
 

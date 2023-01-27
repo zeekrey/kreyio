@@ -20,18 +20,18 @@ const Project: React.FunctionComponent<{
   return (
     <a
       href={url}
-      className="appearance-none flex justify-between p-2 border-r-2 cursor-pointer transition-all last-of-type:border-b-0 hover:bg-slate-200 text-slate-300 active:shadow-sm focus:shadow-sm"
+      className="appearance-none flex justify-between py-2 cursor-pointer transition-all active:shadow-sm focus:shadow-sm"
     >
       <div>
         <div>
-          <small>zeekrey/</small>
-          <strong>{name}</strong>
+          <small className="text-xs text-zinc-700">zeekrey/</small>
+          <strong className="text-xs text-zinc-300">{name}</strong>
         </div>
-        <p>{description}</p>
+        <p className="py-3">{description}</p>
       </div>
       <div>
         {primaryLanguage && (
-          <div className="px-2 py-8 bg-slate-400 text-gray-500 border-r-2 text-sm">
+          <div className="py-1 rounded bg-zinc-800 text-zinc-400 text-xs text-center">
             {primaryLanguage.name}
           </div>
         )}
@@ -40,7 +40,7 @@ const Project: React.FunctionComponent<{
             <CommitIcon />
             <small>{forkCount}</small>
           </div>
-          <div className="grid content-center text-center gap-4">
+          <div className="flex items-center content-center text-center gap-4">
             <StarIcon />
             <small>{stargazers.totalCount}</small>
           </div>

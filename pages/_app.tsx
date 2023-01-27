@@ -3,6 +3,8 @@ import { useRouter } from "next/router"
 import React, { useEffect } from "react"
 import * as Fathom from "fathom-client"
 
+import "../styles/globals.css"
+
 const MyApp = ({
   Component,
   pageProps,

@@ -1,5 +1,4 @@
 import fs from "fs"
-import { styled } from "../../stitches.config"
 import matter from "gray-matter"
 import { MDXRemote } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
@@ -7,20 +6,15 @@ import Head from "next/head"
 import path from "path"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
-import CustomLink from "../../components/CustomLink"
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
 import BlogLayout from "../../layouts/BlogLayout"
-import rehypePrettyCode from 'rehype-pretty-code'
+import rehypePrettyCode from "rehype-pretty-code"
+import Link from "next/link"
 
 const components = {
-  a: CustomLink,
+  a: Link,
   Head,
 }
-
-const H1 = styled("h1", {
-  fontSize: "45px",
-  padding: "32px 0",
-})
 
 const PostPage = ({ source, frontMatter }) => {
   const { asPath, basePath, pathname } = useRouter()
@@ -52,7 +46,7 @@ const PostPage = ({ source, frontMatter }) => {
         }}
       />
       <div>
-        <H1>{frontMatter.title}</H1>
+        <h1>{frontMatter.title}</h1>
         <main>
           <MDXRemote {...source} components={components} />
         </main>
@@ -71,15 +65,13 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data } = matter(source)
 
-
-
   const options = {
-    theme: 'github-dark',
+    theme: "github-dark",
     onVisitLine(node) {
       // Prevent lines from collapsing in `display: grid` mode, and
       // allow empty lines to be copy/pasted
       if (node.children.length === 0) {
-        node.children = [{type: 'text', value: ' '}];
+        node.children = [{ type: "text", value: " " }]
       }
     },
     // Feel free to add classNames that suit your docs
@@ -89,7 +81,7 @@ export const getStaticProps = async ({ params }) => {
     // onVisitHighlightedWord(node) {
     //   node.properties.className = ['word'];
     // },
-  };
+  }
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
@@ -110,7 +102,7 @@ export const getStaticPaths = async () => {
   if (process.env.SKIP_BUILD_STATIC_GENERATION) {
     return {
       paths: [],
-      fallback: 'blocking'
+      fallback: "blocking",
     }
   }
 

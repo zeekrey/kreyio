@@ -107,12 +107,12 @@ const Index = ({ posts, projects }) => {
       />
       {/* Headline */}
       <div className="pt-16">
-        <div>Hey there, I&apos;m</div>
-        <h1 className="text-3xl leading-normal text-blue-500 m-0">
+        <div className="text-zinc-400">Hey there, I&apos;m</div>
+        <h1 className="text-6xl leading-normal text-zinc-50 m-0 font-bold">
           Christian 👋🏻
         </h1>
       </div>
-      <div className="px-16">
+      <p className="py-16">
         I&apos;m a frontend developer focusing on stuff humans can use and
         interact with. I&apos;m currently into{" "}
         <a
@@ -142,27 +142,36 @@ const Index = ({ posts, projects }) => {
           Vercel
         </a>
         .
-      </div>
-      <h2>Blog</h2>
-      <ul className="m-0 p-0 list-none">
-        {posts.sort(sortByPublished).map(post => (
-          <PostPreview post={post} key={post.data.title} />
-        ))}
-      </ul>
-      <div className="flex content-end pt-2">
-        <Link href="/blog" passHref>
-          <Button as="a">See all</Button>
-        </Link>
-      </div>
+      </p>
 
-      <h2>Open Source Projects</h2>
-      {projects
-        .sort(({ node: prevNode }, { node }) =>
-          prevNode.stargazers.totalCount < node.stargazers.totalCount ? 1 : -1
-        )
-        .map(({ node }) => (
-          <Project {...node} key={node.id} />
-        ))}
+      {/* Blog */}
+      <section className="py-6">
+        <h2 className="font-semibold text-zinc-700 text-xl my-4">Blog</h2>
+        <ul className="m-0 p-0 list-none">
+          {posts.sort(sortByPublished).map(post => (
+            <PostPreview post={post} key={post.data.title} />
+          ))}
+        </ul>
+        <div className="float-right pt-2">
+          <Link href="/blog" passHref>
+            <Button as="a">See all</Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Repos */}
+      <section className="py-6">
+        <h2 className="font-semibold text-zinc-700 text-xl my-4">
+          Open Source Projects
+        </h2>
+        {projects
+          .sort(({ node: prevNode }, { node }) =>
+            prevNode.stargazers.totalCount < node.stargazers.totalCount ? 1 : -1
+          )
+          .map(({ node }) => (
+            <Project {...node} key={node.id} />
+          ))}
+      </section>
     </>
   )
 }
