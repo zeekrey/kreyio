@@ -1,7 +1,6 @@
 import fs from "fs"
 import matter from "gray-matter"
 import path from "path"
-import { Box } from "../../stitches.config"
 
 import PageLayout from "../../layouts/PageLayout"
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
@@ -15,11 +14,11 @@ const Blog = ({ posts }) => {
   return (
     <>
       <h1>Blog</h1>
-      <Box as="ul" css={{ margin: 0, padding: 0, listStyle: "none" }}>
+      <div>
         {posts.sort(sortByPublished).map(post => (
           <PostPreview post={post} key={post.data.title} />
         ))}
-      </Box>
+      </div>
     </>
   )
 }
