@@ -1,27 +1,5 @@
-// import { styled } from "../stitches.config"
-
 import Nav from "../components/Nav"
-
-// const Container = styled("div", {
-//   display: "grid",
-//   backgroundColor: "$sand1",
-// })
-
-// const Body = styled("main", {
-//   padding: "2rem",
-
-//   gridColumn: "1/13",
-
-//   "@medium": {
-//     gridColumn: "3/11",
-//   },
-
-//   "@large": {
-//     gridColumn: "3/10",
-//   },
-
-//   color: "$sand12",
-// })
+import Footer from "../components/Footer"
 
 const PageLayout: React.FunctionComponent<{ children: React.ReactNode }> = ({
   children,
@@ -31,6 +9,7 @@ const PageLayout: React.FunctionComponent<{ children: React.ReactNode }> = ({
       <div className="relative">
         <Nav />
         <main>{children}</main>
+        <Footer />
       </div>
     </div>
   </div>

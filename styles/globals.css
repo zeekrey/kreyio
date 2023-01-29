@@ -2,10 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Work Sans", sans-serif;
+}
+
+#blog h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+#blog h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#blog h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#blog li {
+  list-style-type: circle;
+  margin-inline-start: 20px;
+}
+
+#blog li:first-of-type {
+  margin-block-start: 14px;
+}
+
+#blog li:last-of-type {
+  margin-block-end: 14px;
+}
+
 pre {
   padding: 0.75rem;
+  margin-top: 12px;
+  margin-bottom: 12px;
   border-radius: 0.3rem;
   overflow-y: auto;
+  border: 1px solid #27272a;
+  font-size: 12px;
 }
 
 code {

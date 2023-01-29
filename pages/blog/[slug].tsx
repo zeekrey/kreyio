@@ -45,11 +45,9 @@ const PostPage = ({ source, frontMatter }) => {
           cardType: "summary_large_image",
         }}
       />
-      <div>
+      <div id="blog">
         <h1>{frontMatter.title}</h1>
-        <main>
-          <MDXRemote {...source} components={components} />
-        </main>
+        <MDXRemote {...source} components={components} />
       </div>
     </>
   )
