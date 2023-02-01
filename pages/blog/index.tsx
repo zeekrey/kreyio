@@ -13,12 +13,14 @@ const sortByPublished = (a, b) =>
 const Blog = ({ posts }) => {
   return (
     <>
-      <h1>Blog</h1>
-      <div>
+      <h1 className="text-6xl leading-normal text-zinc-50 m-0 font-bold">
+        Blog
+      </h1>
+      <ul>
         {posts.sort(sortByPublished).map(post => (
           <PostPreview post={post} key={post.data.title} />
         ))}
-      </div>
+      </ul>
     </>
   )
 }

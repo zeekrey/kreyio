@@ -20,9 +20,11 @@
   margin-bottom: 10px;
 }
 
-#blog h2 {
+#blog h3 {
   font-size: 22px;
   font-weight: 600;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 #blog li {
