@@ -10,13 +10,20 @@ import { projectFilePaths, PROJECTS_PATH } from "../../utils/mdxUtils"
 import BlogLayout from "../../layouts/BlogLayout"
 import rehypePrettyCode from "rehype-pretty-code"
 import Link from "next/link"
+import type { Project } from "../../components/ProjectPreview"
 
 const components = {
   a: Link,
   Head,
 }
 
-const ProjectPage = ({ source, frontMatter }) => {
+const ProjectPage = ({
+  source,
+  frontMatter,
+}: {
+  source: any
+  frontMatter: Project
+}) => {
   const { asPath, basePath, pathname } = useRouter()
   return (
     <>
@@ -46,6 +53,15 @@ const ProjectPage = ({ source, frontMatter }) => {
         }}
       />
       <div id="blog">
+        {frontMatter.documentLanguage === "de" && (
+          <div className="py-2 px-3 rounded bg-zinc-800 text-sm">
+            <span className="mr-2">🇩🇪</span>
+            <span>
+              Unfortunately, this document is currently only available in
+              German.
+            </span>
+          </div>
+        )}
         <h1>{frontMatter.title}</h1>
         <MDXRemote {...source} components={components} />
       </div>
