@@ -12,9 +12,9 @@ documentLanguage: "de"
 
 ## Zusammenfassung
 
-Gira brauchte einen Einrichtungsassistenten der eine definierte Zielgruppe Schritt für Schritt durch die Einrichtung eines ihrer Produkte führt. Die Applikation sollte basierend auf Web-Technologien in eine bestehende Desktop-Anwendung eingebettet werden. Besonderes Augenmerk lag dabei auf der Geschwindigkeit der Anwendung, da eines der Ziele der Applikation, ein einfaches Anlegen von möglichst vielen Elementen war.
+Gira benötigte einen Einrichtungsassistenten, der eine zuvor definierte Zielgruppe Schritt für Schritt durch die Einrichtung eines ihrer Produkte führt. Die Applikation sollte hierfür basierend auf Web-Technologien in eine bestehende Desktop-Anwendung eingebettet werden. Besonderes Augenmerk wurde dabei auf die Geschwindigkeit der Anwendung gelegt, da eines der Ziele der Applikation war, das Anlegen von möglichst vielen Elementen so einfach wie möglich zu gestalten.
 
-Gemeinsam mit einem Freelancer-Kollegen haben wir innerhalb von ca. 14 Monaten eine Anwendung entwickelt, die die Anforderungen erfüllt. Die Anwendung wurde in **Svelte** und **Vite** entwickelt. Die Anwendung wurde mit **Jest** und **Testing Library** getestet. Die E2E-Tests wurden mit **Playwright** geschrieben. Die Anwendung wurde mit **Gitlab CI** getestet und gebaut.
+Gemeinsam mit einem Freelancer-Kollegen haben wir in einem Zeitraum von ca. 14 Monaten eine Anwendung entwickelt, die den gestellten Anforderungen entspricht. Die Entwicklung erfolgte in **Svelte** und **Vite**. Die Funktionalität der Anwendung wurde hingegen mithilfe von **Jest** und **Testing Library** überprüft, während die E2E-Tests mit **Playwright** durchgeführt wurden. Des Weiteren wurde die Anwendung mit **Gitlab CI** getestet, gebaut und deployed.
 
 ## Kern-Funktionen
 
@@ -26,13 +26,13 @@ Gemeinsam mit einem Freelancer-Kollegen haben wir innerhalb von ca. 14 Monaten e
 
 ## Meine Rolle
 
-Das Entwicklungsteam bestand aus einem anderen Freelancer und mir. Da GIRA sehr genau wusste, was sowohl fachlich als auch technologisch benötigt wird und dies extrem gut in Entwicklungsvorgaben umwandeln konnte, konnte das Team schnell und effizient arbeiten. Aus diesem Grund gab es keine klassischen Entwicklungsrollen die vergeben werden mussten. Stattdessen konnten wir uns voll und Ganz auf die Entwicklungs der Anwendung fokussieren und haben uns gegenseitig unterstützt. Zudem gab es, im vergleich zu größeren Entwicklungsprojekten, kaum Code-Passagen die nicht von beiden Entwicklern verstanden wurden.
+Das Entwicklungsteam setzte sich aus einem weiteren Freelancer und mir zusammen. Dank der präzisen Kenntnisse von Gira, was sowohl auf fachlicher als auch technischer Ebene erforderlich ist und ihrer Fähigkeit, dies gut in formelle Entwicklungsanforderungen umzusetzen, konnte das Team schnell und effizient arbeiten. Aus diesem Grund gab es keine klassischen Entwicklungsrollen, die vergeben werden mussten. Stattdessen konnten wir uns vollends auf die Entwicklung der Anwendung konzentrieren und einander unterstützt. Ferner gab es, im Vergleich zu größeren Entwicklungsprojekten, nur wenige Code-Passagen, die nicht von beiden Entwicklern verstanden wurden.
 
-Obwohl meine Kenntnisse in **Svelte** zu Beginn des Projektes sehr begrenzt waren, konnte ich durch meine Erfahrung mit anderen Frontentframeworks- und projekten zu guten Entscheidungen bei der Auswahl eingesetzer Tools und Bibliotheken beitragen.
+Obwohl meine Kenntnisse in **Svelte** zu Projektbeginn sehr begrenzt waren, konnte ich dank meiner Erfahrung mit anderen Frontend-Frameworks und Projekten wertvolle Beiträge bei der Auswahl der verwendeten Tools und Bibliotheken leisten.
 
-## Lessens Learned
+## Lessons Learned
 
-Im Laufe des Projektes durfte ich immer mehr feststellen - Svelte ist richtig toll. 💌 Svelte macht die Verwendung von alltäglichen Konstrukten super einfach. So muss beispielweise bei einer _computed Property_ der Dependency-Array nicht explizit angeben werden, wie das Beispielsweise bei React der Fall ist. Stattdessen wird Sveltes deutlich einfacherer Dollar-Syntax verwendet und damit Funktionen wie Reacts _useEffect_ und _useMemo_ Hook bereitgestellt:
+Im Laufe des Projektes wurde ich zunehmend von den Vorteilen von Svelte überzeugt. 💌 Es bietet eine einfache Handhabung für alltägliche Konstrukte. So muss z.B. bei einer _Computed Property_ der Dependency-Array nicht explizit angeben werden, wie es beispielsweise bei React der Fall ist. Stattdessen wird Sveltes deutlich einfacherer Dollar-Syntax verwendet, was Funktionalitäten wie Reacts `useEffect` und `useMemo` Hook bereitstellt:
 
 ```javascript
 // in React
@@ -46,7 +46,7 @@ $: {
 }
 ```
 
-Aber auch im Bereich der Teamstruktur und Organisation konnte ich viel lernen. So wurde mir bewusst wie wichtig die Rolle zwischen fachlichen Anforderern und dem Entwicklungsteam - eine Art technischer Projektleiter - ist. In diesem Projekt war diese Person sehr nah am Entwicklerteam und konnte klare Rahmenbedingungen bei der Entwicklung geben aber ebenso genug Freiraum schaffen, sodass das Entwicklerteam maximal effektiv und effizient arbeiten konnte. Oft haben große Projekte ein Problem bei der Übersetzung der fachlichen Anforderung in technische. Zudem kommt es gerade bei Architektur-Entscheidungen zu Fehlern, da Produktstrategie dem Entwicklerteam nicht immer klar ist. All dies konnte durch ein gute Schlüsselposition zwischen Entwicklerteam und fachlichen Anforderern vermieden werden.
+Überdies habe ich während des Projekts ebenfalls viel über die Bedeutung der Teamstruktur und Organisation gelernt. So wurde mir bewusst, wie wichtig die Rolle zwischen fachlichen Anforderern und dem Entwicklungsteam – eine Art technischer Projektleiter – ist. In diesem Projekt hatte diese Person eine enge Beziehung zum Entwicklerteam und konnte klare Rahmenbedingungen für die Entwicklung bereitstellen, aber zugleich auch ausreichend Freiraum schaffen, damit das Entwicklerteam optimal, effektiv und effizient arbeiten konnte. In vielen großen Projekten gibt es oftmals Probleme bei der Übersetzung fachlicher Anforderungen in technische. Darüber hinaus kann es bei Architekturentscheidungen zu Fehlern kommen, wenn das Entwicklerteam die Produktstrategie nicht eindeutig versteht. All dies konnte durch eine gute Schlüsselposition zwischen Entwicklerteam und fachlichen Anforderern vermieden werden.
 
 ## Verwendete Technologien
 
@@ -56,9 +56,9 @@ Aber auch im Bereich der Teamstruktur und Organisation konnte ich viel lernen. S
 - E2E Tests: [Playwright](https://playwright.dev/)
 - CI: [Gitlab](https://about.gitlab.com/)
 
-## Live Demo oder Repository
+## Live-Demo oder Repository
 
-Das Produkt selbst ist noch nicht veröffentlicht. Jedoch hat sich GIRA dazu entschiedenen die eigens im Rahmen des Projektes erstellten Biblitheken auf Github verfügbar zu machen:
+Das Produkt selbst ist noch nicht veröffentlicht. Jedoch hat sich Gira dazu entschiedenen die eigens im Rahmen des Projektes erstellten Bibliotheken auf Github verfügbar zu machen:
 
 - https://github.com/gira-de/t9n
 - https://github.com/gira-de/svelte-undo
