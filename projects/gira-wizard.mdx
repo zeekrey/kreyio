@@ -10,37 +10,55 @@ projectLanguage: "de"
 documentLanguage: "de"
 ---
 
-## High-level summary of what the project is
+## Zusammenfassung
 
-tbd.
+Gira brauchte einen Einrichtungsassistenten der eine definierte Zielgruppe Schritt für Schritt durch die Einrichtung eines ihrer Produkte führt. Die Applikation sollte basierend auf Web-Technologien in eine bestehende Desktop-Anwendung eingebettet werden. Besonderes Augenmerk lag dabei auf der Geschwindigkeit der Anwendung, da eines der Ziele der Applikation, ein einfaches Anlegen von möglichst vielen Elementen war.
 
-## List of core functionalities / interesting features
+Gemeinsam mit einem Freelancer-Kollegen haben wir innerhalb von ca. 14 Monaten eine Anwendung entwickelt, die die Anforderungen erfüllt. Die Anwendung wurde in **Svelte** und **Vite** entwickelt. Die Anwendung wurde mit **Jest** und **Testing Library** getestet. Die E2E-Tests wurden mit **Playwright** geschrieben. Die Anwendung wurde mit **Gitlab CI** getestet und gebaut.
 
-tbd.
+## Kern-Funktionen
 
-## Your role in the project. were you exclusively doing development, or did you do
+- 🧙🏻 Schrittweise Führung durch einen Einrichtungsassistenten (Single-Page-Application, State Machine)
+- 🏠 Aufbau einer Svelte-Komponenten-Bibliothek
+- 🌍 Individuelle Internationalisierungs-Lösung
+- 📝 Undo/Redo-Funktionalität
+- 👌🏻 Hohe Testabdeckung (Unit-Tests, E2E-Tests)
 
-design? If you worked in groups, what parts did you tackle?
+## Meine Rolle
 
-tbd.
+Das Entwicklungsteam bestand aus einem anderen Freelancer und mir. Da GIRA sehr genau wusste, was sowohl fachlich als auch technologisch benötigt wird und dies extrem gut in Entwicklungsvorgaben umwandeln konnte, konnte das Team schnell und effizient arbeiten. Aus diesem Grund gab es keine klassischen Entwicklungsrollen die vergeben werden mussten. Stattdessen konnten wir uns voll und Ganz auf die Entwicklungs der Anwendung fokussieren und haben uns gegenseitig unterstützt. Zudem gab es, im vergleich zu größeren Entwicklungsprojekten, kaum Code-Passagen die nicht von beiden Entwicklern verstanden wurden.
 
-## Technologies used
-
-tbd.
-
-## Links to live demo + source code (if applicable)
-
-tbd.
+Obwohl meine Kenntnisse in **Svelte** zu Beginn des Projektes sehr begrenzt waren, konnte ich durch meine Erfahrung mit anderen Frontentframeworks- und projekten zu guten Entscheidungen bei der Auswahl eingesetzer Tools und Bibliotheken beitragen.
 
 ## Lessens Learned
 
-What did you learn doing this project? Feel free to list multiple things. Also feel free to
-cover non-technical lessons. It’s great to talk about how you learned to use an
-advanced feature of a framework or library, but it’s just as valuable to talk about
-project-management experience, or things you learned about shipping projects.
+Im Laufe des Projektes durfte ich immer mehr feststellen - Svelte ist richtig toll. 💌 Svelte macht die Verwendung von alltäglichen Konstrukten super einfach. So muss beispielweise bei einer _computed Property_ der Dependency-Array nicht explizit angeben werden, wie das Beispielsweise bei React der Fall ist. Stattdessen wird Sveltes deutlich einfacherer Dollar-Syntax verwendet und damit Funktionen wie Reacts _useEffect_ und _useMemo_ Hook bereitgestellt:
 
-If you used a framework or other libraries/tools, was it a good choice? How did it
-help? In which ways was it insufficient?
+```javascript
+// in React
+useMemo(() => {
+  // Code
+}, [dependency1, dependency2, dependency3])
 
-How has this affected the work you’ve done since then? Real examples of how this
-project built your knowledge for future projects is fantastic.
+// in Svelte
+$: {
+  // Code using dependency1, dependency2, dependency3
+}
+```
+
+Aber auch im Bereich der Teamstruktur und Organisation konnte ich viel lernen. So wurde mir bewusst wie wichtig die Rolle zwischen fachlichen Anforderern und dem Entwicklungsteam - eine Art technischer Projektleiter - ist. In diesem Projekt war diese Person sehr nah am Entwicklerteam und konnte klare Rahmenbedingungen bei der Entwicklung geben aber ebenso genug Freiraum schaffen, sodass das Entwicklerteam maximal effektiv und effizient arbeiten konnte. Oft haben große Projekte ein Problem bei der Übersetzung der fachlichen Anforderung in technische. Zudem kommt es gerade bei Architektur-Entscheidungen zu Fehlern, da Produktstrategie dem Entwicklerteam nicht immer klar ist. All dies konnte durch ein gute Schlüsselposition zwischen Entwicklerteam und fachlichen Anforderern vermieden werden.
+
+## Verwendete Technologien
+
+- Framework: [Svelte](https://svelte.dev/)
+- Language: [Typescript](https://www.typescriptlang.org/)
+- Unit Tests: [Jest](https://jestjs.io/) & [Testing library](https://testing-library.com/)
+- E2E Tests: [Playwright](https://playwright.dev/)
+- CI: [Gitlab](https://about.gitlab.com/)
+
+## Live Demo oder Repository
+
+Das Produkt selbst ist noch nicht veröffentlicht. Jedoch hat sich GIRA dazu entschiedenen die eigens im Rahmen des Projektes erstellten Biblitheken auf Github verfügbar zu machen:
+
+- https://github.com/gira-de/t9n
+- https://github.com/gira-de/svelte-undo

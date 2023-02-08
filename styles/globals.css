@@ -40,6 +40,14 @@
   margin-block-end: 14px;
 }
 
+#blog p {
+  margin-bottom: 14px;
+}
+
+#blog a {
+  text-decoration: underline;
+}
+
 pre {
   padding: 0.75rem;
   margin-top: 12px;
