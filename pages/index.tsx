@@ -2,7 +2,12 @@ import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
 import Link from "next/link"
 import PageLayout from "../layouts/PageLayout"
-import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils"
+import {
+  postFilePaths,
+  POSTS_PATH,
+  PROJECTS_PATH,
+  projectFilePaths,
+} from "../utils/mdxUtils"
 import fs from "fs"
 import matter from "gray-matter"
 import path from "path"
@@ -11,6 +16,7 @@ import { Octokit } from "octokit"
 import type { GraphQlQueryResponseData } from "@octokit/graphql"
 import Project from "../components/Project"
 import Button from "../components/Button"
+import ProjectPreview from "../components/ProjectPreview"
 
 const sortByPublished = (a, b) =>
   Date.parse(b.data.published) - Date.parse(a.data.published)
@@ -23,6 +29,19 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = postFilePaths
     .map(filePath => {
       const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
+      const { content, data } = matter(source)
+
+      return {
+        content,
+        data,
+        filePath,
+      }
+    })
+    .slice(0, 5)
+
+  const commercialProjects = projectFilePaths
+    .map(filePath => {
+      const source = fs.readFileSync(path.join(PROJECTS_PATH, filePath))
       const { content, data } = matter(source)
 
       return {
@@ -71,13 +90,16 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: posts.filter(post => !post.data.isDraft),
+      commercialProjects: commercialProjects.filter(
+        project => !project.data.isDraft
+      ),
       projects: pinnedItems.edges,
     },
     // revalidate: 60 * 60, Once per hour 60seconds * 60minutes REMOVE THIS FOR NOW, DEPLOYMENT FAILS IF ENABLED
   }
 }
 
-const Index = ({ posts, projects }) => {
+const Index = ({ posts, projects, commercialProjects }) => {
   return (
     <>
       <NextSeo
@@ -113,35 +135,9 @@ const Index = ({ posts, projects }) => {
         </h1>
       </div>
       <p className="py-16">
-        I&apos;m a frontend developer focusing on stuff humans can use and
-        interact with. I&apos;m currently into{" "}
-        <a
-          href="https://reactjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="React"
-        >
-          React
-        </a>
-        ,{" "}
-        <a
-          href="https://nextjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="React"
-        >
-          Nextjs
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://vercel.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="React"
-        >
-          Vercel
-        </a>
-        .
+        Software developer by trade, but I&apos;ve been known to take a stab at
+        anything - even if it&apos;s way over my head. 👷🏻‍♂️ Currently I&apos;m
+        freelancing, mostly working with React and Svelte.
       </p>
 
       {/* Blog */}
@@ -159,7 +155,7 @@ const Index = ({ posts, projects }) => {
         </div>
       </section>
 
-      {/* Repos */}
+      {/* Open Source Projects */}
       <section className="py-6">
         <h2 className="font-semibold text-zinc-700 text-xl my-4">
           Open Source Projects
@@ -171,6 +167,23 @@ const Index = ({ posts, projects }) => {
           .map(({ node }) => (
             <Project {...node} key={node.id} />
           ))}
+      </section>
+
+      {/* Commercial Projects */}
+      <section className="py-6">
+        <h2 className="font-semibold text-zinc-700 text-xl my-4">
+          Commercial Projects (Freelance)
+        </h2>
+        <ul className="m-0 p-0 list-none">
+          {commercialProjects.sort(sortByPublished).map(project => (
+            <ProjectPreview project={project} key={project.data.title} />
+          ))}
+        </ul>
+        <div className="float-right pt-2">
+          <Link href="/projects" passHref>
+            <Button as="a">See all</Button>
+          </Link>
+        </div>
       </section>
     </>
   )

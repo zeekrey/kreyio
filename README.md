@@ -7,7 +7,15 @@
   Just my blog.
 </h1>
 
-I write about software development, startups and life within companies.
+## About
+
+tbd.
+
+## Todos
+
+- [ ] Style a-tags
+- [ ] Improve hover-Styles for Blog-Posts
+- [ ] Improve hover-Styles for Projects
 
 ## Issues
 
