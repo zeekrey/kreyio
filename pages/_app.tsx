@@ -1,21 +1,19 @@
 import type { AppProps } from "next/app"
 import { useRouter } from "next/router"
 import React, { useEffect } from "react"
-import { globalStyles } from "../stitches.config"
-import { ThemeProvider } from "next-themes"
-import { darkTheme } from "../stitches.config"
 import * as Fathom from "fathom-client"
+
+import "../styles/globals.css"
 
 const MyApp = ({
   Component,
   pageProps,
-}: AppProps & { Component: { Layout?: React.FC<{children: React.ReactNode}> }}) => {
+}: AppProps & {
+  Component: { Layout?: React.FC<{ children: React.ReactNode }> }
+}) => {
   const router = useRouter()
   //   Apply page layout
   const Layout = Component.Layout || (({ children }) => <>{children}</>)
-
-  //   Add global CSS
-  globalStyles()
 
   useEffect(() => {
     // Test if the fathom key is available within process.env
@@ -42,18 +40,9 @@ const MyApp = ({
   }, [router.events])
 
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="dark"
-      value={{
-        dark: darkTheme.className,
-        light: "light",
-      }}
-    >
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   )
 }
 

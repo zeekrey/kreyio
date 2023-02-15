@@ -1,44 +1,4 @@
-import { styled, Box } from "../stitches.config"
 import { StarIcon, CommitIcon } from "@modulz/radix-icons"
-
-const Wrapper = styled("a", {
-  all: "unset",
-  display: "flex",
-  justifyContent: "space-between",
-  padding: "10px",
-  borderRadius: "2px",
-  cursor: "pointer",
-  transition: "all .1s",
-
-  "&:last-of-type": {
-    borderBottom: "none",
-  },
-
-  "&:hover": {
-    background: "$sand2",
-    color: "inherit",
-  },
-
-  "&:active, &:focus": {
-    boxShadow: "0 0 0px 2px $sand11",
-  },
-})
-
-const Headline = styled("div", {
-  small: {
-    color: "$sand9",
-  },
-
-  strong: {},
-})
-
-const Tag = styled("div", {
-  padding: "5px 12px",
-  background: "$yellow4",
-  color: "$yellow12",
-  borderRadius: "2px",
-  fontSize: "12px",
-})
 
 const Project: React.FunctionComponent<{
   id: string
@@ -58,49 +18,35 @@ const Project: React.FunctionComponent<{
   url: string
 }> = ({ name, description, primaryLanguage, forkCount, stargazers, url }) => {
   return (
-    <Wrapper href={url}>
+    <a
+      href={url}
+      className="appearance-none flex justify-between py-2 cursor-pointer transition-all active:shadow-sm focus:shadow-sm"
+    >
       <div>
-        <Headline>
-          <small>zeekrey/</small>
-          <strong>{name}</strong>
-        </Headline>
-        <p>{description}</p>
+        <div>
+          <small className="text-xs text-zinc-700">zeekrey/</small>
+          <strong className="text-xs text-zinc-300">{name}</strong>
+        </div>
+        <p className="py-3">{description}</p>
       </div>
       <div>
-        {primaryLanguage && <Tag>{primaryLanguage.name}</Tag>}
-        <Box
-          css={{
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: "15px",
-            paddingTop: "10px",
-          }}
-        >
-          <Box
-            css={{
-              display: "grid",
-              placeContent: "center",
-              textAlign: "center",
-              gap: "5px",
-            }}
-          >
+        {primaryLanguage && (
+          <div className="py-1 rounded bg-zinc-800 text-zinc-400 text-xs text-center">
+            {primaryLanguage.name}
+          </div>
+        )}
+        <div className="flex justify-end gap-4 pt-2">
+          <div className="flex content-center text-center gap-4">
             <CommitIcon />
             <small>{forkCount}</small>
-          </Box>
-          <Box
-            css={{
-              display: "grid",
-              placeContent: "center",
-              textAlign: "center",
-              gap: "5px",
-            }}
-          >
+          </div>
+          <div className="flex items-center content-center text-center gap-4">
             <StarIcon />
             <small>{stargazers.totalCount}</small>
-          </Box>
-        </Box>
+          </div>
+        </div>
       </div>
-    </Wrapper>
+    </a>
   )
 }
 

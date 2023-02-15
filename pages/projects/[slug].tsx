@@ -6,17 +6,24 @@ import Head from "next/head"
 import path from "path"
 import { NextSeo } from "next-seo"
 import { useRouter } from "next/router"
-import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils"
+import { projectFilePaths, PROJECTS_PATH } from "../../utils/mdxUtils"
 import BlogLayout from "../../layouts/BlogLayout"
 import rehypePrettyCode from "rehype-pretty-code"
 import Link from "next/link"
+import type { Project } from "../../components/ProjectPreview"
 
 const components = {
   a: Link,
   Head,
 }
 
-const PostPage = ({ source, frontMatter }) => {
+const ProjectPage = ({
+  source,
+  frontMatter,
+}: {
+  source: any
+  frontMatter: Project
+}) => {
   const { asPath, basePath, pathname } = useRouter()
   return (
     <>
@@ -46,6 +53,15 @@ const PostPage = ({ source, frontMatter }) => {
         }}
       />
       <div id="blog">
+        {frontMatter.documentLanguage === "de" && (
+          <div className="py-2 px-3 rounded bg-zinc-800 text-sm">
+            <span className="mr-2">🇩🇪</span>
+            <span>
+              Unfortunately, this document is currently only available in
+              German.
+            </span>
+          </div>
+        )}
         <h1>{frontMatter.title}</h1>
         <MDXRemote {...source} components={components} />
       </div>
@@ -53,13 +69,13 @@ const PostPage = ({ source, frontMatter }) => {
   )
 }
 
-PostPage.Layout = BlogLayout
+ProjectPage.Layout = BlogLayout
 
-export default PostPage
+export default ProjectPage
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
-  const source = fs.readFileSync(postFilePath)
+  const projectFilePath = path.join(PROJECTS_PATH, `${params.slug}.mdx`)
+  const source = fs.readFileSync(projectFilePath)
 
   const { content, data } = matter(source)
 
@@ -104,7 +120,7 @@ export const getStaticPaths = async () => {
     }
   }
 
-  const paths = postFilePaths
+  const paths = projectFilePaths
     // Remove file extensions for page paths
     .map(path => path.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js

@@ -1,28 +1,18 @@
-import { styled } from "../stitches.config"
+import Footer from "../components/Footer"
 import Nav from "../components/Nav"
 
-const Container = styled("div", {
-  width: "100vw",
-  minHeight: "100vh",
-  backgroundColor: "$sand1",
-})
-
-const Body = styled("main", {
-  maxWidth: "70ch",
-  padding: "3em 1em",
-  margin: "auto",
-  lineHeight: 1.75,
-
-  color: "$sand12",
-})
-
-const BlogLayout: React.FunctionComponent<{children: React.ReactNode}> = ({ children }) => (
-  <Container>
-    <Body>
-      <Nav />
-      {children}
-    </Body>
-  </Container>
+const BlogLayout: React.FunctionComponent<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <div className="overflow-hidden">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="relative">
+        <Nav />
+        <main className="leading-relaxed">{children}</main>
+        <Footer />
+      </div>
+    </div>
+  </div>
 )
 
 export default BlogLayout

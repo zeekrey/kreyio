@@ -1,45 +1,5 @@
-import { styled, Box } from "../stitches.config"
 import Link from "next/link"
 import { ArrowRightIcon } from "@modulz/radix-icons"
-
-const Wrapper = styled("li", {
-  borderBottom: "1px solid $sand2",
-  padding: "18px 10px",
-  borderRadius: "2px",
-  cursor: "pointer",
-
-  transition: "all .1s",
-
-  "&:last-of-type": {
-    borderBottom: "none",
-  },
-
-  "&:hover": {
-    background: "$sand2",
-    color: "$yellow10",
-
-    time: {
-      color: "$yellow10",
-    },
-  },
-
-  "&:active, &:focus": {
-    boxShadow: "0 0 0px 2px $sand11",
-  },
-})
-
-const PostingHeadline = styled("h2", {
-  margin: 0,
-  fontSize: "16px",
-  flex: 1,
-  textAlign: "left",
-})
-
-const PostingTimestamp = styled("time", {
-  color: "$sand11",
-  paddingRight: "0.5rem",
-  width: "64px",
-})
 
 const PostPreview: React.FunctionComponent<{
   post: {
@@ -53,29 +13,27 @@ const PostPreview: React.FunctionComponent<{
   }
 }> = ({ post }) => {
   return (
-    <Wrapper>
-      <Link href={`blog/${post.filePath.replace(/\.mdx?$/, "")}`} passHref>
-        <Box as="a" css={{ color: "inherit" }}>
-          <Box
-            css={{
-              display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box css={{ width: "110px" }}>
-              <PostingTimestamp dateTime={post.data.published}>
-                {post.data.published}
-              </PostingTimestamp>
-            </Box>
-            <PostingHeadline>{post.data.title}</PostingHeadline>
-            <Box as="button" css={{ all: "unset" }}>
-              <ArrowRightIcon />
-            </Box>
-          </Box>
-        </Box>
+    <li className="border-b-zinc-800 border-b last-of-type:border-b-0 py-6 cursor-pointer transition-all text-zinc-300 group">
+      <Link href={`blog/${post.filePath.replace(/\.mdx?$/, "")}`}>
+        <div className="flex items-start justify-between">
+          <div className="w-28">
+            <time
+              dateTime={post.data.published}
+              className="w-16 pr-2 text-sm text-zinc-700 group-hover:text-zinc-500"
+            >
+              {post.data.published}
+            </time>
+          </div>
+          <h2 className="m-0 flex-1 text-left">{post.data.title}</h2>
+          <div className="flex items-center space-x-2 group-hover:text-zinc-50">
+            <span className="text-sm opacity-0 group-hover:opacity-100 transition duration-150 ease-out group-hover:ease-in">
+              View
+            </span>
+            <ArrowRightIcon />
+          </div>
+        </div>
       </Link>
-    </Wrapper>
+    </li>
   )
 }
 

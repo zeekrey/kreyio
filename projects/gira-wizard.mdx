@@ -1,0 +1,64 @@
+---
+title: "GIRA - Einrichtungsassistent"
+description: "Idraft."
+published: "2023-01-02"
+projectStart: "01/2022"
+projectEnd: "12/2022"
+role: "Senior Frontend Entwickler"
+tags: ["Typescript", "Svelte", "Gitlab CI"]
+projectLanguage: "de"
+documentLanguage: "de"
+---
+
+## Zusammenfassung
+
+Gira benötigte einen Einrichtungsassistenten, der eine zuvor definierte Zielgruppe Schritt für Schritt durch die Einrichtung eines ihrer Produkte führt. Die Applikation sollte hierfür basierend auf Web-Technologien in eine bestehende Desktop-Anwendung eingebettet werden. Besonderes Augenmerk wurde dabei auf die Geschwindigkeit der Anwendung gelegt, da eines der Ziele der Applikation war, das Anlegen von möglichst vielen Elementen so einfach wie möglich zu gestalten.
+
+Gemeinsam mit einem Freelancer-Kollegen haben wir in einem Zeitraum von ca. 14 Monaten eine Anwendung entwickelt, die den gestellten Anforderungen entspricht. Die Entwicklung erfolgte in **Svelte** und **Vite**. Die Funktionalität der Anwendung wurde hingegen mithilfe von **Jest** und **Testing Library** überprüft, während die E2E-Tests mit **Playwright** durchgeführt wurden. Des Weiteren wurde die Anwendung mit **Gitlab CI** getestet, gebaut und deployed.
+
+## Kern-Funktionen
+
+- 🧙🏻 Schrittweise Führung durch einen Einrichtungsassistenten (Single-Page-Application, State Machine)
+- 🏠 Aufbau einer Svelte-Komponenten-Bibliothek
+- 🌍 Individuelle Internationalisierungs-Lösung
+- 📝 Undo/Redo-Funktionalität
+- 👌🏻 Hohe Testabdeckung (Unit-Tests, E2E-Tests)
+
+## Meine Rolle
+
+Das Entwicklungsteam setzte sich aus einem weiteren Freelancer und mir zusammen. Dank der präzisen Kenntnisse von Gira, was sowohl auf fachlicher als auch technischer Ebene erforderlich ist und ihrer Fähigkeit, dies gut in formelle Entwicklungsanforderungen umzusetzen, konnte das Team schnell und effizient arbeiten. Aus diesem Grund gab es keine klassischen Entwicklungsrollen, die vergeben werden mussten. Stattdessen konnten wir uns vollends auf die Entwicklung der Anwendung konzentrieren und einander unterstützt. Ferner gab es, im Vergleich zu größeren Entwicklungsprojekten, nur wenige Code-Passagen, die nicht von beiden Entwicklern verstanden wurden.
+
+Obwohl meine Kenntnisse in **Svelte** zu Projektbeginn sehr begrenzt waren, konnte ich dank meiner Erfahrung mit anderen Frontend-Frameworks und Projekten wertvolle Beiträge bei der Auswahl der verwendeten Tools und Bibliotheken leisten.
+
+## Lessons Learned
+
+Im Laufe des Projektes wurde ich zunehmend von den Vorteilen von Svelte überzeugt. 💌 Es bietet eine einfache Handhabung für alltägliche Konstrukte. So muss z.B. bei einer _Computed Property_ der Dependency-Array nicht explizit angeben werden, wie es beispielsweise bei React der Fall ist. Stattdessen wird Sveltes deutlich einfacherer Dollar-Syntax verwendet, was Funktionalitäten wie Reacts `useEffect` und `useMemo` Hook bereitstellt:
+
+```javascript
+// in React
+useMemo(() => {
+  // Code
+}, [dependency1, dependency2, dependency3])
+
+// in Svelte
+$: {
+  // Code using dependency1, dependency2, dependency3
+}
+```
+
+Überdies habe ich während des Projekts ebenfalls viel über die Bedeutung der Teamstruktur und Organisation gelernt. So wurde mir bewusst, wie wichtig die Rolle zwischen fachlichen Anforderern und dem Entwicklungsteam – eine Art technischer Projektleiter – ist. In diesem Projekt hatte diese Person eine enge Beziehung zum Entwicklerteam und konnte klare Rahmenbedingungen für die Entwicklung bereitstellen, aber zugleich auch ausreichend Freiraum schaffen, damit das Entwicklerteam optimal, effektiv und effizient arbeiten konnte. In vielen großen Projekten gibt es oftmals Probleme bei der Übersetzung fachlicher Anforderungen in technische. Darüber hinaus kann es bei Architekturentscheidungen zu Fehlern kommen, wenn das Entwicklerteam die Produktstrategie nicht eindeutig versteht. All dies konnte durch eine gute Schlüsselposition zwischen Entwicklerteam und fachlichen Anforderern vermieden werden.
+
+## Verwendete Technologien
+
+- Framework: [Svelte](https://svelte.dev/)
+- Language: [Typescript](https://www.typescriptlang.org/)
+- Unit Tests: [Jest](https://jestjs.io/) & [Testing library](https://testing-library.com/)
+- E2E Tests: [Playwright](https://playwright.dev/)
+- CI: [Gitlab](https://about.gitlab.com/)
+
+## Live-Demo oder Repository
+
+Das Produkt selbst ist noch nicht veröffentlicht. Jedoch hat sich Gira dazu entschiedenen die eigens im Rahmen des Projektes erstellten Bibliotheken auf Github verfügbar zu machen:
+
+- [https://github.com/gira-de/t9n]https://github.com/gira-de/t9n
+- [https://github.com/gira-de/svelte-undo]https://github.com/gira-de/svelte-undo
