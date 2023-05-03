@@ -1,48 +1,46 @@
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/router"
-import { useRef } from "react"
 
 const workExperience = [
   {
     title: "Senior Frontend Developer",
-    company: "Gira",
+    company: "Gira (Giersiepen GmbH & Co. KG)",
     location: "Remote",
     startDate: "2022",
     endDate: "2023",
     description:
-      "Gira needed a setup assistant that guides users step by step through the setup of one of their products. Using modern web technologies like Svelte and Gitlab CI/CD, we were able to build a highly performant web application that runs within a native app.",
+      "Auf Basis bestehender Systeme hatte das Team die Aufgabe, ein neues Produkt zu entwickeln, das die Steuerung von Smart Home Geräten ermöglicht. Hierfür wurde das Frontend Framework Knockout verwendet. Zu den eingesetzten Tools gehören Jasmin, Karma, Webpack und die Gitlab CI/CD.",
     employment: "freelance",
   },
   {
     title: "Senior Frontend Developer",
-    company: "Gira",
+    company: "Gira (Giersiepen GmbH & Co. KG)",
     location: "Remote",
     startDate: "2021",
     endDate: "2022",
     description:
-      "Gira needed a setup assistant that guides users step by step through the setup of one of their products. Using modern web technologies like Svelte and Gitlab CI/CD, we were able to build a highly performant web application that runs within a native app.",
+      "Bei einem Greenfield-Projekt wurde ein Einrichtungswizard, basierend auf modernen Web-Technologien, in eine vorhandene Desktop-Anwendung integriert. Die Geschwindigkeit der Anwendung stand dabei im Fokus, weshalb Svelte als Frontend Framework gewählt wurde. Weiterhin wurden Vite, Vitest sowie Gitlab CI/CD als Tools eingesetzt.",
     report: "/projects/gira-wizard",
     employment: "freelance",
   },
   {
     title: "IT Management",
-    company: "Porsche Leipzig GmbH",
+    company: "Porsche (Porsche Leipzig GmbH)",
     location: "Leipzig, Germany",
     startDate: "2017",
     endDate: "2022",
     description:
-      "Supervision of developer teams, formulation of IT strategic orientation and development guidelines.",
+      "Betreuung von Entwicklerteams. Formulierung von IT-strategischer Ausrichtung und Entwicklungsvorgaben. Führung von Entwicklerteams mit dem Schwerpunkt React und Vue. Definition von Software-Architektur und -Design sowie CI/CD-Vorgaben.",
     employment: "employed",
   },
   {
     title: "Datebase Marketing",
-    company: "Deutsche Telekom",
+    company: "Deutsche Telekom (Telekom Deutschland GmbH)",
     location: "Bonn, Germany",
     startDate: "2010",
     endDate: "2017",
     description:
-      "Marketing and customer data analysis, development of data-driven marketing campaigns.",
+      "Analysen im Bereich Markting, wie Kundensegmentierung oder CLV-Berechnungen. Bereichtserstellung mit Hilfe von SQL.",
     employment: "employed",
   },
 ]
@@ -65,14 +63,14 @@ const projects = [
     date: "2021",
     url: "https://shop.sterch.de",
     description: "Online shop for Sterch, a local brewery.",
-    bulletPoints: ["Next.js", "Tailwind CSS", "Snipcart"],
+    bulletPoints: ["Next.js", "Tailwind CSS", "BigCommerce"],
   },
   {
     title: "Capybara",
     date: "2021",
     url: "https://shop.sterch.de",
     description:
-      "Eltern portal bei dem Ausflugsideen für junge Familien ausgetauscht werden können.",
+      "Elternportal bei dem Ausflugsideen für junge Familien ausgetauscht werden können.",
     bulletPoints: [
       "Frontend in Nextjs, React und Javascript",
       "Anbindung an CMS via REST",
@@ -95,7 +93,7 @@ const CV = ({ isHeadhunter }) => {
       <main className="md:container md:mx-auto py-8 px-8">
         <header className="flex items-center gap-4">
           <Image
-            src="/me.png"
+            src="/zeekrey.webp"
             alt="Christian Krey"
             width="80"
             height="80"
@@ -114,7 +112,8 @@ const CV = ({ isHeadhunter }) => {
             </a>
           </div>
         </header>
-        {isHeadhunter && (
+        {/* TBD */}
+        {/* {isHeadhunter && (
           <aside className="mt-12 border p-4 rounded bg-yellow-100 flex gap-3 text-yellow-600 border-l-4 border-l-yellow-400">
             <div className="w-12 flex justify-center items-center">
               <svg
@@ -154,20 +153,35 @@ const CV = ({ isHeadhunter }) => {
               </p>
             </div>
           </aside>
-        )}
-        <section className="pt-8">
-          <h2 className="text-xl font-bold">About</h2>
-          <p>Here goes a descirption of me.</p>
-          <p>I&apos;m pretty good at:</p>
-          <ul className="list-disc">
-            <li>Stuff</li>
-            <li>Stuff</li>
-            <li>Stuff</li>
-            <li>Stuff</li>
+        )} */}
+        <section className="pt-8 space-y-3">
+          <h2 className="text-xl font-bold">Über mich</h2>
+          <p className="text-zinc-400">
+            Mit 19 habe ich Wirtschaftsinformatik studiert und dabei meine
+            Passion für die Webewntwicklung entdeckt. Mittlerweile arbeite ich
+            täglich in verschiedenen Projekten mit Typescript und React sowie
+            verschiedener CI/CD Infrastruktur. Zu meinen Stärken gehört das
+            Übertragen von Martkanforderungen in konkrete
+            Implementierungskonzepte.
+          </p>
+          <p className="text-zinc-400">In bin ziehmlich gut in...</p>
+          <ul className="list-disc space-y-1 text-zinc-400">
+            <li>
+              Frontendentwicklung - Im Spezielle im React-Ökosystem, vor allem
+              mit Nextjs.
+            </li>
+            <li>
+              Identifizieren von konkreten Kundenanforderungen und
+              Implementierung dieser.
+            </li>
+            <li>
+              Schreiben von qualitativ hochwertigem Code - immer automatisiert
+              getestet.
+            </li>
           </ul>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Work Experience</h2>
+          <h2 className="text-xl font-bold pb-4">Berufliche Erfahrung</h2>
           <ul className="space-y-6">
             {workExperience.map(entry => (
               <li
@@ -181,19 +195,14 @@ const CV = ({ isHeadhunter }) => {
                 </div>
                 <div className="flex-1 items-center relative">
                   <h3 className="font-bold">{entry.title}</h3>
-                  <p className="text-zinc-300 pb-2">
-                    {entry.company}
-                    {/* <span className="text-xs text-zinc-600 border p-1 border-zinc-600 rounded">
-                      {entry.employment}
-                    </span> */}
-                  </p>
+                  <p className="text-zinc-300 pb-2">{entry.company}</p>
                   <p className="leading-normal text-zinc-400">
                     {entry.description}
                   </p>
                   {entry.report && (
                     <Link
                       href={entry.report}
-                      className="absolute right-2 top-2 text-xs border border-zinc-100 p-1 rounded"
+                      className="absolute right-2 top-2 text-xs border border-zinc-400 p-1 rounded flex items-center hover:text-zinc-50"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +210,7 @@ const CV = ({ isHeadhunter }) => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-4 h-4"
+                        className="w-4 h-4 inline mr-1"
                       >
                         <path
                           strokeLinecap="round"
@@ -209,6 +218,7 @@ const CV = ({ isHeadhunter }) => {
                           d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                         />
                       </svg>
+                      Erfahrungsbericht
                     </Link>
                   )}
                 </div>
@@ -217,7 +227,7 @@ const CV = ({ isHeadhunter }) => {
           </ul>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Projects</h2>
+          <h2 className="text-xl font-bold pb-4">Projekte</h2>
           <ul className="space-y-6">
             {projects.map(project => (
               <li
@@ -243,7 +253,7 @@ const CV = ({ isHeadhunter }) => {
           </ul>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Education</h2>
+          <h2 className="text-xl font-bold pb-4">Bildung</h2>
           <ul className="space-y-6">
             <li className="flex flex-col md:flex-row md:gap-4">
               <div className="text-zinc-500 divide-y space-y-1 w-28">
@@ -256,10 +266,19 @@ const CV = ({ isHeadhunter }) => {
                 </p>
               </div>
             </li>
+            <li className="flex flex-col md:flex-row md:gap-4">
+              <div className="text-zinc-500 divide-y space-y-1 w-28">
+                <p>2019</p>
+              </div>
+              <div className="flex-1 items-center relative">
+                <h3 className="font-bold">Scrum Master</h3>
+                <p className="leading-normal text-zinc-400">TÜV SÜD</p>
+              </div>
+            </li>
           </ul>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Contact</h2>
+          <h2 className="text-xl font-bold pb-4">Kontakt</h2>
           <ul className="space-y-2">
             <li className="flex flex-col md:flex-row md:gap-4">
               <div className="text-zinc-500 w-28">Website</div>
