@@ -1,5 +1,22 @@
 import Image from "next/image"
 import Link from "next/link"
+import ReactMarkdown from "react-markdown"
+
+const about = `
+## Über mich
+
+Mit 19 habe ich Wirtschaftsinformatik studiert und dabei meine
+Passion für die Webewntwicklung entdeckt. Mittlerweile arbeite ich
+täglich in verschiedenen Projekten mit **Typescript** und **React** sowie
+verschiedener CI/CD Infrastruktur.
+
+In bin ziemlich gut in...
+
+- Frontendentwicklung - Im Spezielle im React-Ökosystem, vor allem
+mit **Next.js**.
+- **Identifizieren** von konkreten **Kundenanforderungen** und Implementierung dieser.
+- Schreiben von qualitativ **hochwertigem Code** - immer automatisiert getestet.
+`
 
 const workExperience = [
   {
@@ -8,8 +25,7 @@ const workExperience = [
     location: "Remote",
     startDate: "2022",
     endDate: "2023",
-    description:
-      "Auf Basis bestehender Systeme hatte das Team die Aufgabe, ein neues Produkt zu entwickeln, das die Steuerung von Smart Home Geräten ermöglicht. Hierfür wurde das Frontend Framework Knockout verwendet. Zu den eingesetzten Tools gehören Jasmin, Karma, Webpack und die Gitlab CI/CD.",
+    description: `Auf Basis bestehender Systeme hatte das Team die Aufgabe, ein neues Produkt zu entwickeln, das die Steuerung von Smart Home Geräten ermöglicht. Hierfür wurde das Frontend Framework **Knockout** verwendet. Zu den eingesetzten Tools gehören **Jasmin**, **Karma**, **Webpack** und die **Gitlab CI/CD**.`,
     employment: "freelance",
   },
   {
@@ -18,8 +34,7 @@ const workExperience = [
     location: "Remote",
     startDate: "2021",
     endDate: "2022",
-    description:
-      "Bei einem Greenfield-Projekt wurde ein Einrichtungswizard, basierend auf modernen Web-Technologien, in eine vorhandene Desktop-Anwendung integriert. Die Geschwindigkeit der Anwendung stand dabei im Fokus, weshalb Svelte als Frontend Framework gewählt wurde. Weiterhin wurden Vite, Vitest sowie Gitlab CI/CD als Tools eingesetzt.",
+    description: `Bei einem Greenfield-Projekt wurde ein Einrichtungswizard, basierend auf modernen Web-Technologien, in eine vorhandene Desktop-Anwendung integriert. Die Geschwindigkeit der Anwendung stand dabei im Fokus, weshalb **Svelte** als Frontend Framework gewählt wurde. Weiterhin wurden **Vite**, **Vitest** sowie **Gitlab CI/CD** als Tools eingesetzt.`,
     report: "/projects/gira-wizard",
     employment: "freelance",
   },
@@ -29,8 +44,7 @@ const workExperience = [
     location: "Leipzig, Germany",
     startDate: "2017",
     endDate: "2022",
-    description:
-      "Betreuung von Entwicklerteams. Formulierung von IT-strategischer Ausrichtung und Entwicklungsvorgaben. Führung von Entwicklerteams mit dem Schwerpunkt React und Vue. Definition von Software-Architektur und -Design sowie CI/CD-Vorgaben.",
+    description: `Betreuung von Entwicklerteams. Formulierung von IT-strategischer Ausrichtung und Entwicklungsvorgaben. Führung von Entwicklerteams mit dem Schwerpunkt **React** und **Vue**. Definition von Software-Architektur und -Design sowie CI/CD-Vorgaben.`,
     employment: "employed",
   },
   {
@@ -39,58 +53,36 @@ const workExperience = [
     location: "Bonn, Germany",
     startDate: "2010",
     endDate: "2017",
-    description:
-      "Analysen im Bereich Markting, wie Kundensegmentierung oder CLV-Berechnungen. Bereichtserstellung mit Hilfe von SQL.",
+    description: `Analysen im Bereich Markting, wie Kundensegmentierung oder CLV-Berechnungen. Bereichtserstellung mit Hilfe von **SQL**.`,
     employment: "employed",
   },
 ]
 
 const projects = [
   {
-    title: "Teini - OSS Onlie Shop",
+    title: "Teini - Open Source Online Shop",
     date: "2022",
     url: "https://shop.sterch.de",
-    description:
-      "Open Sourcen Online Shop auf Basis von Nextjs und Typescript.",
-    bulletPoints: [
-      "Frontend in Next.js, React und Typescript",
-      "Styling mit Stitches",
-      "Verwendung von React Hooks",
-    ],
+    description: `Open Sourcen Online Shop auf Basis von Nextjs und Typescript. Frontend in **Next.js**, **React** und **Typescript**. Styling mit **Stitches** und **Radix**.`,
   },
   {
     title: "Sterch Shop",
     date: "2021",
     url: "https://shop.sterch.de",
-    description: "Online shop for Sterch, a local brewery.",
-    bulletPoints: ["Next.js", "Tailwind CSS", "BigCommerce"],
+    description: `Storefront für BigCommerce implementiert in React und Typescript. Styling mit **Tailwind** und **Radix**. Individueller Checkout-Prozess mit Anbindung von **Stripe**.`,
   },
   {
     title: "Capybara",
     date: "2021",
     url: "https://shop.sterch.de",
-    description:
-      "Elternportal bei dem Ausflugsideen für junge Familien ausgetauscht werden können.",
-    bulletPoints: [
-      "Frontend in Nextjs, React und Javascript",
-      "Anbindung an CMS via REST",
-      "Authentifizierung via Google Firebase",
-    ],
+    description: `Elternportal bei dem Ausflugsideen für junge Familien ausgetauscht werden können. Frontend in **Nextjs**, **React** und Javascript. Anbindung an **CMS** (Contentul) via **REST** und Authentifizierung via **Google Firebase**.`,
   },
 ]
 
-export async function getServerSideProps({ query }) {
-  return {
-    props: {
-      isHeadhunter: "headhunter" in query,
-    },
-  }
-}
-
-const CV = ({ isHeadhunter }) => {
+const CV = () => {
   return (
     <div>
-      <main className="md:container md:mx-auto py-8 px-8">
+      <main className="md:container md:mx-auto py-8 px-8 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:pb-4 [&_p]:text-zinc-400 [&_ul]:text-zinc-400 [&_ul]:list-disc [&_strong]:text-zinc-300 [&_h3]:text-zinc-200">
         <header className="flex items-center gap-4">
           <Image
             src="/zeekrey.webp"
@@ -155,33 +147,10 @@ const CV = ({ isHeadhunter }) => {
           </aside>
         )} */}
         <section className="pt-8 space-y-3">
-          <h2 className="text-xl font-bold">Über mich</h2>
-          <p className="text-zinc-400">
-            Mit 19 habe ich Wirtschaftsinformatik studiert und dabei meine
-            Passion für die Webewntwicklung entdeckt. Mittlerweile arbeite ich
-            täglich in verschiedenen Projekten mit Typescript und React sowie
-            verschiedener CI/CD Infrastruktur. Zu meinen Stärken gehört das
-            Übertragen von Martkanforderungen in konkrete
-            Implementierungskonzepte.
-          </p>
-          <p className="text-zinc-400">In bin ziemlich gut in...</p>
-          <ul className="list-disc space-y-1 text-zinc-400">
-            <li>
-              Frontendentwicklung - Im Spezielle im React-Ökosystem, vor allem
-              mit Nextjs.
-            </li>
-            <li>
-              Identifizieren von konkreten Kundenanforderungen und
-              Implementierung dieser.
-            </li>
-            <li>
-              Schreiben von qualitativ hochwertigem Code - immer automatisiert
-              getestet.
-            </li>
-          </ul>
+          <ReactMarkdown>{about}</ReactMarkdown>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Berufliche Erfahrung</h2>
+          <h2>Berufliche Erfahrung</h2>
           <ul className="space-y-6">
             {workExperience.map(entry => (
               <li
@@ -196,13 +165,13 @@ const CV = ({ isHeadhunter }) => {
                 <div className="flex-1 items-center relative">
                   <h3 className="font-bold">{entry.title}</h3>
                   <p className="text-zinc-300 pb-2">{entry.company}</p>
-                  <p className="leading-normal text-zinc-400">
+                  <ReactMarkdown className=" text-zinc-400">
                     {entry.description}
-                  </p>
+                  </ReactMarkdown>
                   {entry.report && (
                     <Link
                       href={entry.report}
-                      className="absolute right-2 top-2 text-xs border border-zinc-400 p-1 rounded flex items-center hover:text-zinc-50"
+                      className="absolute right-2 top-2 text-xs border border-zinc-400 px-2 py-1 rounded flex items-center hover:text-zinc-50 print:hidden"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -227,7 +196,7 @@ const CV = ({ isHeadhunter }) => {
           </ul>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Projekte</h2>
+          <h2>Projekte</h2>
           <ul className="space-y-6">
             {projects.map(project => (
               <li
@@ -239,21 +208,14 @@ const CV = ({ isHeadhunter }) => {
                 </div>
                 <div className="flex-1 items-center relative">
                   <h3 className="font-bold">{project.title}</h3>
-                  <p className="leading-normal text-zinc-400">
-                    {project.description}
-                  </p>
-                  <ul className="list-disc text-zinc-400">
-                    {project.bulletPoints.map(bulletPoint => (
-                      <li key={bulletPoint}>{bulletPoint}</li>
-                    ))}
-                  </ul>
+                  <ReactMarkdown>{project.description}</ReactMarkdown>
                 </div>
               </li>
             ))}
           </ul>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Bildung</h2>
+          <h2>Bildung</h2>
           <ul className="space-y-6">
             <li className="flex flex-col md:flex-row md:gap-4">
               <div className="text-zinc-500 divide-y space-y-1 w-28">
@@ -278,7 +240,7 @@ const CV = ({ isHeadhunter }) => {
           </ul>
         </section>
         <section className="pt-8">
-          <h2 className="text-xl font-bold pb-4">Kontakt</h2>
+          <h2>Kontakt</h2>
           <ul className="space-y-2">
             <li className="flex flex-col md:flex-row md:gap-4">
               <div className="text-zinc-500 w-28">Website</div>

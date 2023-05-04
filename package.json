@@ -20,6 +20,7 @@
     "octokit": "^2.0.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
     "rehype-pretty-code": "^0.9.5",
     "shiki": "^0.14.1"
   },
