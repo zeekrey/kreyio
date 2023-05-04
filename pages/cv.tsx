@@ -1,6 +1,8 @@
+import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
+import { NextSeo } from "next-seo"
 
 const about = `
 ## Über mich
@@ -82,6 +84,10 @@ const projects = [
 const CV = () => {
   return (
     <div>
+      <Head>
+        <title>Christian Krey | CV</title>
+      </Head>
+      <NextSeo noindex={true} />
       <main className="px-8 py-8 md:container md:mx-auto [&_h2]:pb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:text-zinc-200 [&_p]:text-zinc-400 [&_strong]:text-zinc-300 [&_ul]:list-disc [&_ul]:text-zinc-400">
         <header className="flex items-center gap-4">
           <Image
