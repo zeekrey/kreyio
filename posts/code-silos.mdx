@@ -1,0 +1,44 @@
+---
+title: Warum unterschiedliche Schätzungen in Scrum-Projekten ein Warnsignal sein können
+description: Code-Silos in Scrum-Projekten? Pair-Programming und Code-Reviews helfen, Wissen zu teilen
+published: "2023-05-04"
+---
+
+Stellt euch folgendes Szenario vor: Scrum Projekt - Refinement. Die Entwickler schätzen die Tasks für den nächsten Sprint. Ein Entwickler schätzt einen Task mit 3 Story Points, während die anderen Entwickler den gleichen Task mit 8 Story Points schätzen. Ganz normal und wahrscheinlich sogar sehr gesund. Denn, so können Unklarheiten sehr gut aufgedeckt werden.
+
+Oft jedoch beobachte ich, dass der Grund für die Abweichung nicht in der Unklarheit der Aufgabe liegt, sondern in der unterschiedlichen Erfahrung in dem Feature oder in dem Code-Bereich. Oft wird das sogar direkt adressiert: _"John hat das zu Grunde liegende Feature entwickelt, er kennt sich damit am besten aus."_ Grundsätzlich nicht verkehrt, allerdings sollte das nicht dazu führen, dass John der einzige Entwickler ist, der sich mit dem Feature auskennt.
+
+Solche Umstände deuten auf Code-Silos hin. Jeder Entwickler hat sich sein eigenes Silo aufgebaut, in dem er eine bestimmte Passage des Codes besonders gut kennt, während die anderen Entwickler damit weniger vertraut sind.
+
+Um solche Code Silos zu verhindern, können meiner Meinung nach folgende Methoden verwendet werden. Wir beginnen mit den Methoden, die am wenigstens Aufwand benötigen und steigern uns dann. Mit steigendem Aufwand steigt auch die Effektivität der Methoden.
+
+### Pair-Programming
+
+Durch das Zusammenarbeiten von Entwicklern an einem Task können Wissen und Erfahrung geteilt werden. Dadurch wird vermieden, dass sich ein Entwickler in seinem eigenen Silo versteckt.
+
+Wichtig sind hier einige Regeln:
+
+- Solche Termine sollten regelmäßig stattfinden, z.B. einmal pro Woche.
+- Die besprochenen Dinge sollten in dem Task festgehalten werden.
+- Neue Ideen oder gefundene Probleme sollten in einem neuen Task festgehalten werden (gerne auch in einem Kommentar im Task).
+
+### Inline Code-Dokumentation
+
+Viel zu selten sieht man Dokumentation im eigentlichen Quellcode. Dabei sollten Entwickler davor keine Angst haben. Gängige Bundler entfernen solche Code-Kommentare ohnehin aus dem finalen Produkt. Somit handelt es sich hier meistens ohnehin nur eine Team-interne Dokumentation.
+
+Durch eine klare und präzise Dokumentation können Entwickler schnell und einfach auf den Code zugreifen und verstehen, wie er funktioniert. Wichtig sind hier vor allem Hinweise zur Navigation im Code. Im Fall eines JS/TS Projektes sollte auf JSDocs zurückgegriffen werden.
+
+### Code-Reviews
+
+Durch regelmäßige Code-Reviews können Entwickler Feedback zu ihrem Code erhalten und Fehler oder Schwachstellen im Code aufdecken. Dadurch wird die Qualität des Codes verbessert und das Wissen über den Code wird innerhalb des Teams geteilt.
+
+Vereinzelte Code-Reviews helfen dabei meiner Meinung nach nur bedingt. Stattdessen sollte der Review-Prozess tiefgreifend in den Entwicklungsprozess integriert werden.
+
+Ein Beispiel für einen solchen Prozess könnte (wirklich sehr kurz beschrieben → siehe [Feature Branch Workflow](https://infos.seibert-media.net/display/Productivity/Git-Workflows+-+Der+Feature-Branch-Workflow)) wie folgt aussehen:
+
+1. Entwicklung eines Features in einem Feature-Branch.
+2. Erstellen eines Merge/Pull-Requests.
+3. Review des Merge/Pull-Requests durch einen anderen Entwickler.
+4. Merge des Merge-Requests in den Master-Branch
+
+Indem diese Maßnahmen ergriffen werden, kann vermieden werden, dass sich Entwickler in ihren eigenen Silos verstecken und dass der Code schlechter maintainbar wird. Stattdessen wird das Wissen innerhalb des Teams geteilt und die Qualität des Codes verbessert, was zu einem erfolgreichen Softwareprojekt führt.
