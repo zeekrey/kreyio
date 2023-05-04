@@ -15,7 +15,7 @@ const Nav = () => {
       <div>
         {asPath !== "/" && (
           <Link href="/" passHref>
-            <div className="text-sm flex items-center cursor-pointer gap-2">
+            <div className="flex cursor-pointer items-center gap-2 text-sm">
               <ArrowLeftIcon /> <span>Home</span>
             </div>
           </Link>

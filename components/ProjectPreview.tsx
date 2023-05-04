@@ -21,13 +21,13 @@ const ProjectPreview: React.FunctionComponent<{
   }
 }> = ({ project }) => {
   return (
-    <li className="border-b-zinc-800 border-b last-of-type:border-b-0 py-6 cursor-pointer text-zinc-300 group">
+    <li className="group cursor-pointer border-b border-b-zinc-800 py-6 text-zinc-300 last-of-type:border-b-0">
       <Link href={`projects/${project.filePath.replace(/\.mdx?$/, "")}`}>
         <div className="flex items-center justify-between">
           <div className="w-28">
             <time
               dateTime={project.data.published}
-              className="block w-16 pr-2 text-sm text-zinc-700 group-hover:text-zinc-500 mb-1"
+              className="mb-1 block w-16 pr-2 text-sm text-zinc-700 group-hover:text-zinc-500"
             >
               {project.data.projectStart}
             </time>
@@ -42,11 +42,11 @@ const ProjectPreview: React.FunctionComponent<{
             <h2 className="">
               {project.data.title} [{project.data.role}]
             </h2>
-            <ul className="flex mt-1 space-x-2">
+            <ul className="mt-1 flex space-x-2">
               {project.data.tags.map(tag => (
                 <li
                   key={tag}
-                  className="py-1 px-2  rounded bg-zinc-800 text-zinc-400 text-xs text-center"
+                  className="rounded bg-zinc-800  px-2 py-1 text-center text-xs text-zinc-400"
                 >
                   {tag}
                 </li>
@@ -54,7 +54,7 @@ const ProjectPreview: React.FunctionComponent<{
             </ul>
           </div>
           <div className="flex items-center space-x-2 group-hover:text-zinc-50">
-            <span className="text-sm opacity-0 group-hover:opacity-100 transition duration-150 ease-out group-hover:ease-in">
+            <span className="text-sm opacity-0 transition duration-150 ease-out group-hover:opacity-100 group-hover:ease-in">
               View
             </span>
             <ArrowRightIcon />

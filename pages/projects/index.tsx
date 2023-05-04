@@ -13,7 +13,7 @@ const sortByPublished = (a, b) =>
 const Project = ({ projects }) => {
   return (
     <>
-      <h1 className="text-6xl leading-normal text-zinc-50 m-0 font-bold">
+      <h1 className="m-0 text-6xl font-bold leading-normal text-zinc-50">
         Projects
       </h1>
       <ul>

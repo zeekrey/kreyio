@@ -20,7 +20,7 @@ const Project: React.FunctionComponent<{
   return (
     <a
       href={url}
-      className="appearance-none flex justify-between py-2 cursor-pointer transition-all active:shadow-sm focus:shadow-sm"
+      className="flex cursor-pointer appearance-none justify-between py-2 transition-all focus:shadow-sm active:shadow-sm"
     >
       <div>
         <div>
@@ -31,16 +31,16 @@ const Project: React.FunctionComponent<{
       </div>
       <div>
         {primaryLanguage && (
-          <div className="py-1 rounded bg-zinc-800 text-zinc-400 text-xs text-center">
+          <div className="rounded bg-zinc-800 py-1 text-center text-xs text-zinc-400">
             {primaryLanguage.name}
           </div>
         )}
         <div className="flex justify-end gap-4 pt-2">
-          <div className="flex content-center text-center gap-4">
+          <div className="flex content-center gap-4 text-center">
             <CommitIcon />
             <small>{forkCount}</small>
           </div>
-          <div className="flex items-center content-center text-center gap-4">
+          <div className="flex content-center items-center gap-4 text-center">
             <StarIcon />
             <small>{stargazers.totalCount}</small>
           </div>

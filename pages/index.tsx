@@ -130,7 +130,7 @@ const Index = ({ posts, projects, commercialProjects }) => {
       {/* Headline */}
       <div className="pt-16">
         <div className="text-zinc-400">Hey there, I&apos;m</div>
-        <h1 className="text-6xl leading-normal text-zinc-50 m-0 font-bold">
+        <h1 className="m-0 text-6xl font-bold leading-normal text-zinc-50">
           Christian 👋🏻
         </h1>
       </div>
@@ -142,8 +142,8 @@ const Index = ({ posts, projects, commercialProjects }) => {
 
       {/* Blog */}
       <section className="py-6">
-        <h2 className="font-semibold text-zinc-700 text-xl my-4">Blog</h2>
-        <ul className="m-0 p-0 list-none">
+        <h2 className="my-4 text-xl font-semibold text-zinc-700">Blog</h2>
+        <ul className="m-0 list-none p-0">
           {posts.sort(sortByPublished).map(post => (
             <PostPreview post={post} key={post.data.title} />
           ))}
@@ -157,7 +157,7 @@ const Index = ({ posts, projects, commercialProjects }) => {
 
       {/* Open Source Projects */}
       <section className="py-6">
-        <h2 className="font-semibold text-zinc-700 text-xl my-4">
+        <h2 className="my-4 text-xl font-semibold text-zinc-700">
           Open Source Projects
         </h2>
         {projects
@@ -171,10 +171,10 @@ const Index = ({ posts, projects, commercialProjects }) => {
 
       {/* Commercial Projects */}
       <section className="py-6">
-        <h2 className="font-semibold text-zinc-700 text-xl my-4">
+        <h2 className="my-4 text-xl font-semibold text-zinc-700">
           Commercial Projects (Freelance)
         </h2>
-        <ul className="m-0 p-0 list-none">
+        <ul className="m-0 list-none p-0">
           {commercialProjects.sort(sortByPublished).map(project => (
             <ProjectPreview project={project} key={project.data.title} />
           ))}

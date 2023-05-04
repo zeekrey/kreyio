@@ -82,7 +82,7 @@ const projects = [
 const CV = () => {
   return (
     <div>
-      <main className="md:container md:mx-auto py-8 px-8 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:pb-4 [&_p]:text-zinc-400 [&_ul]:text-zinc-400 [&_ul]:list-disc [&_strong]:text-zinc-300 [&_h3]:text-zinc-200">
+      <main className="px-8 py-8 md:container md:mx-auto [&_h2]:pb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:text-zinc-200 [&_p]:text-zinc-400 [&_strong]:text-zinc-300 [&_ul]:list-disc [&_ul]:text-zinc-400">
         <header className="flex items-center gap-4">
           <Image
             src="/zeekrey.webp"
@@ -93,12 +93,12 @@ const CV = () => {
           />
           <div>
             <h1 className="text-4xl font-bold text-zinc-50">Christian Krey</h1>
-            <p className="text-zinc-400 leading-none text-sm">
+            <p className="text-sm leading-none text-zinc-400">
               Frontend Developer
             </p>
             <a
               href="http://krey.io"
-              className="text-zinc-400 leading-none text-sm"
+              className="text-sm leading-none text-zinc-400"
             >
               krey.io
             </a>
@@ -146,7 +146,7 @@ const CV = () => {
             </div>
           </aside>
         )} */}
-        <section className="pt-8 space-y-3">
+        <section className="space-y-3 pt-8">
           <ReactMarkdown>{about}</ReactMarkdown>
         </section>
         <section className="pt-8">
@@ -157,21 +157,21 @@ const CV = () => {
                 key={entry.title + entry.endDate}
                 className="flex flex-col md:flex-row md:gap-4"
               >
-                <div className="text-zinc-500 divide-y space-y-1 w-28">
+                <div className="w-28 space-y-1 divide-y text-zinc-500">
                   <p>
                     {entry.startDate} - {entry.endDate}
                   </p>
                 </div>
-                <div className="flex-1 items-center relative">
+                <div className="relative flex-1 items-center">
                   <h3 className="font-bold">{entry.title}</h3>
-                  <p className="text-zinc-300 pb-2">{entry.company}</p>
+                  <p className="pb-2 text-zinc-300">{entry.company}</p>
                   <ReactMarkdown className=" text-zinc-400">
                     {entry.description}
                   </ReactMarkdown>
                   {entry.report && (
                     <Link
                       href={entry.report}
-                      className="absolute right-2 top-2 text-xs border border-zinc-400 px-2 py-1 rounded flex items-center hover:text-zinc-50 print:hidden"
+                      className="absolute right-2 top-2 flex items-center rounded border border-zinc-400 px-2 py-1 text-xs hover:text-zinc-50 print:hidden"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +179,7 @@ const CV = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-4 h-4 inline mr-1"
+                        className="mr-1 inline h-4 w-4"
                       >
                         <path
                           strokeLinecap="round"
@@ -203,10 +203,10 @@ const CV = () => {
                 className="flex flex-col md:flex-row md:gap-4"
                 key={project.title}
               >
-                <div className="text-zinc-500 divide-y space-y-1 w-28">
+                <div className="w-28 space-y-1 divide-y text-zinc-500">
                   <p>{project.date}</p>
                 </div>
-                <div className="flex-1 items-center relative">
+                <div className="relative flex-1 items-center">
                   <h3 className="font-bold">{project.title}</h3>
                   <ReactMarkdown>{project.description}</ReactMarkdown>
                 </div>
@@ -218,10 +218,10 @@ const CV = () => {
           <h2>Bildung</h2>
           <ul className="space-y-6">
             <li className="flex flex-col md:flex-row md:gap-4">
-              <div className="text-zinc-500 divide-y space-y-1 w-28">
+              <div className="w-28 space-y-1 divide-y text-zinc-500">
                 <p>2013</p>
               </div>
-              <div className="flex-1 items-center relative">
+              <div className="relative flex-1 items-center">
                 <h3 className="font-bold">Bachelor Of Science</h3>
                 <p className="leading-normal text-zinc-400">
                   Hochschule für Telekommunikation Leipzig
@@ -229,10 +229,10 @@ const CV = () => {
               </div>
             </li>
             <li className="flex flex-col md:flex-row md:gap-4">
-              <div className="text-zinc-500 divide-y space-y-1 w-28">
+              <div className="w-28 space-y-1 divide-y text-zinc-500">
                 <p>2019</p>
               </div>
-              <div className="flex-1 items-center relative">
+              <div className="relative flex-1 items-center">
                 <h3 className="font-bold">Scrum Master</h3>
                 <p className="leading-normal text-zinc-400">TÜV SÜD</p>
               </div>
@@ -243,15 +243,15 @@ const CV = () => {
           <h2>Kontakt</h2>
           <ul className="space-y-2">
             <li className="flex flex-col md:flex-row md:gap-4">
-              <div className="text-zinc-500 w-28">Website</div>
+              <div className="w-28 text-zinc-500">Website</div>
               <Link href={"/"}>krey.io</Link>
             </li>
             <li className="flex flex-col md:flex-row md:gap-4">
-              <div className="text-zinc-500  w-28">Twitter</div>
+              <div className="w-28  text-zinc-500">Twitter</div>
               <a href="http://twitter.com/_zeekrey">@zeekrey_</a>
             </li>
             <li className="flex flex-col md:flex-row md:gap-4">
-              <div className="text-zinc-500  w-28">Github</div>
+              <div className="w-28  text-zinc-500">Github</div>
               <a href="https://github.com/zeekrey">zeekrey</a>
             </li>
           </ul>

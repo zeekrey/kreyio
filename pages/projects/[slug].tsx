@@ -54,7 +54,7 @@ const ProjectPage = ({
       />
       <div id="blog">
         {frontMatter.documentLanguage === "de" && (
-          <div className="py-2 px-3 rounded bg-zinc-800 text-sm">
+          <div className="rounded bg-zinc-800 px-3 py-2 text-sm">
             <span className="mr-2">🇩🇪</span>
             <span>
               Unfortunately, this document is currently only available in

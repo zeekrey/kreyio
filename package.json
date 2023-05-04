@@ -32,6 +32,7 @@
     "next-transpile-modules": "^10.0.0",
     "postcss": "^8.4.23",
     "prettier": "2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
   },
@@ -41,7 +42,8 @@
     "dev:watch": "next-remote-watch ./posts",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pettier": "prettier --check"
   },
   "repository": {
     "type": "git",
