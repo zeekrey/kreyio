@@ -164,7 +164,7 @@ const CV = ({ isHeadhunter }) => {
             Übertragen von Martkanforderungen in konkrete
             Implementierungskonzepte.
           </p>
-          <p className="text-zinc-400">In bin ziehmlich gut in...</p>
+          <p className="text-zinc-400">In bin ziemlich gut in...</p>
           <ul className="list-disc space-y-1 text-zinc-400">
             <li>
               Frontendentwicklung - Im Spezielle im React-Ökosystem, vor allem
