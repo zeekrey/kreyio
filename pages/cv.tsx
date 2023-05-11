@@ -8,7 +8,7 @@ const about = `
 ## Über mich
 
 Mit 19 habe ich Wirtschaftsinformatik studiert und dabei meine
-Passion für die Webewntwicklung entdeckt. Mittlerweile arbeite ich
+Passion für die Webentwicklung entdeckt. Mittlerweile arbeite ich
 täglich in verschiedenen Projekten mit **Typescript** und **React** sowie
 verschiedener CI/CD Infrastruktur.
 
@@ -83,7 +83,7 @@ const projects = [
 
 const CV = () => {
   return (
-    <div>
+    <div className="print:text-zinc-950">
       <Head>
         <title>Christian Krey | CV</title>
       </Head>
@@ -97,8 +97,10 @@ const CV = () => {
             height="80"
             className="rounded-full"
           />
-          <div>
-            <h1 className="text-4xl font-bold text-zinc-50">Christian Krey</h1>
+          <div className="text-center sm:text-left">
+            <h1 className="text-4xl font-bold text-zinc-50 print:text-zinc-800">
+              Christian Krey
+            </h1>
             <p className="text-sm leading-none text-zinc-400">
               Frontend Developer
             </p>
@@ -169,16 +171,16 @@ const CV = () => {
                   </p>
                 </div>
                 <div className="relative flex-1 items-center">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <h3 className="font-bold">{entry.title}</h3>
-                      <p className="pb-2 text-zinc-300">{entry.company}</p>
+                      <p className="pb-2 text-zinc-300 print:text-zinc-700">{entry.company}</p>
                     </div>
                     {entry.report && (
                       <div className="my-2 sm:my-0">
                         <Link
                           href={entry.report}
-                          className="w-full flex items-center rounded border border-zinc-400 px-3 py-2 text-xs hover:text-zinc-50 print:hidden"
+                          className="flex w-full items-center rounded border border-zinc-400 px-3 py-2 text-xs hover:text-zinc-50 print:hidden"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
