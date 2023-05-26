@@ -2,21 +2,22 @@ import { GetStaticProps } from "next"
 import { NextSeo } from "next-seo"
 import Link from "next/link"
 import PageLayout from "../layouts/PageLayout"
-import {
-  postFilePaths,
-  POSTS_PATH,
-  PROJECTS_PATH,
-  projectFilePaths,
-} from "../utils/mdxUtils"
-import fs from "fs"
-import matter from "gray-matter"
-import path from "path"
+// import {
+//   postFilePaths,
+//   POSTS_PATH,
+//   PROJECTS_PATH,
+//   projectFilePaths,
+// } from "../utils/mdxUtils"
+// import fs from "fs"
+// import matter from "gray-matter"
+// import path from "path"
 import PostPreview from "../components/PostPreview"
 import { Octokit } from "octokit"
 import type { GraphQlQueryResponseData } from "@octokit/graphql"
 import Project from "../components/Project"
 import Button from "../components/Button"
 import ProjectPreview from "../components/ProjectPreview"
+import { allPosts, type Post } from "contentlayer/generated"
 
 const sortByPublished = (a, b) =>
   Date.parse(b.data.published) - Date.parse(a.data.published)
@@ -26,31 +27,33 @@ const octokit = new Octokit({
 })
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = postFilePaths
-    .map(filePath => {
-      const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
-      const { content, data } = matter(source)
+  const posts = allPosts
 
-      return {
-        content,
-        data,
-        filePath,
-      }
-    })
-    .slice(0, 5)
+  // const posts = postFilePaths
+  //   .map(filePath => {
+  //     const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
+  //     const { content, data } = matter(source)
 
-  const commercialProjects = projectFilePaths
-    .map(filePath => {
-      const source = fs.readFileSync(path.join(PROJECTS_PATH, filePath))
-      const { content, data } = matter(source)
+  //     return {
+  //       content,
+  //       data,
+  //       filePath,
+  //     }
+  //   })
+  //   .slice(0, 5)
 
-      return {
-        content,
-        data,
-        filePath,
-      }
-    })
-    .slice(0, 5)
+  // const commercialProjects = projectFilePaths
+  //   .map(filePath => {
+  //     const source = fs.readFileSync(path.join(PROJECTS_PATH, filePath))
+  //     const { content, data } = matter(source)
+
+  //     return {
+  //       content,
+  //       data,
+  //       filePath,
+  //     }
+  //   })
+  //   .slice(0, 5)
 
   const {
     user: { pinnedItems },
@@ -90,9 +93,9 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: posts.filter(post => !post.data.isDraft),
-      commercialProjects: commercialProjects.filter(
-        project => !project.data.isDraft
-      ),
+      // commercialProjects: commercialProjects.filter(
+      //   project => !project.data.isDraft
+      // ),
       projects: pinnedItems.edges,
     },
     // revalidate: 60 * 60, Once per hour 60seconds * 60minutes REMOVE THIS FOR NOW, DEPLOYMENT FAILS IF ENABLED
@@ -170,7 +173,7 @@ const Index = ({ posts, projects, commercialProjects }) => {
       </section>
 
       {/* Commercial Projects */}
-      <section className="py-6">
+      {/* <section className="py-6">
         <h2 className="my-4 text-xl font-semibold text-zinc-700">
           Commercial Projects (Freelance)
         </h2>
@@ -184,7 +187,7 @@ const Index = ({ posts, projects, commercialProjects }) => {
             <Button as="a">See all</Button>
           </Link>
         </div>
-      </section>
+      </section> */}
     </>
   )
 }

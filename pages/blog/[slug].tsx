@@ -46,7 +46,7 @@ const PostPage = ({ source, frontMatter }) => {
         }}
       />
       <div id="blog">
-        <h1>{frontMatter.title}</h1>
+        <h1 className="text-2xl">{frontMatter.title}</h1>
         <MDXRemote {...source} components={components} />
       </div>
     </>

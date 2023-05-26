@@ -69,5 +69,6 @@ yarn-error.log
 
 # Nextjs
 .next
-
 .vercel
+
+.contentlayer

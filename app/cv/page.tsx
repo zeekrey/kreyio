@@ -174,7 +174,9 @@ const CV = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <h3 className="font-bold">{entry.title}</h3>
-                      <p className="pb-2 text-zinc-300 print:text-zinc-700">{entry.company}</p>
+                      <p className="pb-2 text-zinc-300 print:text-zinc-700">
+                        {entry.company}
+                      </p>
                     </div>
                     {entry.report && (
                       <div className="my-2 sm:my-0">

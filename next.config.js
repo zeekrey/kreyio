@@ -1,3 +1,3 @@
-const withTM = require('next-transpile-modules')(['unist-util-visit']);
-
-module.exports = withTM(/* your Next.js config */);
+// // const withTM = require('next-transpile-modules')(['unist-util-visit']);
+// import { withContentlayer } from 'next-contentlayer'
+// export default withContentlayer({})
