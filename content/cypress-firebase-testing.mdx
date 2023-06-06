@@ -1,7 +1,8 @@
 ---
 title: Testing Firebase Authentication with Cypress
 description: How to test the firebase user authentication with Cypress.
-published: "2019-02-13"
+published: 2019-02-13
+type: Post
 ---
 
 I recently wrote some [Cypress](https://www.cypress.io/) tests for a project using [Firebase](https://firebase.google.com/). While most of it was pretty straight forward, I had trouble testing the authentication flow. Signing up is not a problem, but before or after the test case, the corresponding test user needs to be deleted. The problem is that the Firebase Admin SDK needed to accomplish this needs a node.js environment.

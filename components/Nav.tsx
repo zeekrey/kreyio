@@ -1,11 +1,7 @@
+'use client'
+
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useTheme } from "next-themes"
-import {
-  ArrowLeftIcon,
-  GitHubLogoIcon,
-  TwitterLogoIcon,
-} from "@modulz/radix-icons"
 
 const Nav = () => {
   const { asPath } = useRouter()
@@ -16,7 +12,7 @@ const Nav = () => {
         {asPath !== "/" && (
           <Link href="/" passHref>
             <div className="flex cursor-pointer items-center gap-2 text-sm">
-              <ArrowLeftIcon /> <span>Home</span>
+               <span>Home</span>
             </div>
           </Link>
         )}
@@ -27,7 +23,7 @@ const Nav = () => {
             href="https://twitter.com/zeekrey_"
             className="hover:text-emerald-100"
           >
-            <TwitterLogoIcon />
+            Twitter
           </a>
         </li>
         <li>
@@ -35,7 +31,7 @@ const Nav = () => {
             href="https://github.com/zeekrey"
             className="hover:text-emerald-100"
           >
-            <GitHubLogoIcon />
+            Github
           </a>
         </li>
       </ul>

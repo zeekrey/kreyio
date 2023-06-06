@@ -1,6 +1,4 @@
-import { StarIcon, CommitIcon } from "@modulz/radix-icons"
-
-const Project: React.FunctionComponent<{
+export type GithubProject = {
   id: string
   name: string
   createdAt: string
@@ -16,7 +14,16 @@ const Project: React.FunctionComponent<{
   }
   updatedAt: string
   url: string
-}> = ({ name, description, primaryLanguage, forkCount, stargazers, url }) => {
+}
+
+const Project: React.FunctionComponent<GithubProject> = ({
+  name,
+  description,
+  primaryLanguage,
+  forkCount,
+  stargazers,
+  url,
+}) => {
   return (
     <a
       href={url}
@@ -37,11 +44,11 @@ const Project: React.FunctionComponent<{
         )}
         <div className="flex justify-end gap-4 pt-2">
           <div className="flex content-center gap-4 text-center">
-            <CommitIcon />
+            Commit
             <small>{forkCount}</small>
           </div>
           <div className="flex content-center items-center gap-4 text-center">
-            <StarIcon />
+            Star
             <small>{stargazers.totalCount}</small>
           </div>
         </div>
