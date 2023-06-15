@@ -11,7 +11,7 @@ Passion für die Webentwicklung entdeckt. Mittlerweile arbeite ich
 täglich in verschiedenen Projekten mit **Typescript** und **React** sowie
 verschiedener CI/CD Infrastruktur.
 
-In bin ziemlich gut in...
+In bin gut in...
 
 - Frontendentwicklung - Im Spezielle im React-Ökosystem, vor allem
 mit **Next.js**.
