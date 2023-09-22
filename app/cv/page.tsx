@@ -6,17 +6,13 @@ import ReactMarkdown from "react-markdown"
 const about = `
 ## Über mich
 
-Mit 19 habe ich Wirtschaftsinformatik studiert und dabei meine
-Passion für die Webentwicklung entdeckt. Mittlerweile arbeite ich
-täglich in verschiedenen Projekten mit **Typescript** und **React** sowie
-verschiedener CI/CD Infrastruktur.
+Mit 19 Jahren begann ich mein Studium der Wirtschaftsinformatik und entdeckte dabei meine Leidenschaft für die Webentwicklung. Heute arbeite ich täglich an verschiedenen Projekten mit **Typescript** und **React**, sowie an unterschiedlichen CI/CD Infrastrukturen.
 
-In bin gut in...
+Meine Stärken umfassen:
 
-- Frontendentwicklung - Im Spezielle im React-Ökosystem, vor allem
-mit **Next.js**.
-- **Identifizieren** von konkreten **Kundenanforderungen** und Implementierung dieser.
-- Schreiben von qualitativ **hochwertigem Code** - immer automatisiert getestet.
+-  Frontendentwicklung - Insbesondere im React-Ökosystem, vor allem mit **Next.js**.
+-  Das Erkennen konkreter Kundenanforderungen und deren Umsetzung.
+-  Das Schreiben von qualitativ hochwertigem Code, der stets automatisiert getestet wird.
 `
 
 const workExperience = [
@@ -86,7 +82,7 @@ const CV = () => {
       <Head>
         <title>Christian Krey | CV</title>
       </Head>
-      <main className="px-8 py-8 max-w-3xl md:mx-auto [&_h2]:pb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:text-zinc-200 [&_p]:text-zinc-400 [&_strong]:text-zinc-300 [&_ul]:list-disc [&_ul]:text-zinc-400">
+      <main className="px-8 py-8 max-w-6xl md:mx-auto [&_h2]:pb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:text-zinc-200 [&_p]:text-zinc-400 [&_strong]:text-zinc-300 [&_ul]:list-disc [&_ul]:text-zinc-400">
         <header className="flex flex-col items-center gap-4 sm:flex-row">
           <Image
             src="/zeekrey.webp"
