@@ -86,7 +86,7 @@ const CV = () => {
       <Head>
         <title>Christian Krey | CV</title>
       </Head>
-      <main className="px-8 py-8 md:container md:mx-auto [&_h2]:pb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:text-zinc-200 [&_p]:text-zinc-400 [&_strong]:text-zinc-300 [&_ul]:list-disc [&_ul]:text-zinc-400">
+      <main className="px-8 py-8 max-w-3xl md:mx-auto [&_h2]:pb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:text-zinc-200 [&_p]:text-zinc-400 [&_strong]:text-zinc-300 [&_ul]:list-disc [&_ul]:text-zinc-400">
         <header className="flex flex-col items-center gap-4 sm:flex-row">
           <Image
             src="/zeekrey.webp"
