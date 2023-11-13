@@ -23,6 +23,7 @@ const workExperience = [
     startDate: "2022",
     endDate: "2023",
     description: `Auf Basis bestehender Systeme hatte das Team die Aufgabe, ein neues Produkt zu entwickeln, das die Steuerung von Smart Home Geräten ermöglicht. Hierfür wurde das Frontend Framework **Knockout** verwendet. Zu den eingesetzten Tools gehören **Jasmin**, **Karma**, **Webpack** und die **Gitlab CI/CD**.`,
+    report: "/projects/gira-smarthome",
     employment: "freelance",
   },
   {
