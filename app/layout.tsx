@@ -1,55 +1,59 @@
-import { Work_Sans } from "next/font/google"
-import Analytics from "components/Analytics"
 import type { Metadata } from "next"
 
-import "./globals.css"
+import { ColorModeToggle } from "@/components/color-mode-toggle"
+import { Separator } from "@/components/ui/separator"
+import "@/styles/globals.css"
+import Analytics from "components/Analytics"
+import { Work_Sans } from "next/font/google"
+
+import { ThemeProvider } from "../components/providers"
 
 const workSans = Work_Sans({
-  weight: ["200", "400", "600"],
-  subsets: ["latin"],
   display: "swap",
+  subsets: ["latin"],
   variable: "--font-work-sans",
+  weight: ["200", "400", "600"],
 })
 
 export const metadata: Metadata = {
+  description: "tbd.",
+  icons: {
+    shortcut: "/favicon.ico",
+  },
+  openGraph: {
+    description: "Something about me and the things I'm building.",
+    images: [
+      {
+        alt: "https://krey.io/",
+        height: 506,
+        url: `https://krey.io/thumbnail.png`,
+        width: 1012,
+      },
+    ],
+    locale: "de-DE",
+    siteName: "Christian Krey",
+    title: "Christian Krey",
+    type: "website",
+    url: "https://krey.io",
+  },
+  robots: {
+    follow: true,
+    googleBot: {
+      follow: true,
+      index: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+    index: true,
+  },
   title: {
     default: "Christian Krey",
     template: "%s | Christian Krey",
   },
-  description: "tbd.",
-  openGraph: {
-    title: "Christian Krey",
-    description: "Something about me and the things I'm building.",
-    url: "https://krey.io",
-    siteName: "Christian Krey",
-    images: [
-      {
-        url: `https://krey.io/thumbnail.png`,
-        width: 1012,
-        height: 506,
-        alt: "https://krey.io/",
-      },
-    ],
-    locale: "de-DE",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   twitter: {
-    title: "Christian Krey",
     card: "summary_large_image",
-  },
-  icons: {
-    shortcut: "/favicon.ico",
+    title: "Christian Krey",
   },
   verification: {},
 }
@@ -60,10 +64,26 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${workSans.variable}`}>
-      <body className="bg-zinc-900 font-medium text-zinc-200 antialiased">
+    <html className={`${workSans.variable}`} lang="en" suppressHydrationWarning>
+      <body className="bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 font-medium antialiased">
         <Analytics />
-        <main>{children}</main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
+          <main className="mx-auto max-w-3xl px-4 sm:px-6 md:px-8">
+            {children}
+          </main>
+          <Separator />
+          <footer className="mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-4 md:py-8 flex items-center justify-between">
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              Christian Krey
+              </p>
+            <ColorModeToggle />
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   )

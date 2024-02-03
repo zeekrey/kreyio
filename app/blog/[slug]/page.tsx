@@ -1,16 +1,10 @@
-import { allPosts } from "contentlayer/generated"
-import { useMDXComponent } from "next-contentlayer/hooks"
-import { format, parseISO } from "date-fns"
+import { CustomMDX } from "components/custom-mdx"
+import { formatDate, getBlogPosts } from "lib/db"
 import { notFound } from "next/navigation"
-import type { MDXComponents } from "mdx/types"
-import Link from "next/link"
-
-const mdxComponents: MDXComponents = {
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-}
+import { Suspense } from "react"
 
 export const generateStaticParams = async () => {
-  const publishedPosts = allPosts.filter(post => !post.isDraft)
+  const publishedPosts = getBlogPosts().filter(post => !post.metadata.isDraft)
 
   return publishedPosts.map(post => ({
     slug: post.slug,
@@ -18,20 +12,19 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find(post => post.slug === params.slug)
+  let post = getBlogPosts().find(post => post.slug === params.slug)
 
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
 
-  const { title, published, description } = post
+  const { publishedAt, summary, title } = post.metadata
 
   return {
-    title,
-    description,
+    description: summary,
     openGraph: {
+      description: summary,
+      publishedTime: publishedAt,
       title,
-      description,
       type: "article",
-      publishedTime: published,
       url: `https://krey.io/posts/${params.slug}`,
       // images: [
       //   {
@@ -39,32 +32,36 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
       //   },
       // ],
     },
+    title,
     twitter: {
       card: "summary_large_image",
+      description: summary,
       title,
-      description,
       // images: [ogImage],
     },
   }
 }
 
 export default function Post({ params }: { params: { slug: string } }) {
-  const post = allPosts.find(post => post.slug === params.slug)
+  let post = getBlogPosts().find(post => post.slug === params.slug)
 
   if (!post) notFound()
 
-  const MDXContent = useMDXComponent(post.body.code)
-
   return (
-    <article className="prose mx-auto max-w-4xl px-4 py-16 dark:prose-invert lg:prose-lg sm:px-6 md:px-8">
-      <div className="mb-8 text-center">
-        <time dateTime={post.published} className="mb-1 text-xs text-gray-600">
-          {format(parseISO(post.published), "LLLL d, yyyy")}
-        </time>
-        {/* @ts-ignore text-wrap: balance is to new for TS. 🙃 */}
-        <h1 style={{ textWrap: "balance" }}>{post.title}</h1>
+    <section className="py-6 md:py-10">
+      <h1 className="title font-bold text-3xl tracking-tighter max-w-[650px]">
+        {post.metadata.title}
+      </h1>
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+        <Suspense fallback={<p className="h-5" />}>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            {formatDate(post.metadata.publishedAt).formattedDate}
+          </p>
+        </Suspense>
       </div>
-      <MDXContent components={mdxComponents} />
-    </article>
+      <article className="prose prose-quoteless prose-neutral dark:prose-invert">
+        <CustomMDX source={post.content} />
+      </article>
+    </section>
   )
 }

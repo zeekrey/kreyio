@@ -1,12 +1,16 @@
+import { GitGraphIcon, StarIcon } from "lucide-react"
+
+import { Badge } from "./ui/badge"
+
 export type GithubProject = {
-  id: string
-  name: string
   createdAt: string
   description: string
   forkCount: number
+  id: string
+  name: string
   primaryLanguage?: {
-    name: string
     color: string
+    name: string
   }
   pushedAt: string
   stargazers: {
@@ -17,43 +21,39 @@ export type GithubProject = {
 }
 
 const Project: React.FunctionComponent<GithubProject> = ({
-  name,
   description,
-  primaryLanguage,
   forkCount,
+  name,
+  primaryLanguage,
   stargazers,
   url,
 }) => {
   return (
-    <a
-      href={url}
-      className="flex cursor-pointer appearance-none justify-between py-2 transition-all focus:shadow-sm active:shadow-sm"
-    >
-      <div>
+    <li className="py-3 group transition-all">
+      <a
+        className="flex items-center cursor-pointer appearance-none justify-between "
+        href={url}
+      >
         <div>
-          <small className="text-xs text-zinc-700">zeekrey/</small>
-          <strong className="text-xs text-zinc-300">{name}</strong>
+          <h2 className="font-semibol pb-1 group-hover:text-black group-hover:dark:text-white flex items-center">
+            <small className="text-zinc-400 dark:text-zinc-700">zeekrey/</small>
+            <strong className="text-zinc-900 dark:text-zinc-300">{name}</strong>
+            {primaryLanguage && (
+              <Badge className="ml-2 font-light text-xs" variant="secondary">
+                {primaryLanguage.name}
+              </Badge>
+            )}
+          </h2>
+          <p className="text-sm font-light text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-200">
+            {description}
+          </p>
         </div>
-        <p className="py-3">{description}</p>
-      </div>
-      <div>
-        {primaryLanguage && (
-          <div className="rounded bg-zinc-800 py-1 text-center text-xs text-zinc-400">
-            {primaryLanguage.name}
-          </div>
-        )}
-        <div className="flex justify-end gap-4 pt-2">
-          <div className="flex content-center gap-4 text-center">
-            Commit
-            <small>{forkCount}</small>
-          </div>
-          <div className="flex content-center items-center gap-4 text-center">
-            Star
-            <small>{stargazers.totalCount}</small>
-          </div>
+        <div className="flex items-center justify-center gap-2 text-zinc-300 dark:text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200">
+          <StarIcon className="w-3 h-3" />
+          <small>{stargazers.totalCount}</small>
         </div>
-      </div>
-    </a>
+      </a>
+    </li>
   )
 }
 

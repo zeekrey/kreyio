@@ -17,63 +17,63 @@ Meine Stärken umfassen:
 
 const workExperience = [
   {
-    title: "Senior Frontend Developer",
     company: "Gira (Giersiepen GmbH & Co. KG)",
-    location: "Remote",
-    startDate: "2022",
-    endDate: "2023",
     description: `Auf Basis bestehender Systeme hatte das Team die Aufgabe, ein neues Produkt zu entwickeln, das die Steuerung von Smart Home Geräten ermöglicht. Hierfür wurde das Frontend Framework **Knockout** verwendet. Zu den eingesetzten Tools gehören **Jasmin**, **Karma**, **Webpack** und die **Gitlab CI/CD**.`,
-    report: "/projects/gira-smarthome",
     employment: "freelance",
-  },
-  {
-    title: "Senior Frontend Developer",
-    company: "Gira (Giersiepen GmbH & Co. KG)",
+    endDate: "2023",
     location: "Remote",
-    startDate: "2021",
-    endDate: "2022",
-    description: `Bei einem Greenfield-Projekt wurde ein Einrichtungswizard, basierend auf modernen Web-Technologien, in eine vorhandene Desktop-Anwendung integriert. Die Geschwindigkeit der Anwendung stand dabei im Fokus, weshalb **Svelte** als Frontend Framework gewählt wurde. Weiterhin wurden **Vite**, **Vitest** sowie **Gitlab CI/CD** als Tools eingesetzt.`,
-    report: "/projects/gira-wizard",
-    employment: "freelance",
+    report: "/projects/gira-smarthome",
+    startDate: "2022",
+    title: "Senior Frontend Developer",
   },
   {
-    title: "IT Management",
-    company: "Porsche (Porsche Leipzig GmbH)",
-    location: "Leipzig, Germany",
-    startDate: "2017",
+    company: "Gira (Giersiepen GmbH & Co. KG)",
+    description: `Bei einem Greenfield-Projekt wurde ein Einrichtungswizard, basierend auf modernen Web-Technologien, in eine vorhandene Desktop-Anwendung integriert. Die Geschwindigkeit der Anwendung stand dabei im Fokus, weshalb **Svelte** als Frontend Framework gewählt wurde. Weiterhin wurden **Vite**, **Vitest** sowie **Gitlab CI/CD** als Tools eingesetzt.`,
+    employment: "freelance",
     endDate: "2022",
+    location: "Remote",
+    report: "/projects/gira-wizard",
+    startDate: "2021",
+    title: "Senior Frontend Developer",
+  },
+  {
+    company: "Porsche (Porsche Leipzig GmbH)",
     description: `Betreuung von Entwicklerteams. Formulierung von IT-strategischer Ausrichtung und Entwicklungsvorgaben. Führung von Entwicklerteams mit dem Schwerpunkt **React** und **Vue**. Definition von Software-Architektur und -Design sowie CI/CD-Vorgaben.`,
     employment: "employed",
+    endDate: "2022",
+    location: "Leipzig, Germany",
+    startDate: "2017",
+    title: "IT Management",
   },
   {
-    title: "Datebase Marketing",
     company: "Deutsche Telekom (Telekom Deutschland GmbH)",
-    location: "Bonn, Germany",
-    startDate: "2010",
-    endDate: "2017",
     description: `Analysen im Bereich Markting, wie Kundensegmentierung oder CLV-Berechnungen. Bereichtserstellung mit Hilfe von **SQL**.`,
     employment: "employed",
+    endDate: "2017",
+    location: "Bonn, Germany",
+    startDate: "2010",
+    title: "Datebase Marketing",
   },
 ]
 
 const projects = [
   {
-    title: "Teini - Open Source Online Shop",
     date: "2022",
-    url: "https://shop.sterch.de",
     description: `Open Sourcen Online Shop auf Basis von Nextjs und Typescript. Frontend in **Next.js**, **React** und **Typescript**. Styling mit **Stitches** und **Radix**.`,
+    title: "Teini - Open Source Online Shop",
+    url: "https://shop.sterch.de",
   },
   {
-    title: "Sterch Shop",
     date: "2021",
-    url: "https://shop.sterch.de",
     description: `Storefront für BigCommerce implementiert in React und Typescript. Styling mit **Tailwind** und **Radix**. Individueller Checkout-Prozess mit Anbindung von **Stripe**.`,
+    title: "Sterch Shop",
+    url: "https://shop.sterch.de",
   },
   {
-    title: "Capybara",
     date: "2021",
-    url: "https://shop.sterch.de",
     description: `Elternportal bei dem Ausflugsideen für junge Familien ausgetauscht werden können. Frontend in **Nextjs**, **React** und Javascript. Anbindung an **CMS** (Contentul) via **REST** und Authentifizierung via **Google Firebase**.`,
+    title: "Capybara",
+    url: "https://shop.sterch.de",
   },
 ]
 
@@ -86,11 +86,11 @@ const CV = () => {
       <main className="px-8 py-8 max-w-6xl md:mx-auto [&_h2]:pb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h3]:text-zinc-200 [&_p]:text-zinc-400 [&_strong]:text-zinc-300 [&_ul]:list-disc [&_ul]:text-zinc-400">
         <header className="flex flex-col items-center gap-4 sm:flex-row">
           <Image
-            src="/zeekrey.webp"
             alt="Christian Krey"
-            width="80"
-            height="80"
             className="rounded-full"
+            height="80"
+            src="/zeekrey.webp"
+            width="80"
           />
           <div className="text-center sm:text-left">
             <h1 className="text-4xl font-bold text-zinc-50 print:text-zinc-800">
@@ -100,8 +100,8 @@ const CV = () => {
               Frontend Developer
             </p>
             <a
-              href="http://krey.io"
               className="text-sm leading-none text-zinc-400"
+              href="http://krey.io"
             >
               krey.io
             </a>
@@ -157,8 +157,8 @@ const CV = () => {
           <ul className="space-y-6">
             {workExperience.map(entry => (
               <li
-                key={entry.title + entry.endDate}
                 className="flex flex-col md:flex-row md:gap-4"
+                key={entry.title + entry.endDate}
               >
                 <div className="w-28 space-y-1 divide-y text-zinc-500">
                   <p>
@@ -176,21 +176,21 @@ const CV = () => {
                     {entry.report && (
                       <div className="my-2 sm:my-0">
                         <Link
-                          href={entry.report}
                           className="flex w-full items-center rounded border border-zinc-400 px-3 py-2 text-xs hover:text-zinc-50 print:hidden"
+                          href={entry.report}
                         >
                           <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
                             className="mr-1 inline h-4 w-4"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={1.5}
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
+                              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                             />
                           </svg>
                           Erfahrungsbericht
