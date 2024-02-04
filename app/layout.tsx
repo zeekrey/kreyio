@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 
+import { Analytics } from "@/components/analytics"
 import { ColorModeToggle } from "@/components/color-mode-toggle"
 import { Separator } from "@/components/ui/separator"
 import "@/styles/globals.css"
-import Analytics from "components/Analytics"
 import { Work_Sans } from "next/font/google"
 
 import { ThemeProvider } from "../components/providers"
@@ -16,10 +16,11 @@ const workSans = Work_Sans({
 })
 
 export const metadata: Metadata = {
-  description: "tbd.",
+  description: "Something about me and the things I'm building.",
   icons: {
     shortcut: "/favicon.ico",
   },
+  metadataBase: new URL("https://krey.io"),
   openGraph: {
     description: "Something about me and the things I'm building.",
     images: [
@@ -80,7 +81,7 @@ export default function RootLayout({
           <footer className="mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-4 md:py-8 flex items-center justify-between">
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               Christian Krey
-              </p>
+            </p>
             <ColorModeToggle />
           </footer>
         </ThemeProvider>

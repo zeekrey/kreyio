@@ -1,4 +1,4 @@
-import { GitGraphIcon, StarIcon } from "lucide-react"
+import { StarIcon } from "lucide-react"
 
 import { Badge } from "./ui/badge"
 
@@ -20,7 +20,7 @@ export type GithubProject = {
   url: string
 }
 
-const Project: React.FunctionComponent<GithubProject> = ({
+export const OssProjectPreview: React.FunctionComponent<GithubProject> = ({
   description,
   forkCount,
   name,
@@ -56,5 +56,3 @@ const Project: React.FunctionComponent<GithubProject> = ({
     </li>
   )
 }
-
-export default Project

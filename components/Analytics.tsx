@@ -25,7 +25,7 @@ function TrackPageview() {
   return null
 }
 
-export default function Analytics() {
+export function Analytics() {
   return (
     <Suspense fallback={null}>
       <TrackPageview />

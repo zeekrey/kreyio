@@ -3,8 +3,11 @@ import { graphql } from "@octokit/graphql"
 import { compareDesc } from "date-fns"
 import Link from "next/link"
 
+import {
+  GithubProject,
+  OssProjectPreview,
+} from "../components/oss-project-preview"
 import PostPreview from "../components/post-preview"
-import Project, { type GithubProject } from "../components/project"
 import ProjectPreview from "../components/project-preview"
 import { getBlogPosts } from "../lib/db"
 
@@ -66,12 +69,22 @@ const Index = async () => {
   )
   const commercialProjects = getBlogPosts()
     .filter(a => a.metadata.type === "Project")
-    .sort((a, b) => compareDesc(new Date(a.metadata.publishedAt), new Date(b.metadata.publishedAt)))
+    .sort((a, b) =>
+      compareDesc(
+        new Date(a.metadata.publishedAt),
+        new Date(b.metadata.publishedAt),
+      ),
+    )
 
   const posts = getBlogPosts()
     .filter(a => a.metadata.type === "Post")
     .filter(a => !a.metadata.isDraft)
-    .sort((a, b) => compareDesc(new Date(a.metadata.publishedAt), new Date(b.metadata.publishedAt)))
+    .sort((a, b) =>
+      compareDesc(
+        new Date(a.metadata.publishedAt),
+        new Date(b.metadata.publishedAt),
+      ),
+    )
     .slice(0, 4)
 
   return (
@@ -173,14 +186,14 @@ const Index = async () => {
         </h2>
         <ul className="list-none divide-y py-2">
           {projects.map(({ node }) => (
-            <Project {...node} key={node.id} />
+            <OssProjectPreview {...node} key={node.id} />
           ))}
         </ul>
       </section>
 
       {/* Commercial Projects */}
       <section className="py-6">
-      <h2 className="text-2xl font-semibold dark:text-zinc-50">
+        <h2 className="text-2xl font-semibold dark:text-zinc-50">
           Commercial Projects (Freelance)
         </h2>
         <ul className="list-none">

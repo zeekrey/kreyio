@@ -26,18 +26,12 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
       title,
       type: "article",
       url: `https://krey.io/posts/${params.slug}`,
-      // images: [
-      //   {
-      //     url: ogImage,
-      //   },
-      // ],
     },
     title,
     twitter: {
       card: "summary_large_image",
       description: summary,
       title,
-      // images: [ogImage],
     },
   }
 }
