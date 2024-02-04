@@ -29,14 +29,9 @@ Before we dive into testing color schemes, let's set up Playwright:
 # npm
 npm install playwright
 
-# yarn
-yarn add playwright
+# pnpm
+pnpm add playwright
 
-# pip
-pip install playwright
-
-# nuget
-dotnet add package Microsoft.Playwright
 ```
 
 2. Import the required Playwright module in your test script:
@@ -88,12 +83,6 @@ await changeColorScheme('custom');
 ```bash
 # JavaScript
 node your_test_script.js
-
-# Python
-python your_test_script.py
-
-# C#
-dotnet test
 ```
 
 By running these tests, you can ensure that the website maintains readability and visual consistency across different color schemes.
