@@ -122,7 +122,7 @@ const Index = async () => {
               size="icon"
               variant="ghost"
             >
-              <a href="/">
+              <a href="https://www.linkedin.com/in/christiankrey/">
                 <svg
                   className="h-4 w-4"
                   role="img"
