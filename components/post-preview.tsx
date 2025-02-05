@@ -24,7 +24,7 @@ const PostPreview: React.FunctionComponent<{
             >
               {formattedDate}
             </time>
-            <h2 className="font-semibol pb-1 group-hover:text-black group-hover:dark:text-white">{post.metadata.title}</h2>
+            <h2 className="font-semibol pb-1 group-hover:text-black dark:group-hover:text-white">{post.metadata.title}</h2>
             <p className="text-sm font-light text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-200">
               {post.metadata.summary}
             </p>

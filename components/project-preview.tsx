@@ -19,7 +19,7 @@ const ProjectPreview: React.FunctionComponent<{
               {format(parseISO(project.metadata.projectEnd ?? ""), "MM.yyyy")}
             </time>
 
-            <h2 className="font-semibol pb-1 group-hover:text-black group-hover:dark:text-white">
+            <h2 className="font-semibol pb-1 group-hover:text-black dark:group-hover:text-white">
               {project.metadata.title} [{project.metadata.role}]
             </h2>
           </div>

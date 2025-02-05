@@ -35,7 +35,7 @@ export const OssProjectPreview: React.FunctionComponent<GithubProject> = ({
         href={url}
       >
         <div>
-          <h2 className="font-semibol pb-1 group-hover:text-black group-hover:dark:text-white flex items-center">
+          <h2 className="font-semibol pb-1 group-hover:text-black dark:group-hover:text-white flex items-center">
             <small className="text-zinc-400 dark:text-zinc-700">zeekrey/</small>
             <strong className="text-zinc-900 dark:text-zinc-300">{name}</strong>
             {primaryLanguage && (
