@@ -1,0 +1,51 @@
+---
+title: Deploy a static website to Hetzner
+summary: Hetzner is a great hosting provider. They offer a free tier for static websites. Here is how to deploy a static website to Hetzner.
+publishedAt: "2025-04-12"
+type: Post
+---
+
+Hetzner is a German hosting provider that offers a free tier for static websites. This is a great option for hosting small projects or personal websites. In this post, I will show you how to deploy a static website to Hetzner.
+
+## Create a Hetzner account
+
+To get started, you need to create a Hetzner account. You can sign up for a free account [here](https://www.hetzner.com/). Once you have created an account, you will need to verify your email address.
+
+## Create a new project
+
+Once you have verified your email address, it somewhat cumbersome to order the actual product. Just go to the [Webhosting site](https://www.hetzner.com/de/webhosting/) and select level 1 to start with. They will then ask you a bunch of questions. As far as I could see, a de domain is basically for free - all other domains will be payed. You could also transfer in an existing domain or apply nameservers.
+
+## Create a new static website
+
+Now let's create the actual website. Let's asume you've created your wesbite using [v0.dev](https://v0.dev/). On the top right corner, you will see an export button. Click it and select "Download ZIP". This will download a not just the website, but instead a complete [Next.js](https://nextjs.org/) project.
+
+Unzip the folder and open it in your favorite code editor.
+
+> Now you'll need a bunch of tools to get started. I won't cover this here. What you basically neeed is [Node.js](https://nodejs.org/en/) and a common understanding arround Node packageme management (NPM) and its ecosystem.
+
+Nextjs and React and somehow raw building blocks for modern website. You can't just deploy this somewhere and expect it to work. You need to build the project first - basically converting all this wired stuff in HTML, CSS and JS. This is done by running a build in command. But before we can do this, we need to adjust a setting.
+
+Normally Nextjs comes with a bunch of really sophisticated features. But for a static website, we don't need all this. So let's adjust the `next.config.ts` file. Open it and add the following lines:
+
+```javascript
+const nextConfig = {
+  output: "export",
+}
+module.exports = nextConfig
+```
+
+This will tell Next.js to build the project as a static website.
+
+```bash
+npm run build
+```
+
+This will create a new folder called `out` in the root of your project. This folder contains all the static files for your website.
+
+## Deploy your website
+
+Now lets go back to hetzner, open the projact we just created and search for the webFTP section. Open a FTP session and then open the `public_html` folder. Remove everything that is in there and copy the content of the `out` folder into the `public_html` folder. This is it. You can now open your website in a browser.
+
+> For SSL was not working at this moment. The Hetzner console says it will take a few minutes. I guess this is because the domain is not yet verified. I will update this post once I know more.
+
+![Hetzner static website](hetzner-static.png "Hetzner static website")
