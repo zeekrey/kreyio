@@ -11,7 +11,8 @@ export const generateStaticParams = async () => {
   }))
 }
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   let post = getBlogPosts().find(post => post.slug === params.slug)
 
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
@@ -36,7 +37,8 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   }
 }
 
-export default function Post({ params }: { params: { slug: string } }) {
+export default async function Post(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   let post = getBlogPosts().find(post => post.slug === params.slug)
 
   if (!post) notFound()

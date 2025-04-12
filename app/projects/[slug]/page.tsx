@@ -7,7 +7,8 @@ import { Suspense } from "react"
 export const generateStaticParams = async () =>
   getBlogPosts().map(project => ({ slug: project.slug }))
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   const project = getBlogPosts().find(
     project => project.slug === params.slug
   )
@@ -15,7 +16,8 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   return { title: project.metadata.title }
 }
 
-export default function Project({ params }: { params: { slug: string } }) {
+export default async function Project(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const project = getBlogPosts().find(
     project => project.slug === params.slug
   )
