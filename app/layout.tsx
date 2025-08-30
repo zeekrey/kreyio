@@ -78,11 +78,26 @@ export default function RootLayout({
             {children}
           </main>
           <Separator />
-          <footer className="mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-4 md:py-8 flex items-center justify-between">
+          <footer className="print:hidden mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-4 md:py-8 flex items-center justify-between">
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
               Christian Krey
             </p>
             <ColorModeToggle />
+          </footer>
+          <footer className="hidden border-t print:flex mx-auto max-w-3xl px-4 sm:px-6 md:px-8 py-4 md:py-8 items-center justify-between">
+            <div className="grid grid-cols-[120px_1fr] ">
+              {/* Author + Links */}
+              <div className="text-sm text-gray-500">Autor</div>
+              <div className="text-sm text-gray-500">Christian Krey</div>
+              <div className="text-sm text-gray-500">Original</div>
+              <div className="text-sm text-gray-500">krey.io</div>
+              <div className="text-sm text-gray-500">Stand</div>
+              <div className="text-sm text-gray-500">08.2025</div>
+              <div className="text-sm text-gray-500">LinkedIn</div>
+              <div className="text-sm text-gray-500">
+                linkedin.com/in/christiankrey
+              </div>
+            </div>
           </footer>
         </ThemeProvider>
       </body>
