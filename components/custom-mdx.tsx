@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import React from 'react';
-import { highlight } from 'sugar-high';
+import { codeToHtml } from 'shiki'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -111,9 +111,12 @@ function ConsCard({ cons, title }) {
   );
 }
 
-function Code({ children, ...props }) {
-  let codeHTML = highlight(children);
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+async function Code({ children, ...props }) {
+ const codeHtml = await codeToHtml(children, {
+  lang: 'javascript',
+  theme: 'vitesse-dark'
+})
+  return <code dangerouslySetInnerHTML={{ __html: codeHtml }} {...props} />;
 }
 
 function slugify(str) {

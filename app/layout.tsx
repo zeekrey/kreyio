@@ -1,19 +1,11 @@
-import type { Metadata } from "next"
+import type Metadata from "next"
 
 import { Analytics } from "@/components/analytics"
 import { ColorModeToggle } from "@/components/color-mode-toggle"
 import { Separator } from "@/components/ui/separator"
 import "@/styles/globals.css"
-import { Work_Sans } from "next/font/google"
-
+import { GeistMono } from "geist/font/mono";
 import { ThemeProvider } from "../components/providers"
-
-const workSans = Work_Sans({
-  display: "swap",
-  subsets: ["latin"],
-  variable: "--font-work-sans",
-  weight: ["200", "400", "600"],
-})
 
 export const metadata: Metadata = {
   description: "Something about me and the things I'm building.",
@@ -65,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className={`${workSans.variable}`} lang="en" suppressHydrationWarning>
+    <html className={GeistMono.className} lang="en" suppressHydrationWarning>
       <body className="bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 font-medium antialiased">
         <Analytics />
         <ThemeProvider

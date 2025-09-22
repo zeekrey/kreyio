@@ -158,9 +158,7 @@ const Index = async () => {
         </ul>
       </div>
       <p className="py-6 md:py-12">
-        Software developer by trade, but I&apos;ve been known to take a stab at
-        anything - even if it&apos;s way over my head. 👷🏻‍♂️ Currently I&apos;m
-        freelancing, mostly working with React and Svelte.
+        I&apos;m a software developer, but I love diving into new challenges, even if they&apos;re a bit out of my league. 👷🏻‍♂️ Right now, I&apos;m a tech lead at Siemens, focusing on AI and mainly working with React and Svelte.
       </p>
       {/* Blog */}
       <section className="">
