@@ -1,0 +1,33 @@
+{{!< default}}
+
+{{!-- Header --}}
+<div class="site-header">
+  <div class="site-header-left">
+    <h1 class="site-title">Blog</h1>
+    <a class="subscribe-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
+  </div>
+  {{> social-links}}
+</div>
+
+{{!-- Post List --}}
+<ul class="post-list">
+  {{#foreach posts}}
+    {{> post-card}}
+  {{/foreach}}
+</ul>
+
+{{!-- Pagination --}}
+{{#if pagination}}
+  {{#if pagination.pages}}
+    {{#if (match pagination.pages ">" 1)}}
+      <nav class="pagination">
+        {{#if pagination.prev}}
+          <a href="{{pagination.prev}}" class="btn-outline">&larr; Newer</a>
+        {{/if}}
+        {{#if pagination.next}}
+          <a href="{{pagination.next}}" class="btn-outline">Older &rarr;</a>
+        {{/if}}
+      </nav>
+    {{/if}}
+  {{/if}}
+{{/if}}

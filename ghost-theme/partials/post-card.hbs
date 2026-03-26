@@ -1,0 +1,21 @@
+<li class="post-card">
+  <a href="{{url}}">
+    <div>
+      <div class="post-card-meta">
+        <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}" data-published="{{date format="YYYY-MM-DD"}}">
+          {{date published_at timeago="true"}}
+        </time>
+        <span class="post-card-reading-time">{{reading_time}}</span>
+      </div>
+      <h2>{{title}}</h2>
+      {{#if custom_excerpt}}
+        <p class="summary">{{custom_excerpt}}</p>
+      {{else if excerpt}}
+        <p class="summary">{{excerpt words="20"}}</p>
+      {{/if}}
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    </div>
+  </a>
+</li>

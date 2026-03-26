@@ -1,0 +1,29 @@
+{{!< default}}
+
+{{#post}}
+<section class="post-page">
+  {{#if @page.show_title_and_feature_image}}
+    <h1 class="post-title">{{title}}</h1>
+    <div class="post-meta">
+      <time datetime="{{date format="YYYY-MM-DD"}}">
+        {{date published_at format="DD MMM YYYY"}}
+      </time>
+    </div>
+    {{#if feature_image}}
+      <figure class="post-feature-image">
+        <img src="{{img_url feature_image size="l"}}" alt="{{title}}">
+      </figure>
+    {{/if}}
+  {{/if}}
+  <article class="post-content">
+    {{content}}
+  </article>
+  {{#if tags}}
+    <div class="post-tags">
+      {{#foreach tags visibility="public"}}
+        <a href="{{url}}" class="badge">{{name}}</a>
+      {{/foreach}}
+    </div>
+  {{/if}}
+</section>
+{{/post}}

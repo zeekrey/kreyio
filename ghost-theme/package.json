@@ -1,0 +1,21 @@
+{
+  "name": "kreyio-theme",
+  "description": "Custom Ghost theme for krey.io",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=6.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Christian Krey",
+    "email": "christian@krey.io",
+    "url": "https://krey.io"
+  },
+  "config": {
+    "posts_per_page": 25,
+    "card_assets": true
+  },
+  "keywords": [
+    "ghost-theme"
+  ]
+}
