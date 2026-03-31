@@ -9,7 +9,7 @@ services:
       database__connection__user: root
       database__connection__password: example
       database__connection__database: ghost
-      url: http://${GHOST_HOST}
+      url: ${GHOST_HOST}
       security__staffDeviceVerification: false
       mail__from: christian@krey.io
       mail__transport: SMTP
@@ -18,6 +18,10 @@ services:
       mail__options__auth__user: a570bb001@smtp-brevo.com
       mail__options__auth__pass: 7kUcQYXMw5LbExNr
 
+    depends_on:
+      - db
+    ports:
+      - "2368:2368"
     volumes:
       - ghost:/var/lib/ghost/content
       - ./ghost-theme:/var/lib/ghost/content/themes/kreyio-theme
