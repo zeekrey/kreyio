@@ -1,12 +1,15 @@
 {{!< default}}
 
 <div class="site-header">
-  <h1 class="site-title">{{@site.title}}</h1>
+  <a href="/"><h1 class="site-title">{{@site.title}}</h1></a>
   <a class="subscribe-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
 </div>
 
 {{#post}}
 <section class="post-page">
+  {{#if feature_image}}
+  <img class="post-feature-image" src="{{feature_image}}" alt="{{title}}">
+  {{/if}}
   <h1 class="post-title">{{title}}</h1>
   <div class="post-meta">
     <time datetime="{{date format="YYYY-MM-DD"}}" data-published="{{date format="YYYY-MM-DD"}}">

@@ -393,13 +393,19 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1rem;
   border-top: 1px solid #e4e4e7;
+}
+
+@media (min-width: 640px) {
+  .site-footer {
+    padding: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
   .site-footer {
-    padding: 2rem 0;
+    padding: 2rem;
   }
 }
 
@@ -423,6 +429,12 @@ img {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
+}
+
+.post-feature-image {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .post-title {
